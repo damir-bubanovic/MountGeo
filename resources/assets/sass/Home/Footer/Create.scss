@@ -1,0 +1,67 @@
+/**
+ * Home - Footer - Information - Create
+ * > create tabs
+ * > step container
+ * > title with numbers & text
+ */
+.el-info-create-tabs {
+
+    .el-tabs__nav {
+        width: 100%;
+
+        .el-tabs__item {
+            width: 25%;
+            text-align: center;
+            font-weight: normal;
+        }
+    }
+}
+
+.el-information-create {
+    margin-top: 10px;
+}
+
+.el-step__title {
+    font-weight: normal !important;
+}
+
+.el-selected-mountain {
+    padding-left: 5px !important;
+
+    .el-select {
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+.el-route-card {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 1px 1px 0 $color-green-basic !important;
+
+    .el-input__inner {
+        border: none;
+    }
+}
+
+.el-route-card-custom {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 1px 1px 0 $color-green-basic !important;
+
+    .card-header {
+        font-weight: bold
+    }
+    .el-button {
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+.el-button-route {
+    margin-top: 10px;
+}

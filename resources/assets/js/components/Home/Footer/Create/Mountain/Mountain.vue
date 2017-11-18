@@ -1,0 +1,43 @@
+<template>
+    <el-row class="el-information-create">
+        <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
+            <el-steps style="height: 300px;" direction="vertical" :active="active">
+                <el-step title="Add Mountain"></el-step>
+            </el-steps>
+        </el-col>
+        <el-col :xs="16" :sm="16" :md="14" :lg="12" :xl="12">
+            <information-create-mountain-add-mountain v-on:step="next" v-if="active == 0"></information-create-mountain-add-mountain>
+            <div v-if="active == 1">
+                <h3>Add Another Mountain?</h3>
+                <el-button type="primary" v-on:click="next">Restart</el-button>
+            </div>
+        </el-col>
+    </el-row>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                active: 0,
+                mountain: {}
+            }
+        },
+        methods: {
+            next(form) {
+                if (this.active++ > 0) {
+                    this.active = 0;
+                } else {
+                    this.mountain = Object.assign(form);
+                    this.createMountain();
+                }
+            },
+            createMountain() {
+                this.$store.dispatch('CREATE_MOUNTAIN', { data: this.mountain })
+                    .then(() => {
+                        this.$store.dispatch('GET_MOUNTAINS')
+                    });
+            }
+        }
+    }
+</script>

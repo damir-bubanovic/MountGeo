@@ -1,0 +1,16 @@
+/**
+ * Home - Header
+ * > style user navbar & arrow submenu
+ */
+.el-menu--horizontal .el-submenu {
+    .el-submenu__icon-arrow {
+        color: #409EFF;
+        font-size: 20px;
+        font-weight: 900;
+    }
+    .el-submenu__title {
+        font-weight: bold;
+        height: 35px !important;
+        line-height: 35px !important;
+    }
+}

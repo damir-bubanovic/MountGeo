@@ -1,0 +1,21 @@
+/**
+ * Auth - Footer
+ * > copyright
+ */
+.el-footer {
+    position: absolute;
+    width: 95%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    border-top: 1px solid $black-light-color;
+
+    p {
+        margin-bottom: 0px;
+        color: $black-color;
+    }
+}

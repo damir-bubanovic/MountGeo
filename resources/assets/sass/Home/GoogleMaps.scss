@@ -1,0 +1,74 @@
+/**
+ * Home - GoogleMaps
+ * > map initialization
+ * > google maps main container
+ * > map chart with information
+ *     > distance container
+ *     > distance travel container
+ * > refuge marker
+ */
+#map {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: absolute !important;
+}
+
+.el-google-maps {
+    height: 87%;
+    top: 52px;
+    padding: 0px !important;
+    border: 1px solid $black-light-color;
+
+    @media screen and (max-height: 800px) {
+        height: 84%;
+    }
+    @media screen and (max-height: 500px) {
+        height: 75%;
+    }
+}
+
+.map-chart {
+    height: auto;
+    width: 100%;
+    bottom: 0;
+    z-index: 2;
+    position: absolute !important;
+}
+
+.map-chart-container {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.distance-container {
+    border-top: 5px solid red;
+
+    p {
+        font-weight: bolder;
+        text-align: center;
+    }
+}
+
+.distance-travel-container {
+    text-align: center;
+
+    p {
+        font-weight: bolder;
+        font-size: 15px;
+    }
+}
+
+.refugeMarker {
+    width: 150px;
+    height: 20px;
+    border: 1px solid #7C7C7C;
+    border-radius: 5px;
+    background: white;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #972482;
+}

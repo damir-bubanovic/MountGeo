@@ -1,0 +1,16 @@
+/**
+ * Home - Footer - Information
+ * > navigation bottom footer information position tabs
+ */
+.el-info-tabs {
+
+    .el-tabs__nav {
+        width: 100%;
+
+        .el-tabs__item {
+            width: 50%;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+}

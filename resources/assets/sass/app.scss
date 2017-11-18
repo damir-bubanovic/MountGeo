@@ -1,0 +1,30 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Font-Awesome
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+
+// Sweetalert2
+@import "node_modules/sweetalert2/dist/sweetalert2";
+
+/**
+ * Scss for Vue Components
+ */
+@import "./Auth/Welcome";
+@import "./Auth/Header";
+@import "./Auth/Footer";
+@import "./Auth/LoginRegister";
+
+@import "./Home/Header";
+@import "./Home/Footer";
+@import "./Home/GoogleMaps";
+@import "./Home/Footer/Information";
+@import "./Home/Footer/Create";
+@import "./Home/Footer/Database";

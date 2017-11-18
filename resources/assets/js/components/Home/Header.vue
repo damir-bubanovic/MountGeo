@@ -1,0 +1,49 @@
+<template>
+    <el-header>
+        <el-row :gutter="24">
+            <el-col :xs="4" :sm="3" :md="3" :lg="2" :xl="1" class="el-header-logo">
+                <a v-on:click="homePage"><img src="/img/logo.png" alt="MountGeo Logo"></a>
+            </el-col>
+            <el-col :xs="4" :sm="3" :md="3" :lg="2" :xl="2" class="el-header-logo">
+                <a v-on:click="homePage"><h3>MountGeo</h3></a>
+            </el-col>
+            <el-col :xs="16" :sm="18" :md="18" :lg="20" :xl="21" class="el-menu-header">
+                <el-menu :default-active="activeIndex" mode="horizontal">
+                    <el-submenu index="user">
+                        <template slot="title">Welcome {{ userName }}</template>
+                        <el-menu-item index="logout" v-on:click="logOut">Log Out</el-menu-item>
+                    </el-submenu>
+                </el-menu>
+            </el-col>
+        </el-row>
+    </el-header>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                activeIndex: 'user',
+            }
+        },
+        computed: {
+            /**
+             * User Name
+             */
+            userName() {
+                return this.$store.state.auth.username
+            }
+        },
+        methods: {
+            homePage()  {
+                this.$router.push('/home');
+            },
+            logOut() {
+                this.$store.dispatch('LOGOUT')
+                    .then(() => {
+                        this.$router.push('/');
+                    });
+            }
+        }
+    }
+</script>
