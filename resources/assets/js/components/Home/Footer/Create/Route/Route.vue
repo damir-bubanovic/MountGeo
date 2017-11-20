@@ -1,15 +1,15 @@
 <template>
     <el-row class="el-information-create">
-        <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
             <el-steps style="height: 300px;" direction="vertical" :active="active">
-                <el-step title="Add Route"></el-step>
-                <el-step title="Add Info"></el-step>
-                <el-step title="Add Detail"></el-step>
-                <el-step title="Add Refuge"></el-step>
-                <el-step title="Add Story"></el-step>
+                <el-step></el-step>
+                <el-step></el-step>
+                <el-step></el-step>
+                <el-step></el-step>
+                <el-step></el-step>
             </el-steps>
         </el-col>
-        <el-col :xs="16" :sm="16" :md="14" :lg="12" :xl="12" v-loading="loading" element-loading-text="Loading...(Up to 20 min)">
+        <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18" v-loading="loading" element-loading-text="Loading...(Up to 20 min)">
             <information-create-route-add-route v-on:step="next" v-if="active == 0"></information-create-route-add-route>
             <information-create-route-add-info v-on:step="next" v-if="active == 1"></information-create-route-add-info>
             <information-create-route-add-detail v-on:step="next" v-if="active == 2"></information-create-route-add-detail>

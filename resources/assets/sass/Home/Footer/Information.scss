@@ -1,6 +1,7 @@
 /**
  * Home - Footer - Information
  * > navigation bottom footer information position tabs
+ * > max width of dialog box
  */
 .el-info-tabs {
 
@@ -13,4 +14,8 @@
             font-weight: bold;
         }
     }
+}
+
+.el-dialog {
+    max-width: 900px;
 }

@@ -67,6 +67,10 @@ const actions = {
                     })
         })
     },
+    /**
+     * Logout
+     * > do better with this & look it up more
+     */
     [MutationTypes.LOGOUT]({commit}) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -78,7 +82,8 @@ const actions = {
                         }
                     })
                     .catch((error) => {
-                        reject();
+                        localStorage.removeItem('token');
+                        resolve();
                     })
         })
     }

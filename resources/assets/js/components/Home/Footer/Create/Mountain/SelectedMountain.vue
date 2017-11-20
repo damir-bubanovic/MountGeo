@@ -1,6 +1,6 @@
 <template>
     <el-row :gutter="24">
-        <el-col :span="6" :offset="8" class="el-selected-mountain">
+        <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18" :offset="4" class="el-selected-mountain">
             <el-select v-model="value"
             @change="selectedMountain"
             placeholder="Select Mountain to Add New...">

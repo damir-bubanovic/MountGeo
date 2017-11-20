@@ -4,7 +4,7 @@
             <el-col :span="6" :offset="9"><h4>Find Route</h4></el-col>
         </el-row>
         <el-row :gutter="24">
-            <el-col :xs="24" :sm="24" :md="11" :lg="12" :xl="12">
+            <el-col :xs="23" :sm="23" :md="11" :lg="11" :xl="11">
                 <el-select class="el-select-database" v-model="mountain_id"
                     @change="getRoutes"
                     placeholder="Select Mountain">
@@ -16,7 +16,7 @@
                     </el-option>
                 </el-select>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="11" :lg="12" :xl="12">
+            <el-col :xs="23" :sm="23" :md="11" :lg="12" :xl="12">
                 <el-select class="el-select-database" v-model="route_id"
                     @change="getFullRoute"
                     placeholder="Select Route">

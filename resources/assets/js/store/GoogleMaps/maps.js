@@ -531,15 +531,16 @@ const mutations = {
                 labelInBackground: true
             });
 
-            state.targetMarker =  marker;
+            state.targetMarker = marker;
         }
+        console.log(state.targetMarker);
 
     },
     [MutationTypes.HIDE_TARGET_LOCATION](state) {
         /**
          * Hide Target Location
          * > deactivate target location button
-         * > remove target marker from map
+         * > remove target marker from map if we added marker on map
          */
         state.targetLocationButton = false;
         state.targetMarker.setMap(null);

@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
+Route::post('/logout', 'AuthController@logout');
 
 Route::group(['middleware' => 'auth.jwt'], function()
 {
@@ -36,6 +37,4 @@ Route::group(['middleware' => 'auth.jwt'], function()
 
     Route::post('/get-refuges', 'RefugeController@getRefuges');
     Route::post('/create-refuge', 'RefugeController@postRefuge');
-
-    Route::post('/logout', 'AuthController@logout');
 });

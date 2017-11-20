@@ -12677,6 +12677,7 @@ body.swal2-iosfix {
  * Auth - Header
  * > float nav-links right & style links
  * > logo
+ * > hide elements on phone size
  */
 
 .el-menu-header {
@@ -12713,6 +12714,12 @@ body.swal2-iosfix {
   text-decoration: none;
   color: #4799c5;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .el-hidden-phone {
+    display: none !important;
+  }
 }
 
 /**
@@ -12806,6 +12813,13 @@ body.swal2-iosfix {
   height: 35px;
   line-height: 35px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .el-navigation-bottom .el-menu--horizontal .el-menu-item {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 .el-dialog {
@@ -12904,6 +12918,7 @@ body.swal2-iosfix {
 /**
  * Home - Footer - Information
  * > navigation bottom footer information position tabs
+ * > max width of dialog box
  */
 
 .el-info-tabs .el-tabs__nav {
@@ -12914,6 +12929,10 @@ body.swal2-iosfix {
   width: 50%;
   text-align: center;
   font-weight: bold;
+}
+
+.el-dialog {
+  max-width: 900px;
 }
 
 /**

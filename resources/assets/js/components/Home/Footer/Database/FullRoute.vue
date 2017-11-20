@@ -35,13 +35,13 @@
                                 <h5 class="el-full-route-title">Close:</h5>
                                 <p>{{ refuge.close }}</p>
                             </el-col>
-                            <el-col :xs="12" :sm="8" :md="8" :lg="8" :xl="8" class="el-full-route">
+                            <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8" class="el-full-route">
                                 <h5 class="el-full-route-title">Essentials:</h5>
                                 <el-checkbox v-model="refuge.water == 1">Water</el-checkbox>
                                 <el-checkbox v-model="refuge.food == 1">Food</el-checkbox>
                                 <el-tag>{{ refuge.beds }} Beds</el-tag>
                             </el-col>
-                            <el-col :xs="12" :sm="8" :md="8" :lg="8" :xl="8" class="el-full-route">
+                            <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8" class="el-full-route">
                                 <h5 class="el-full-route-title">Access Route:</h5>
                                 <el-checkbox v-model="refuge.road == 1">Road</el-checkbox>
                                 <el-checkbox v-model="refuge.macadam == 1">Macadam</el-checkbox>
@@ -52,15 +52,15 @@
                             <el-col :span="24">
                                 <el-row>
                                     <span v-for="contact in refuge.contacts">
-                                        <el-col :span="6" class="el-full-route">
+                                        <el-col :xs="8" :sm="8" :md="6" :lg="6" :xl="6" class="el-full-route">
                                             <h5 class="el-full-route-title">Person:</h5>
                                             <p>{{ contact.person }}</p>
                                         </el-col>
-                                        <el-col :span="6" class="el-full-route">
+                                        <el-col :xs="8" :sm="8" :md="6" :lg="6" :xl="6" class="el-full-route">
                                             <h5 class="el-full-route-title">Phone:</h5>
                                             <p>{{ contact.phone }}</p>
                                         </el-col>
-                                        <el-col :span="8" class="el-full-route">
+                                        <el-col :xs="8" :sm="8" :md="6" :lg="8" :xl="8" class="el-full-route">
                                             <h5 class="el-full-route-title">Email:</h5>
                                             <p>{{ contact.email }}</p>
                                         </el-col>

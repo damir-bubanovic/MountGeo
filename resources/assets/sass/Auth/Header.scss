@@ -2,6 +2,7 @@
  * Auth - Header
  * > float nav-links right & style links
  * > logo
+ * > hide elements on phone size
  */
 .el-menu-header {
     border-bottom: solid 1px $black-light-color;
@@ -36,5 +37,12 @@
         text-decoration: none;
         color: $color-blue-light;
         cursor: pointer;
+    }
+}
+
+
+.el-hidden-phone {
+    @media screen and (max-width: $break-phone) {
+        display: none !important;
     }
 }

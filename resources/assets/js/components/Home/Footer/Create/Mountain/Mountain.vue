@@ -1,11 +1,11 @@
 <template>
     <el-row class="el-information-create">
-        <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
             <el-steps style="height: 300px;" direction="vertical" :active="active">
-                <el-step title="Add Mountain"></el-step>
+                <el-step></el-step>
             </el-steps>
         </el-col>
-        <el-col :xs="16" :sm="16" :md="14" :lg="12" :xl="12">
+        <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
             <information-create-mountain-add-mountain v-on:step="next" v-if="active == 0"></information-create-mountain-add-mountain>
             <div v-if="active == 1">
                 <h3>Add Another Mountain?</h3>

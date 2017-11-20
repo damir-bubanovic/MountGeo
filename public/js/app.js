@@ -38448,7 +38448,7 @@ var render = function() {
           _c(
             "el-col",
             {
-              staticClass: "el-header-logo",
+              staticClass: "el-header-logo el-hidden-phone",
               attrs: { xs: 4, sm: 3, md: 3, lg: 2, xl: 2 }
             },
             [
@@ -38463,7 +38463,7 @@ var render = function() {
                 "el-col",
                 {
                   staticClass: "el-menu-header",
-                  attrs: { xs: 16, sm: 18, md: 18, lg: 20, xl: 21 }
+                  attrs: { xs: 20, sm: 18, md: 18, lg: 20, xl: 21 }
                 },
                 [
                   _c(
@@ -38741,7 +38741,7 @@ var render = function() {
             "el-col",
             {
               staticClass: "el-header-logo",
-              attrs: { xs: 4, sm: 3, md: 3, lg: 2, xl: 1 }
+              attrs: { xs: 4, sm: 4, md: 3, lg: 2, xl: 1 }
             },
             [
               _c("a", { on: { click: _vm.homePage } }, [
@@ -38755,8 +38755,8 @@ var render = function() {
           _c(
             "el-col",
             {
-              staticClass: "el-header-logo",
-              attrs: { xs: 4, sm: 3, md: 3, lg: 2, xl: 2 }
+              staticClass: "el-header-logo el-hidden-phone",
+              attrs: { xs: 4, sm: 4, md: 3, lg: 2, xl: 2 }
             },
             [
               _c("a", { on: { click: _vm.homePage } }, [
@@ -38769,7 +38769,7 @@ var render = function() {
             "el-col",
             {
               staticClass: "el-menu-header",
-              attrs: { xs: 16, sm: 18, md: 18, lg: 20, xl: 21 }
+              attrs: { xs: 20, sm: 16, md: 18, lg: 20, xl: 21 }
             },
             [
               _c(
@@ -38788,7 +38788,12 @@ var render = function() {
                       _c(
                         "template",
                         { attrs: { slot: "title" }, slot: "title" },
-                        [_vm._v("Welcome " + _vm._s(_vm.userName))]
+                        [
+                          _vm._v("Welcome "),
+                          _c("span", { staticClass: "el-hidden-phone" }, [
+                            _vm._v(_vm._s(_vm.userName))
+                          ])
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
@@ -38947,7 +38952,10 @@ var render = function() {
                 staticClass: "fa fa-flag",
                 attrs: { "aria-hidden": "true" }
               }),
-              _vm._v(" Target Location")
+              _vm._v(" "),
+              _c("span", { staticClass: "el-hidden-phone" }, [
+                _vm._v("Target Location")
+              ])
             ]
           ),
           _vm._v(" "),
@@ -38963,7 +38971,10 @@ var render = function() {
                 staticClass: "fa fa-map-marker",
                 attrs: { "aria-hidden": "true" }
               }),
-              _vm._v(" Current Location")
+              _vm._v(" "),
+              _c("span", { staticClass: "el-hidden-phone" }, [
+                _vm._v("Current Location")
+              ])
             ]
           ),
           _vm._v(" "),
@@ -38982,7 +38993,10 @@ var render = function() {
                 staticClass: "fa fa-info-circle",
                 attrs: { "aria-hidden": "true" }
               }),
-              _vm._v(" Information")
+              _vm._v(" "),
+              _c("span", { staticClass: "el-hidden-phone" }, [
+                _vm._v("Information")
+              ])
             ]
           )
         ],
@@ -39191,11 +39205,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            compassImage: '',
+            width: '',
+            chartHeight: ''
+        };
+    },
     mounted: function mounted() {
         window.addEventListener('resize', this.resizeChart);
+        this.resizeChartData();
+        window.addEventListener('resize', this.resizeChartData);
     },
     beforeDestroy: function beforeDestroy() {
         window.removeEventListener('resize', this.resizeChart);
+        window.removeEventListener('resize', this.resizeChartData);
     },
 
     computed: {
@@ -39230,6 +39254,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.showMapInfo) {
                 this.$store.dispatch('ELEVATION_CHART');
             }
+        },
+
+        /**
+         * Resize Elevation Chart Data & Compass Image
+         * @return {[type]} [description]
+         */
+        resizeChartData: function resizeChartData() {
+            this.width = window.innerWidth;
+            if (this.width >= 992) {
+                this.compassImage = 'img/compass-150.jpg';
+                this.chartHeight = 150;
+            } else if (this.width < 992 && this.width >= 768) {
+                this.compassImage = 'img/compass-100.jpg';
+                this.chartHeight = 100;
+            } else {
+                this.compassImage = 'img/compass-75.jpg';
+                this.chartHeight = 75;
+            }
         }
     }
 });
@@ -39250,7 +39292,7 @@ var render = function() {
         "el-row",
         { staticClass: "map-chart-container", attrs: { gutter: 24 } },
         [
-          _c("el-col", { attrs: { span: 8 } }, [
+          _c("el-col", { attrs: { xs: 24, sm: 24, md: 8, lg: 8, xl: 8 } }, [
             _c(
               "div",
               {
@@ -39261,7 +39303,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("el-col", { attrs: { span: 8 } }, [
+          _c("el-col", { attrs: { xs: 12, sm: 12, md: 8, lg: 8, xl: 8 } }, [
             _vm.showMapInfo
               ? _c("div", { staticClass: "distance-travel-container" }, [
                   _c("p", [
@@ -39275,7 +39317,7 @@ var render = function() {
               : _vm._e()
           ]),
           _vm._v(" "),
-          _c("el-col", { attrs: { span: 8 } }, [
+          _c("el-col", { attrs: { xs: 12, sm: 12, md: 8, lg: 8, xl: 8 } }, [
             _vm.showMapInfo
               ? _c("div", { staticClass: "distance-travel-container" }, [
                   _c("p", [
@@ -39302,10 +39344,11 @@ var render = function() {
                       [
                         _c(
                           "el-col",
-                          { attrs: { xs: 14, sm: 19, md: 20, lg: 21, xl: 22 } },
+                          { attrs: { xs: 18, sm: 19, md: 20, lg: 21, xl: 22 } },
                           [
                             _c("div", {
-                              staticStyle: { width: "100%", height: "150px" },
+                              staticStyle: { width: "100%" },
+                              style: { height: _vm.chartHeight + "px" },
                               attrs: { id: "elevationChart" }
                             })
                           ]
@@ -39313,8 +39356,8 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "el-col",
-                          { attrs: { xs: 8, sm: 5, md: 4, lg: 3, xl: 2 } },
-                          [_c("img", { attrs: { src: "img/compass.jpg" } })]
+                          { attrs: { xs: 6, sm: 5, md: 4, lg: 3, xl: 2 } },
+                          [_c("img", { attrs: { src: _vm.compassImage } })]
                         )
                       ],
                       1
@@ -39574,28 +39617,28 @@ var render = function() {
         [
           _c(
             "el-tab-pane",
-            { attrs: { label: "Create Mountain", name: "mountain" } },
+            { attrs: { label: "Mountain", name: "mountain" } },
             [_c("information-create-mountain")],
             1
           ),
           _vm._v(" "),
           _c(
             "el-tab-pane",
-            { attrs: { label: "Create Route", name: "route" } },
+            { attrs: { label: "Route", name: "route" } },
             [_c("information-create-route")],
             1
           ),
           _vm._v(" "),
           _c(
             "el-tab-pane",
-            { attrs: { label: "Create Refuge", name: "refuge" } },
+            { attrs: { label: "Refuge", name: "refuge" } },
             [_c("information-create-refuge")],
             1
           ),
           _vm._v(" "),
           _c(
             "el-tab-pane",
-            { attrs: { label: "Create Story", name: "story" } },
+            { attrs: { label: "Story", name: "story" } },
             [_c("information-create-story")],
             1
           )
@@ -39729,7 +39772,7 @@ var render = function() {
     [
       _c(
         "el-col",
-        { attrs: { xs: 8, sm: 8, md: 8, lg: 8, xl: 8 } },
+        { attrs: { xs: 4, sm: 4, md: 4, lg: 4, xl: 4 } },
         [
           _c(
             "el-steps",
@@ -39737,7 +39780,7 @@ var render = function() {
               staticStyle: { height: "300px" },
               attrs: { direction: "vertical", active: _vm.active }
             },
-            [_c("el-step", { attrs: { title: "Add Mountain" } })],
+            [_c("el-step")],
             1
           )
         ],
@@ -39746,7 +39789,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-col",
-        { attrs: { xs: 16, sm: 16, md: 14, lg: 12, xl: 12 } },
+        { attrs: { xs: 18, sm: 18, md: 18, lg: 18, xl: 18 } },
         [
           _vm.active == 0
             ? _c("information-create-mountain-add-mountain", {
@@ -40082,7 +40125,10 @@ var render = function() {
     [
       _c(
         "el-col",
-        { staticClass: "el-selected-mountain", attrs: { span: 6, offset: 8 } },
+        {
+          staticClass: "el-selected-mountain",
+          attrs: { xs: 18, sm: 18, md: 18, lg: 18, xl: 18, offset: 4 }
+        },
         [
           _c(
             "el-select",
@@ -40292,7 +40338,7 @@ var render = function() {
     [
       _c(
         "el-col",
-        { attrs: { xs: 8, sm: 8, md: 8, lg: 8, xl: 8 } },
+        { attrs: { xs: 4, sm: 4, md: 4, lg: 4, xl: 4 } },
         [
           _c(
             "el-steps",
@@ -40301,15 +40347,15 @@ var render = function() {
               attrs: { direction: "vertical", active: _vm.active }
             },
             [
-              _c("el-step", { attrs: { title: "Add Route" } }),
+              _c("el-step"),
               _vm._v(" "),
-              _c("el-step", { attrs: { title: "Add Info" } }),
+              _c("el-step"),
               _vm._v(" "),
-              _c("el-step", { attrs: { title: "Add Detail" } }),
+              _c("el-step"),
               _vm._v(" "),
-              _c("el-step", { attrs: { title: "Add Refuge" } }),
+              _c("el-step"),
               _vm._v(" "),
-              _c("el-step", { attrs: { title: "Add Story" } })
+              _c("el-step")
             ],
             1
           )
@@ -40329,11 +40375,11 @@ var render = function() {
             }
           ],
           attrs: {
-            xs: 16,
-            sm: 16,
-            md: 14,
-            lg: 12,
-            xl: 12,
+            xs: 18,
+            sm: 18,
+            md: 18,
+            lg: 18,
+            xl: 18,
             "element-loading-text": "Loading...(Up to 20 min)"
           }
         },
@@ -41761,7 +41807,7 @@ var render = function() {
     [
       _c(
         "el-col",
-        { attrs: { xs: 8, sm: 8, md: 8, lg: 8, xl: 8 } },
+        { attrs: { xs: 4, sm: 4, md: 4, lg: 4, xl: 4 } },
         [
           _c(
             "el-steps",
@@ -41770,11 +41816,11 @@ var render = function() {
               attrs: { direction: "vertical", active: _vm.active }
             },
             [
-              _c("el-step", { attrs: { title: "Add Refuge" } }),
+              _c("el-step"),
               _vm._v(" "),
-              _c("el-step", { attrs: { title: "Add Info" } }),
+              _c("el-step"),
               _vm._v(" "),
-              _c("el-step", { attrs: { title: "Add Contact" } })
+              _c("el-step")
             ],
             1
           )
@@ -41784,7 +41830,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-col",
-        { attrs: { xs: 16, sm: 16, md: 14, lg: 12, xl: 12 } },
+        { attrs: { xs: 18, sm: 18, md: 18, lg: 18, xl: 18 } },
         [
           _vm.active == 0
             ? _c("information-create-refuge-add-refuge", {
@@ -42846,7 +42892,7 @@ var render = function() {
     [
       _c(
         "el-col",
-        { attrs: { xs: 8, sm: 8, md: 8, lg: 8, xl: 8 } },
+        { attrs: { xs: 4, sm: 4, md: 4, lg: 4, xl: 4 } },
         [
           _c(
             "el-steps",
@@ -42863,7 +42909,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-col",
-        { attrs: { xs: 16, sm: 16, md: 14, lg: 12, xl: 12 } },
+        { attrs: { xs: 18, sm: 18, md: 18, lg: 18, xl: 18 } },
         [
           _vm.active == 0
             ? _c("information-create-story-add-story", {
@@ -43283,7 +43329,7 @@ var render = function() {
         [
           _c(
             "el-col",
-            { attrs: { xs: 24, sm: 24, md: 11, lg: 12, xl: 12 } },
+            { attrs: { xs: 23, sm: 23, md: 11, lg: 11, xl: 11 } },
             [
               _c(
                 "el-select",
@@ -43312,7 +43358,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-col",
-            { attrs: { xs: 24, sm: 24, md: 11, lg: 12, xl: 12 } },
+            { attrs: { xs: 23, sm: 23, md: 11, lg: 12, xl: 12 } },
             [
               _c(
                 "el-select",
@@ -43717,7 +43763,7 @@ var render = function() {
                             "el-col",
                             {
                               staticClass: "el-full-route",
-                              attrs: { xs: 12, sm: 8, md: 8, lg: 8, xl: 8 }
+                              attrs: { xs: 24, sm: 24, md: 8, lg: 8, xl: 8 }
                             },
                             [
                               _c("h5", { staticClass: "el-full-route-title" }, [
@@ -43763,7 +43809,7 @@ var render = function() {
                             "el-col",
                             {
                               staticClass: "el-full-route",
-                              attrs: { xs: 12, sm: 8, md: 8, lg: 8, xl: 8 }
+                              attrs: { xs: 24, sm: 24, md: 8, lg: 8, xl: 8 }
                             },
                             [
                               _c("h5", { staticClass: "el-full-route-title" }, [
@@ -43835,7 +43881,13 @@ var render = function() {
                                         "el-col",
                                         {
                                           staticClass: "el-full-route",
-                                          attrs: { span: 6 }
+                                          attrs: {
+                                            xs: 8,
+                                            sm: 8,
+                                            md: 6,
+                                            lg: 6,
+                                            xl: 6
+                                          }
                                         },
                                         [
                                           _c(
@@ -43856,7 +43908,13 @@ var render = function() {
                                         "el-col",
                                         {
                                           staticClass: "el-full-route",
-                                          attrs: { span: 6 }
+                                          attrs: {
+                                            xs: 8,
+                                            sm: 8,
+                                            md: 6,
+                                            lg: 6,
+                                            xl: 6
+                                          }
                                         },
                                         [
                                           _c(
@@ -43877,7 +43935,13 @@ var render = function() {
                                         "el-col",
                                         {
                                           staticClass: "el-full-route",
-                                          attrs: { span: 8 }
+                                          attrs: {
+                                            xs: 8,
+                                            sm: 8,
+                                            md: 6,
+                                            lg: 8,
+                                            xl: 8
+                                          }
                                         },
                                         [
                                           _c(
@@ -88079,7 +88143,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
                 resolve();
             }
         }).catch(function (error) {
-            reject();
+            localStorage.removeItem('token');
+            resolve();
         });
     });
 }), _actions);
@@ -88565,11 +88630,12 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED
 
         state.targetMarker = marker;
     }
+    console.log(state.targetMarker);
 }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["q" /* HIDE_TARGET_LOCATION */], function (state) {
     /**
      * Hide Target Location
      * > deactivate target location button
-     * > remove target marker from map
+     * > remove target marker from map if we added marker on map
      */
     state.targetLocationButton = false;
     state.targetMarker.setMap(null);

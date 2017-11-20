@@ -20,9 +20,7 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6DGiJ9ZOK-m9-5ES0YLvcHk6AMWP5tg4&v=3">
         </script>
         <!-- Marker With Label -->
-        <script
-            src="http://cdn.sobekrepository.org/includes/gmaps-markerwithlabel/1.9.1/gmaps-markerwithlabel-1.9.1.min.js">
-        </script>
+        {{ Html::script('js/markerwithlabel.js') }}
 
         <!-- Google Chart -->
         <script
