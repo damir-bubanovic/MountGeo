@@ -17,7 +17,7 @@
         <link href='//fonts.googleapis.com/css?family=Ceviche One' rel='stylesheet'>
 
         <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6DGiJ9ZOK-m9-5ES0YLvcHk6AMWP5tg4&v=3">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnCMsb5RhAGbI1QIHaxAQA8McFQfJGls8&v=3">
         </script>
         <!-- Marker With Label -->
         {{ Html::script('js/markerwithlabel.js') }}
