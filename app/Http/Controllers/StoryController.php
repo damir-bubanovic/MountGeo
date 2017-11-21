@@ -33,6 +33,31 @@ class StoryController extends Controller
 
     }
 
+    /**
+     * Get Story
+     * 1) Verify request data
+     * 2) Get story from database from specific story id
+     */
+    public function getStory(Request $request) {
+        $user = JWTAuth::parseToken()->toUser();
+
+        $this->validate($request, array(
+            'story'            =>  'required|numeric',
+        ));
+
+        $story_id = $request->{'story'};
+
+        $story = DB::table('story')
+                        ->select('id', 'title', 'description', 'created_at', 'updated_at')
+                        ->where('id', $story_id)
+                        ->get();
+
+        return response()->json([
+            'story'  =>  $story
+        ], 200);
+
+    }
+
 
     /**
      * Post Story

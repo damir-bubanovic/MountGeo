@@ -1,8 +1,11 @@
 /**
- * Home - Footer - Information - Create
+ * Home - Footer - Information - Create / Edit / Delete
  * > create tabs
  * > step container
  * > title with numbers & text
+ * > style edit & delete text
+ * > smaller p text
+ * > closer text & slider
  */
 .el-info-create-tabs {
 
@@ -64,4 +67,20 @@
 
 .el-button-route {
     margin-top: 10px;
+}
+
+.el-edit {
+    text-align: center;
+}
+
+.el-delete {
+    text-align: right;
+}
+
+.el-create-edit-delete-info > .el-col > p{
+    font-size: 12px;
+}
+
+.el-slider__runway {
+    margin-top: 6px !important;
 }

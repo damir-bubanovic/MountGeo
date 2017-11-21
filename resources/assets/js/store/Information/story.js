@@ -6,12 +6,19 @@ import swal from 'sweetalert2';
 
 
 const state = {
-    stories: []
+    stories: [],
+    showStory: false,
+    story: [],
 };
 
 const mutations = {
     [MutationTypes.GET_STORIES](state, { response }) {
         state.stories = response.data.stories;
+    },
+    [MutationTypes.GET_STORY](state, { response }) {
+        state.story = response.data.story;
+        state.showStory = true;
+        console.log(JSON.stringify(state.story));
     }
 };
 const actions = {
@@ -29,6 +36,25 @@ const actions = {
                         swal({
                             type: 'error',
                             title: 'Can Not Retreive Stories List!'
+                        }).catch(swal.noop)
+                        reject();
+                    })
+        })
+    },
+    [MutationTypes.GET_STORY]({commit}, data) {
+        const token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            axios.post('api/get-story' + '?token=' + token, data)
+                    .then((response) => {
+                        if(response.status == 200) {
+                            commit(MutationTypes.GET_STORY, { response });
+                            resolve();
+                        }
+                    })
+                    .catch((error) => {
+                        swal({
+                            type: 'error',
+                            title: 'Can Not Retreive Story!'
                         }).catch(swal.noop)
                         reject();
                     })

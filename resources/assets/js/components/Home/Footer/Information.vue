@@ -4,7 +4,7 @@
             <information-database></information-database>
         </el-tab-pane>
         <el-tab-pane label="Create" name="create">
-            <information-create></information-create>
+            <information-main></information-main>
         </el-tab-pane>
     </el-tabs>
 </template>

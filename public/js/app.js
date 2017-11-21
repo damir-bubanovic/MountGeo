@@ -11710,33 +11710,34 @@ $exports.store = store;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return WELCOME_LOGIN_REGISTER_PAGE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return REGISTER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return LOGIN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return LOGOUT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return GOOGLE_MAPS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return SHOW_USER_LOCATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return HIDE_USER_LOCATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return SHOW_TARGET_LOCATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return HIDE_TARGET_LOCATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return SHOW_FULL_ROUTE_GPS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return WELCOME_LOGIN_REGISTER_PAGE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return REGISTER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return LOGIN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return LOGOUT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return GOOGLE_MAPS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return SHOW_USER_LOCATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return HIDE_USER_LOCATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return SHOW_TARGET_LOCATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return HIDE_TARGET_LOCATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return SHOW_FULL_ROUTE_GPS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return CREATE_USER_PATH_MARKER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CLEAR_USER_PATH_MARKERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CREATE_MOUNTAIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return GET_MOUNTAINS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return MOUNTAIN_ID; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return LOADING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return MOUNTAIN_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return LOADING; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return FILE_KML; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return FILE_GPX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return FILE_STORED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return ROUTE_KML; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return ROUTE_GPX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return ROUTE_CUSTOM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return ROUTE_KML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return ROUTE_GPX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return ROUTE_CUSTOM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return GET_ROUTES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return GET_FULL_ROUTE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return GET_FULL_ROUTE_GPS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return ELEVATION_CHART; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return GET_STORIES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return GET_STORY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return CREATE_STORY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CREATE_REFUGE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return GET_REFUGES; });
@@ -11810,9 +11811,11 @@ var ELEVATION_CHART = 'ELEVATION_CHART';
 /**
  * Story
  * > get list of stories
+ * > get storie
  * > create story
  */
 var GET_STORIES = 'GET_STORIES';
+var GET_STORY = 'GET_STORY';
 var CREATE_STORY = 'CREATE_STORY';
 /**
  * Refuge
@@ -17489,11 +17492,14 @@ Vue.component('map-main', __webpack_require__(118));
 Vue.component('map-chart', __webpack_require__(121));
 
 Vue.component('information', __webpack_require__(124));
+Vue.component('information-main', __webpack_require__(309));
 Vue.component('information-create', __webpack_require__(127));
+Vue.component('information-edit', __webpack_require__(312));
+Vue.component('information-delete', __webpack_require__(314));
 
+Vue.component('information-create-selected-mountain', __webpack_require__(334));
 Vue.component('information-create-mountain', __webpack_require__(130));
 Vue.component('information-create-mountain-add-mountain', __webpack_require__(133));
-Vue.component('information-create-selected-mountain', __webpack_require__(136));
 
 Vue.component('information-create-route', __webpack_require__(139));
 Vue.component('information-create-route-add-route', __webpack_require__(142));
@@ -17506,6 +17512,17 @@ Vue.component('information-create-refuge', __webpack_require__(157));
 Vue.component('information-create-refuge-add-refuge', __webpack_require__(160));
 Vue.component('information-create-refuge-add-info', __webpack_require__(163));
 Vue.component('information-create-refuge-add-contact', __webpack_require__(166));
+
+Vue.component('information-delete-mountain', __webpack_require__(318));
+Vue.component('information-delete-refuge', __webpack_require__(320));
+Vue.component('information-delete-route', __webpack_require__(322));
+Vue.component('information-delete-story', __webpack_require__(324));
+Vue.component('information-delete-story-delete-story', __webpack_require__(347));
+
+Vue.component('information-edit-mountain', __webpack_require__(326));
+Vue.component('information-edit-refuge', __webpack_require__(328));
+Vue.component('information-edit-route', __webpack_require__(330));
+Vue.component('information-edit-story', __webpack_require__(332));
 
 Vue.component('information-create-story', __webpack_require__(169));
 Vue.component('information-create-story-add-story', __webpack_require__(172));
@@ -39489,7 +39506,7 @@ var render = function() {
       _c(
         "el-tab-pane",
         { attrs: { label: "Create", name: "create" } },
-        [_c("information-create")],
+        [_c("information-main")],
         1
       )
     ],
@@ -39579,7 +39596,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -39600,8 +39616,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("information-create-selected-mountain"),
-      _vm._v(" "),
       _c(
         "el-tabs",
         {
@@ -40007,167 +40021,9 @@ if (false) {
 }
 
 /***/ }),
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(137)
-/* template */
-var __vue_template__ = __webpack_require__(138)
-/* template functional */
-  var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Mountain\\SelectedMountain.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3937f8de", Component.options)
-  } else {
-    hotAPI.reload("data-v-3937f8de", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 137 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            value: ''
-        };
-    },
-    mounted: function mounted() {
-        return this.$store.dispatch('GET_MOUNTAINS');
-    },
-
-    computed: {
-        mountains: function mountains() {
-            return {
-                list: this.$store.state.mountain.mountains
-            };
-        }
-    },
-    methods: {
-        selectedMountain: function selectedMountain() {
-            var _this = this;
-
-            var data = {
-                mountain_id: this.value
-            };
-            this.$store.dispatch('MOUNTAIN_ID', data).then(function () {
-                _this.$store.dispatch('GET_STORIES', data);
-            }).then(function () {
-                _this.$store.dispatch('GET_REFUGES', data);
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 138 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "el-row",
-    { attrs: { gutter: 24 } },
-    [
-      _c(
-        "el-col",
-        {
-          staticClass: "el-selected-mountain",
-          attrs: { xs: 18, sm: 18, md: 18, lg: 18, xl: 18, offset: 4 }
-        },
-        [
-          _c(
-            "el-select",
-            {
-              attrs: { placeholder: "Select Mountain to Add New..." },
-              on: { change: _vm.selectedMountain },
-              model: {
-                value: _vm.value,
-                callback: function($$v) {
-                  _vm.value = $$v
-                },
-                expression: "value"
-              }
-            },
-            _vm._l(_vm.mountains.list, function(mountain) {
-              return _c("el-option", {
-                key: mountain.id,
-                attrs: { label: mountain.name, value: mountain.id }
-              })
-            })
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3937f8de", module.exports)
-  }
-}
-
-/***/ }),
+/* 136 */,
+/* 137 */,
+/* 138 */,
 /* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -88080,14 +87936,14 @@ var state = {
     username: ''
 };
 
-var mutations = _defineProperty({}, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["t" /* LOGIN */], function (state, _ref) {
+var mutations = _defineProperty({}, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["u" /* LOGIN */], function (state, _ref) {
     var response = _ref.response;
 
     state.username = response.data.user.name;
 });
-var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["D" /* WELCOME_LOGIN_REGISTER_PAGE */], function (_ref2) {
+var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["E" /* WELCOME_LOGIN_REGISTER_PAGE */], function (_ref2) {
     var commit = _ref2.commit;
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["w" /* REGISTER */], function (_ref3, data) {
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["x" /* REGISTER */], function (_ref3, data) {
     var commit = _ref3.commit;
 
     return new Promise(function (resolve, reject) {
@@ -88119,20 +87975,20 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             reject();
         });
     });
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["t" /* LOGIN */], function (_ref4, data) {
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["u" /* LOGIN */], function (_ref4, data) {
     var commit = _ref4.commit;
 
     return new Promise(function (resolve, reject) {
         axios.post('api/login', data, { headers: { 'X-Requested-With': 'XMLHttpRequest' } }).then(function (response) {
             var token = response.data.token;
             localStorage.setItem('token', token);
-            commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["t" /* LOGIN */], { response: response });
+            commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["u" /* LOGIN */], { response: response });
             resolve();
         }).catch(function (error) {
             reject();
         });
     });
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["u" /* LOGOUT */], function (_ref5) {
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["v" /* LOGOUT */], function (_ref5) {
     var commit = _ref5.commit;
 
     var token = localStorage.getItem('token');
@@ -88212,7 +88068,7 @@ var state = {
     }
 };
 
-var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["p" /* GOOGLE_MAPS */], function (state) {
+var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["q" /* GOOGLE_MAPS */], function (state) {
     /**
      * Map Styling
      * > custom maps syling
@@ -88484,7 +88340,7 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED
      * Show Map Info
      */
     state.showMapInfo = true;
-}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["A" /* SHOW_FULL_ROUTE_GPS */], function (state) {
+}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["B" /* SHOW_FULL_ROUTE_GPS */], function (state) {
     /**
      * Refuge Markers
      * > loop for each refuge
@@ -88559,7 +88415,7 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED
 
         chart.draw(data, options);
     }
-}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["C" /* SHOW_USER_LOCATION */], function (state) {
+}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["D" /* SHOW_USER_LOCATION */], function (state) {
     /**
      * User Location Marker
      * > markerIcon > anchor >
@@ -88582,7 +88438,7 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED
     });
 
     state.userLocationButton = true;
-}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["r" /* HIDE_USER_LOCATION */], function (state) {
+}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["s" /* HIDE_USER_LOCATION */], function (state) {
     /**
      * Remove User Location Marker
      * > stop navigation watch services
@@ -88596,7 +88452,7 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED
     state.userLocation.lat = null;
     state.userLocation.lng = null;
     state.userLocationButton = false;
-}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["B" /* SHOW_TARGET_LOCATION */], function (state) {
+}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["C" /* SHOW_TARGET_LOCATION */], function (state) {
     /**
      * Show Target Location
      * > add google event listener & let if fire only once
@@ -88631,7 +88487,7 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED
         state.targetMarker = marker;
     }
     console.log(state.targetMarker);
-}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["q" /* HIDE_TARGET_LOCATION */], function (state) {
+}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["r" /* HIDE_TARGET_LOCATION */], function (state) {
     /**
      * Hide Target Location
      * > deactivate target location button
@@ -88689,10 +88545,10 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED
     google.maps.event.clearListeners(state.map, 'click');
 }), _mutations);
 
-var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["p" /* GOOGLE_MAPS */], function (_ref2) {
+var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["q" /* GOOGLE_MAPS */], function (_ref2) {
     var commit = _ref2.commit;
 
-    commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["p" /* GOOGLE_MAPS */]);
+    commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["q" /* GOOGLE_MAPS */]);
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["k" /* GET_FULL_ROUTE_GPS */], function (_ref3, data) {
     var commit = _ref3.commit;
 
@@ -88702,7 +88558,7 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             if (response.status == 200) {
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["k" /* GET_FULL_ROUTE_GPS */], { response: response });
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["f" /* ELEVATION_CHART */]);
-                commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["A" /* SHOW_FULL_ROUTE_GPS */]);
+                commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["B" /* SHOW_FULL_ROUTE_GPS */]);
                 resolve();
             }
         }).catch(function (error) {
@@ -88718,7 +88574,7 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     var commit = _ref4.commit;
 
     commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["f" /* ELEVATION_CHART */]);
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["C" /* SHOW_USER_LOCATION */], function (_ref5) {
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["D" /* SHOW_USER_LOCATION */], function (_ref5) {
     var commit = _ref5.commit;
 
     if (state.userLocationButton == false) {
@@ -88726,21 +88582,21 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             state.markerid = navigator.geolocation.watchPosition(function (position) {
                 state.userLocation.lat = position.coords.latitude;
                 state.userLocation.lng = position.coords.longitude;
-                commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["C" /* SHOW_USER_LOCATION */]);
+                commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["D" /* SHOW_USER_LOCATION */]);
             });
         } else {
             console.log('Geolocation services not available');
         }
     } else {
-        commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["r" /* HIDE_USER_LOCATION */]);
+        commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["s" /* HIDE_USER_LOCATION */]);
     }
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["B" /* SHOW_TARGET_LOCATION */], function (_ref6) {
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["C" /* SHOW_TARGET_LOCATION */], function (_ref6) {
     var commit = _ref6.commit;
 
     if (state.targetLocationButton == false) {
-        commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["B" /* SHOW_TARGET_LOCATION */]);
+        commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["C" /* SHOW_TARGET_LOCATION */]);
     } else {
-        commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["q" /* HIDE_TARGET_LOCATION */]);
+        commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["r" /* HIDE_TARGET_LOCATION */]);
     }
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["e" /* CREATE_USER_PATH_MARKER */], function (_ref7) {
     var commit = _ref7.commit;
@@ -88789,7 +88645,7 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED
     var response = _ref.response;
 
     state.mountains = response.data.mountains;
-}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["v" /* MOUNTAIN_ID */], function (state, data) {
+}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["w" /* MOUNTAIN_ID */], function (state, data) {
     state.mountain_id = data.mountain_id;
 }), _mutations);
 var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["l" /* GET_MOUNTAINS */], function (_ref2) {
@@ -88833,10 +88689,10 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             reject();
         });
     });
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["v" /* MOUNTAIN_ID */], function (_ref4, data) {
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["w" /* MOUNTAIN_ID */], function (_ref4, data) {
     var commit = _ref4.commit;
 
-    commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["v" /* MOUNTAIN_ID */], data);
+    commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["w" /* MOUNTAIN_ID */], data);
 }), _actions);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -88874,7 +88730,7 @@ var state = {
     fullRoute: []
 };
 
-var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["s" /* LOADING */], function (state) {
+var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["t" /* LOADING */], function (state) {
     state.loading = !state.loading;
 }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["i" /* FILE_STORED */], function (state, _ref) {
     var response = _ref.response;
@@ -88915,7 +88771,7 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             reject();
         });
     });
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["z" /* ROUTE_KML */], function (_ref5, data) {
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["A" /* ROUTE_KML */], function (_ref5, data) {
     var commit = _ref5.commit;
 
     commit('LOADING');
@@ -88966,7 +88822,7 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             reject();
         });
     });
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["y" /* ROUTE_GPX */], function (_ref7, data) {
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["z" /* ROUTE_GPX */], function (_ref7, data) {
     var commit = _ref7.commit;
 
     commit('LOADING');
@@ -88993,7 +88849,7 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             reject();
         });
     });
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["x" /* ROUTE_CUSTOM */], function (_ref8, data) {
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["y" /* ROUTE_CUSTOM */], function (_ref8, data) {
     var commit = _ref8.commit;
 
     commit('LOADING');
@@ -89073,7 +88929,7 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
-var _actions;
+var _mutations, _actions;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -89084,16 +88940,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var state = {
-    stories: []
+    stories: [],
+    showStory: false,
+    story: []
 };
 
-var mutations = _defineProperty({}, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["o" /* GET_STORIES */], function (state, _ref) {
+var mutations = (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["o" /* GET_STORIES */], function (state, _ref) {
     var response = _ref.response;
 
     state.stories = response.data.stories;
-});
-var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["o" /* GET_STORIES */], function (_ref2, data) {
-    var commit = _ref2.commit;
+}), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["p" /* GET_STORY */], function (state, _ref2) {
+    var response = _ref2.response;
+
+    state.story = response.data.story;
+    state.showStory = true;
+    console.log(JSON.stringify(state.story));
+}), _mutations);
+var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["o" /* GET_STORIES */], function (_ref3, data) {
+    var commit = _ref3.commit;
 
     var token = localStorage.getItem('token');
     return new Promise(function (resolve, reject) {
@@ -89110,8 +88974,26 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             reject();
         });
     });
-}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["d" /* CREATE_STORY */], function (_ref3, data) {
-    var commit = _ref3.commit;
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["p" /* GET_STORY */], function (_ref4, data) {
+    var commit = _ref4.commit;
+
+    var token = localStorage.getItem('token');
+    return new Promise(function (resolve, reject) {
+        axios.post('api/get-story' + '?token=' + token, data).then(function (response) {
+            if (response.status == 200) {
+                commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["p" /* GET_STORY */], { response: response });
+                resolve();
+            }
+        }).catch(function (error) {
+            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                type: 'error',
+                title: 'Can Not Retreive Story!'
+            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            reject();
+        });
+    });
+}), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["d" /* CREATE_STORY */], function (_ref5, data) {
+    var commit = _ref5.commit;
 
     var token = localStorage.getItem('token');
     return new Promise(function (resolve, reject) {
@@ -95895,6 +95777,1849 @@ var index_esm = {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(311)
+/* template */
+var __vue_template__ = __webpack_require__(310)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Main.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5830e822", Component.options)
+  } else {
+    hotAPI.reload("data-v-5830e822", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "el-row",
+        {
+          staticClass: "el-create-edit-delete-info",
+          attrs: { type: "flex", justify: "center" }
+        },
+        [
+          _c("el-col", { attrs: { span: 6 } }, [_c("p", [_vm._v("Create")])]),
+          _vm._v(" "),
+          _c("el-col", { staticClass: "el-edit", attrs: { span: 6 } }, [
+            _c("p", [_vm._v("Edit")])
+          ]),
+          _vm._v(" "),
+          _c("el-col", { staticClass: "el-delete", attrs: { span: 6 } }, [
+            _c("p", [_vm._v("Delete")])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-row",
+        { attrs: { type: "flex", justify: "center" } },
+        [
+          _c(
+            "el-col",
+            { attrs: { span: 18 } },
+            [
+              _c("el-slider", {
+                attrs: {
+                  step: 50,
+                  "format-tooltip": _vm.formatTooltip,
+                  "show-stops": ""
+                },
+                model: {
+                  value: _vm.value,
+                  callback: function($$v) {
+                    _vm.value = $$v
+                  },
+                  expression: "value"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("information-create-selected-mountain"),
+      _vm._v(" "),
+      _vm.value == 0 ? _c("information-create") : _vm._e(),
+      _vm._v(" "),
+      _vm.value == 50 ? _c("information-edit") : _vm._e(),
+      _vm._v(" "),
+      _vm.value == 100 ? _c("information-delete") : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5830e822", module.exports)
+  }
+}
+
+/***/ }),
+/* 311 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            value: 0
+        };
+    },
+
+    methods: {
+        formatTooltip: function formatTooltip(val) {
+            if (val == 0) {
+                return 'Create';
+            } else if (val == 50) {
+                return 'Edit';
+            } else {
+                return 'Delete';
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(316)
+/* template */
+var __vue_template__ = __webpack_require__(313)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Edit\\Edit.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-05f03714", Component.options)
+  } else {
+    hotAPI.reload("data-v-05f03714", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "el-tabs",
+        {
+          staticClass: "el-info-create-tabs",
+          model: {
+            value: _vm.activeName,
+            callback: function($$v) {
+              _vm.activeName = $$v
+            },
+            expression: "activeName"
+          }
+        },
+        [
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Mountain", name: "mountain" } },
+            [_c("information-edit-mountain")],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Route", name: "route" } },
+            [_c("information-edit-route")],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Refuge", name: "refuge" } },
+            [_c("information-edit-refuge")],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Story", name: "story" } },
+            [_c("information-edit-story")],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-05f03714", module.exports)
+  }
+}
+
+/***/ }),
+/* 314 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(317)
+/* template */
+var __vue_template__ = __webpack_require__(315)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Delete\\Delete.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-289d8096", Component.options)
+  } else {
+    hotAPI.reload("data-v-289d8096", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "el-tabs",
+        {
+          staticClass: "el-info-create-tabs",
+          model: {
+            value: _vm.activeName,
+            callback: function($$v) {
+              _vm.activeName = $$v
+            },
+            expression: "activeName"
+          }
+        },
+        [
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Mountain", name: "mountain" } },
+            [_c("information-delete-mountain")],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Route", name: "route" } },
+            [_c("information-delete-route")],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Refuge", name: "refuge" } },
+            [_c("information-delete-refuge")],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Story", name: "story" } },
+            [_c("information-delete-story")],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-289d8096", module.exports)
+  }
+}
+
+/***/ }),
+/* 316 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            activeName: 'mountain'
+        };
+    }
+});
+
+/***/ }),
+/* 317 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            activeName: 'mountain'
+        };
+    }
+});
+
+/***/ }),
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(319)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Delete\\Mountain\\Mountain.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2a738f54", Component.options)
+  } else {
+    hotAPI.reload("data-v-2a738f54", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("\n    Delete Mountain\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2a738f54", module.exports)
+  }
+}
+
+/***/ }),
+/* 320 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(345)
+/* template */
+var __vue_template__ = __webpack_require__(321)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Delete\\Refuge\\Refuge.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-614af2f4", Component.options)
+  } else {
+    hotAPI.reload("data-v-614af2f4", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "el-select",
+        {
+          attrs: { placeholder: "Select Refuges To Delete..." },
+          model: {
+            value: _vm.form.refuge,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "refuge", $$v)
+            },
+            expression: "form.refuge"
+          }
+        },
+        _vm._l(_vm.refuges.list, function(refuge) {
+          return _c("el-option", {
+            key: refuge.id,
+            attrs: { label: refuge.name, value: refuge.id }
+          })
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "el-button",
+        {
+          staticClass: "el-button-route",
+          attrs: { type: "primary" },
+          on: { click: _vm.step }
+        },
+        [_vm._v("Delete Refuges")]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-614af2f4", module.exports)
+  }
+}
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(323)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Delete\\Route\\Route.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-dd6e83f0", Component.options)
+  } else {
+    hotAPI.reload("data-v-dd6e83f0", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 323 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("\n    Delete Route\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-dd6e83f0", module.exports)
+  }
+}
+
+/***/ }),
+/* 324 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(343)
+/* template */
+var __vue_template__ = __webpack_require__(325)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Delete\\Story\\Story.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a852a340", Component.options)
+  } else {
+    hotAPI.reload("data-v-a852a340", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "el-row",
+    { staticClass: "el-information-create" },
+    [
+      _c(
+        "el-col",
+        { attrs: { xs: 4, sm: 4, md: 4, lg: 4, xl: 4 } },
+        [
+          _c(
+            "el-steps",
+            {
+              staticStyle: { height: "300px" },
+              attrs: { direction: "vertical", active: _vm.active }
+            },
+            [_c("el-step")],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-col",
+        { attrs: { xs: 18, sm: 18, md: 18, lg: 18, xl: 18 } },
+        [
+          _vm.active == 0
+            ? _c("information-delete-story-delete-story", {
+                on: { step: _vm.next }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.active == 1
+            ? _c(
+                "div",
+                [
+                  _c("h3", [_vm._v("Delete Another Mountain?")]),
+                  _vm._v(" "),
+                  _c(
+                    "el-button",
+                    { attrs: { type: "primary" }, on: { click: _vm.next } },
+                    [_vm._v("Restart")]
+                  )
+                ],
+                1
+              )
+            : _vm._e()
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a852a340", module.exports)
+  }
+}
+
+/***/ }),
+/* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(327)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Edit\\Mountain\\Mountain.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62b2d29a", Component.options)
+  } else {
+    hotAPI.reload("data-v-62b2d29a", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("\n    Edit Mountain\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62b2d29a", module.exports)
+  }
+}
+
+/***/ }),
+/* 328 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(346)
+/* template */
+var __vue_template__ = __webpack_require__(329)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Edit\\Refuge\\Refuge.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-11ae81d3", Component.options)
+  } else {
+    hotAPI.reload("data-v-11ae81d3", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "el-select",
+        {
+          attrs: { placeholder: "Select Refuge To Edit..." },
+          model: {
+            value: _vm.form.refuge,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "refuge", $$v)
+            },
+            expression: "form.refuge"
+          }
+        },
+        _vm._l(_vm.refuges.list, function(refuge) {
+          return _c("el-option", {
+            key: refuge.id,
+            attrs: { label: refuge.name, value: refuge.id }
+          })
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "el-button",
+        {
+          staticClass: "el-button-route",
+          attrs: { type: "primary" },
+          on: { click: _vm.step }
+        },
+        [_vm._v("Edit Refuge")]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-11ae81d3", module.exports)
+  }
+}
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(331)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Edit\\Route\\Route.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7cb078a7", Component.options)
+  } else {
+    hotAPI.reload("data-v-7cb078a7", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("\n    Edit Route\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7cb078a7", module.exports)
+  }
+}
+
+/***/ }),
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(344)
+/* template */
+var __vue_template__ = __webpack_require__(333)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Edit\\Story\\Story.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d1832e02", Component.options)
+  } else {
+    hotAPI.reload("data-v-d1832e02", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "el-select",
+        {
+          attrs: { placeholder: "Select Storie To Edit..." },
+          model: {
+            value: _vm.form.storie,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "storie", $$v)
+            },
+            expression: "form.storie"
+          }
+        },
+        _vm._l(_vm.stories.list, function(story) {
+          return _c("el-option", {
+            key: story.id,
+            attrs: { label: story.title, value: story.id }
+          })
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "el-button",
+        {
+          staticClass: "el-button-route",
+          attrs: { type: "primary" },
+          on: { click: _vm.step }
+        },
+        [_vm._v("Edit Story")]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d1832e02", module.exports)
+  }
+}
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(335)
+/* template */
+var __vue_template__ = __webpack_require__(336)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\SelectedMountain.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1bf0b7b1", Component.options)
+  } else {
+    hotAPI.reload("data-v-1bf0b7b1", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 335 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            value: ''
+        };
+    },
+    mounted: function mounted() {
+        return this.$store.dispatch('GET_MOUNTAINS');
+    },
+
+    computed: {
+        mountains: function mountains() {
+            return {
+                list: this.$store.state.mountain.mountains
+            };
+        }
+    },
+    methods: {
+        selectedMountain: function selectedMountain() {
+            var _this = this;
+
+            var data = {
+                mountain_id: this.value
+            };
+            this.$store.dispatch('MOUNTAIN_ID', data).then(function () {
+                _this.$store.dispatch('GET_STORIES', data);
+            }).then(function () {
+                _this.$store.dispatch('GET_REFUGES', data);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "el-row",
+    { attrs: { gutter: 24 } },
+    [
+      _c(
+        "el-col",
+        {
+          staticClass: "el-selected-mountain",
+          attrs: { xs: 18, sm: 18, md: 18, lg: 18, xl: 18, offset: 4 }
+        },
+        [
+          _c(
+            "el-select",
+            {
+              attrs: { placeholder: "Select Mountain to Add New..." },
+              on: { change: _vm.selectedMountain },
+              model: {
+                value: _vm.value,
+                callback: function($$v) {
+                  _vm.value = $$v
+                },
+                expression: "value"
+              }
+            },
+            _vm._l(_vm.mountains.list, function(mountain) {
+              return _c("el-option", {
+                key: mountain.id,
+                attrs: { label: mountain.name, value: mountain.id }
+              })
+            })
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1bf0b7b1", module.exports)
+  }
+}
+
+/***/ }),
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            active: 0,
+            story: {}
+        };
+    },
+
+    methods: {
+        next: function next(form) {
+            if (this.active++ > 0) {
+                this.active = 0;
+            } else {
+                this.story = Object.assign(form);
+                this.deleteStory();
+            }
+        },
+        deleteStory: function deleteStory() {
+            console.log('Delete Story: ' + this.story);
+            // this.$store.dispatch('CREATE_MOUNTAIN', { data: this.story })
+            //     .then(() => {
+            //         this.$store.dispatch('GET_MOUNTAINS')
+            //     });
+        }
+    }
+});
+
+/***/ }),
+/* 344 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            form: {
+                storie: ''
+            }
+        };
+    },
+
+    computed: {
+        stories: function stories() {
+            return {
+                list: this.$store.state.story.stories
+            };
+        }
+    },
+    methods: {
+        step: function step() {
+            /**
+             * Send objects with array
+             */
+            this.$validator.validateAll().then(function (result) {
+                if (result) {
+                    // this.$emit('step', this.form);
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 345 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            form: {
+                refuge: ''
+            }
+        };
+    },
+
+    computed: {
+        refuges: function refuges() {
+            return {
+                list: this.$store.state.refuge.refuges
+            };
+        }
+    },
+    methods: {
+        step: function step() {
+            /**
+             * Send objects with array
+             */
+            this.$validator.validateAll().then(function (result) {
+                if (result) {
+                    // this.$emit('step', this.form);
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 346 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            form: {
+                refuge: ''
+            }
+        };
+    },
+
+    computed: {
+        refuges: function refuges() {
+            return {
+                list: this.$store.state.refuge.refuges
+            };
+        }
+    },
+    methods: {
+        step: function step() {
+            /**
+             * Send objects with array
+             */
+            this.$validator.validateAll().then(function (result) {
+                if (result) {
+                    // this.$emit('step', this.form);
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(349)
+/* template */
+var __vue_template__ = __webpack_require__(348)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\Components\\Home\\Footer\\Create\\Delete\\Story\\DeleteStory.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-56e3eeb5", Component.options)
+  } else {
+    hotAPI.reload("data-v-56e3eeb5", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 348 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "el-select",
+        {
+          staticClass: "el-delete-option",
+          attrs: { placeholder: "Select Story To Delete..." },
+          on: { change: _vm.selectedStory },
+          model: {
+            value: _vm.form.story,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "story", $$v)
+            },
+            expression: "form.story"
+          }
+        },
+        _vm._l(_vm.stories.list, function(story) {
+          return _c("el-option", {
+            key: story.id,
+            attrs: { label: story.title, value: story.id }
+          })
+        })
+      ),
+      _vm._v(" "),
+      _vm.showStory
+        ? _c(
+            "el-collapse",
+            { attrs: { accordion: "" } },
+            [
+              _c(
+                "el-collapse-item",
+                {
+                  staticClass: "el-collapse-item-title",
+                  attrs: {
+                    title: "Review of - " + _vm.fullStory.title,
+                    name: "1"
+                  }
+                },
+                [
+                  _c(
+                    "el-row",
+                    { attrs: { gutter: 24 } },
+                    [
+                      _c(
+                        "el-col",
+                        { attrs: { xs: 24, sm: 24, md: 6, lg: 6, xl: 6 } },
+                        [
+                          _c("p", [
+                            _vm._v("Story id: " + _vm._s(_vm.fullStory.id))
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-col",
+                        { attrs: { xs: 24, sm: 12, md: 9, lg: 9, xl: 9 } },
+                        [
+                          _c("p", [
+                            _vm._v(
+                              "Created at: " + _vm._s(_vm.fullStory.created_at)
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-col",
+                        { attrs: { xs: 24, sm: 12, md: 9, lg: 9, xl: 9 } },
+                        [
+                          _c("p", [
+                            _vm._v(
+                              "Updated at: " + _vm._s(_vm.fullStory.updated_at)
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "el-collapse-item-story" }, [
+                    _vm._v(_vm._s(_vm.fullStory.description))
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "el-button",
+        {
+          staticClass: "el-button-route",
+          attrs: { type: "primary" },
+          on: { click: _vm.step }
+        },
+        [_vm._v("Delete Stories")]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-56e3eeb5", module.exports)
+  }
+}
+
+/***/ }),
+/* 349 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            form: {
+                story: ''
+            }
+        };
+    },
+
+    computed: {
+        /**
+         * List of Stories
+         */
+        stories: function stories() {
+            return {
+                list: this.$store.state.story.stories
+            };
+        },
+
+        /**
+         * Story Information Data
+         */
+        fullStory: function fullStory() {
+            return this.$store.state.story.story[0];
+        },
+
+        /**
+         * Show Story
+         */
+        showStory: function showStory() {
+            return this.$store.state.story.showStory;
+        }
+    },
+    methods: {
+        selectedStory: function selectedStory() {
+            var data = {
+                story: this.form.story
+            };
+            this.$store.dispatch('GET_STORY', data);
+        },
+        step: function step() {
+            /**
+             * Send objects with array
+             */
+            this.$validator.validateAll().then(function (result) {
+                if (result) {
+                    // this.$emit('step', this.form);
+                }
+            });
+        }
+    }
+});
 
 /***/ })
 /******/ ]);

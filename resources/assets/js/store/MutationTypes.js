@@ -68,9 +68,11 @@ export const ELEVATION_CHART = 'ELEVATION_CHART';
 /**
  * Story
  * > get list of stories
+ * > get storie
  * > create story
  */
 export const GET_STORIES = 'GET_STORIES';
+export const GET_STORY = 'GET_STORY';
 export const CREATE_STORY = 'CREATE_STORY';
 /**
  * Refuge

@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth.jwt'], function()
     Route::post('/get-full-route-gps', 'RouteController@getFullRouteGPS');
 
     Route::post('/get-stories', 'StoryController@getStories');
+    Route::post('/get-story', 'StoryController@getStory');
     Route::post('/create-story', 'StoryController@postStory');
 
     Route::post('/get-refuges', 'RefugeController@getRefuges');

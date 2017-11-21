@@ -1,0 +1,6 @@
+/**
+ * Install Manual
+ */
+
+* Every Browser has to have Vue devtools installed to properly display Google Map
+    - if not it offsets the map by 50% screen size to the right
