@@ -2,7 +2,7 @@
     <el-row class="el-information-create">
         <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
             <el-steps style="height: 300px;" direction="vertical" :active="active">
-                <el-step title="Add Story"></el-step>
+                <el-step></el-step>
             </el-steps>
         </el-col>
         <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">

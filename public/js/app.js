@@ -42756,7 +42756,7 @@ var render = function() {
               staticStyle: { height: "300px" },
               attrs: { direction: "vertical", active: _vm.active }
             },
-            [_c("el-step", { attrs: { title: "Add Story" } })],
+            [_c("el-step")],
             1
           )
         ],
