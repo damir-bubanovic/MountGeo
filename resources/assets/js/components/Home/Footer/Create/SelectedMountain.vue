@@ -39,6 +39,9 @@
                 };
                 this.$store.dispatch('MOUNTAIN_ID', data)
                     .then(() => {
+                        this.$store.dispatch('GET_ROUTES', data);
+                    })
+                    .then(() => {
                         this.$store.dispatch('GET_STORIES', data);
                     })
                     .then(() => {

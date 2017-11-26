@@ -16,7 +16,7 @@ class CreateRefugeInformationTable extends Migration
         Schema::create('refuge_information', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('refuge_id')->unsigned();
-            $table->foreign('refuge_id')->references('id')->on('refuges');
+            $table->foreign('refuge_id')->references('id')->on('refuges')->onDelete('cascade');
             $table->time('open');
             $table->time('close');
             $table->tinyInteger('water');

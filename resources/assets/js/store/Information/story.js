@@ -18,7 +18,10 @@ const mutations = {
     [MutationTypes.GET_STORY](state, { response }) {
         state.story = response.data.story;
         state.showStory = true;
-        console.log(JSON.stringify(state.story));
+    },
+    [MutationTypes.CLEAR_STORY](state) {
+        state.showStory = false;
+        state.story = [];
     }
 };
 const actions = {
@@ -61,18 +64,55 @@ const actions = {
         })
     },
     [MutationTypes.CREATE_STORY]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
             axios.post('api/create-story' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            swal({
+                                type: 'success',
+                                title: 'Story Created!',
+                                showConfirmButton: false,
+                                timer: 1800
+                            }).catch(swal.noop)
+                            commit(MutationTypes.LOADING_OFF);
                             resolve();
                         }
                     })
                     .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
                         swal({
                             type: 'error',
                             title: 'Can Not Create Story!'
+                        }).catch(swal.noop)
+                        reject();
+                    })
+        })
+    },
+    [MutationTypes.DELETE_STORY]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
+        const token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            axios.post('api/delete-story' + '?token=' + token, data)
+                    .then((response) => {
+                        if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
+                            swal({
+                                type: 'success',
+                                title: 'Story Deleted!',
+                                showConfirmButton: false,
+                                timer: 1800
+                            }).catch(swal.noop)
+                            commit(MutationTypes.CLEAR_STORY);
+                            resolve();
+                        }
+                    })
+                    .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
+                        swal({
+                            type: 'error',
+                            title: 'Can Not Delete Story!'
                         }).catch(swal.noop)
                         reject();
                     })

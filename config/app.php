@@ -51,7 +51,10 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    // Test url
+    // 'url' => env('APP_URL', 'http://localhost'),
+    // MountGeo url
+    'url' => env('APP_URL', 'http://107.191.63.113'),
 
     /*
     |--------------------------------------------------------------------------

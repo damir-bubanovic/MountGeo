@@ -6,23 +6,18 @@ import swal from 'sweetalert2';
 
 
 const state = {
-    loading: false,
     uploadedFile: {
         'fileStored': '',
         'fileStoredExt': '',
     },
     routes: [],
+    route: [],
+    showRoute: false,
     showFullRoute: false,
     fullRoute: []
 };
 
 const mutations = {
-    /**
-     * Loading Spinner
-     */
-    [MutationTypes.LOADING](state) {
-        state.loading = !state.loading;
-    },
     /**
      * Uploaded GPS File Storage Location
      * > for later processing gps data from file
@@ -38,20 +33,36 @@ const mutations = {
         state.routes = response.data.routes;
     },
     /**
+     * Get Route
+     */
+    [MutationTypes.GET_ROUTE](state, { response }) {
+        state.route = response.data.route;
+        state.showRoute = true;
+    },
+    /**
      * Get Full Route
      */
     [MutationTypes.GET_FULL_ROUTE](state, { response }) {
         state.fullRoute = response.data;
         state.showFullRoute = true;
+    },
+    /**
+     * Clear Route
+     */
+    [MutationTypes.CLEAR_ROUTE](state) {
+        state.showRoute = false;
+        state.route = [];
     }
 };
 const actions = {
     [MutationTypes.FILE_KML]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
             axios.post('api/create-file-kml' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
                                 title: 'File Uploaded!',
@@ -63,6 +74,7 @@ const actions = {
                         }
                     })
                     .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
                         swal({
                             type: 'error',
                             title: 'File Not Uploaded! Try Again!'
@@ -72,12 +84,13 @@ const actions = {
         })
     },
     [MutationTypes.ROUTE_KML]({commit}, data) {
-        commit('LOADING');
+        commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
             axios.post('api/create-route-kml' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
                                 title: 'Route Uploaded!',
@@ -85,11 +98,11 @@ const actions = {
                                 timer: 1800
                             }).catch(swal.noop)
                             commit(MutationTypes.FILE_STORED, { response });
-                            commit('LOADING');
                             resolve();
                         }
                     })
                     .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
                         swal({
                             type: 'error',
                             title: 'Route Not Uploaded! Try Again!'
@@ -100,11 +113,13 @@ const actions = {
         })
     },
     [MutationTypes.FILE_GPX]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
             axios.post('api/create-file-gpx' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
                                 title: 'File Uploaded!',
@@ -116,6 +131,7 @@ const actions = {
                         }
                     })
                     .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
                         swal({
                             type: 'error',
                             title: 'File Not Uploaded! Try Again!'
@@ -125,12 +141,13 @@ const actions = {
         })
     },
     [MutationTypes.ROUTE_GPX]({commit}, data) {
-        commit('LOADING');
+        commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
             axios.post('api/create-route-gpx' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
                                 title: 'Route Uploaded!',
@@ -138,11 +155,11 @@ const actions = {
                                 timer: 1800
                             }).catch(swal.noop)
                             commit(MutationTypes.FILE_STORED, { response });
-                            commit('LOADING');
                             resolve();
                         }
                     })
                     .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
                         swal({
                             type: 'error',
                             title: 'Route Not Uploaded! Try Again!'
@@ -153,12 +170,13 @@ const actions = {
         })
     },
     [MutationTypes.ROUTE_CUSTOM]({commit}, data) {
-        commit('LOADING');
+        commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
             axios.post('api/create-route-custom' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
                                 title: 'Route Uploaded!',
@@ -166,17 +184,16 @@ const actions = {
                                 timer: 1800
                             }).catch(swal.noop)
                             commit(MutationTypes.CLEAR_USER_PATH_MARKERS);
-                            commit('LOADING');
                             resolve();
                         }
                     })
                     .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
                         swal({
                             type: 'error',
                             title: 'Route Not Uploaded! Try Again!'
                         }).catch(swal.noop)
                         commit(MutationTypes.CLEAR_USER_PATH_MARKERS);
-                        commit('LOADING');
                         reject();
                     })
         })
@@ -200,6 +217,25 @@ const actions = {
                     })
         })
     },
+    [MutationTypes.GET_ROUTE]({commit}, data) {
+        const token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            axios.post('api/get-route' + '?token=' + token, data)
+                    .then((response) => {
+                        if(response.status == 200) {
+                            commit(MutationTypes.GET_ROUTE, { response });
+                            resolve();
+                        }
+                    })
+                    .catch((error) => {
+                        swal({
+                            type: 'error',
+                            title: 'Can Not Retreive Route!'
+                        }).catch(swal.noop)
+                        reject();
+                    })
+        })
+    },
     [MutationTypes.GET_FULL_ROUTE]({commit}, data) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -214,6 +250,34 @@ const actions = {
                         swal({
                             type: 'error',
                             title: 'Route Not Loaded! Try Again!'
+                        }).catch(swal.noop)
+                        reject();
+                    })
+        })
+    },
+    [MutationTypes.DELETE_ROUTE]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
+        const token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            axios.post('api/delete-route' + '?token=' + token, data)
+                    .then((response) => {
+                        if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
+                            swal({
+                                type: 'success',
+                                title: 'Route Deleted!',
+                                showConfirmButton: false,
+                                timer: 1800
+                            }).catch(swal.noop)
+                            commit(MutationTypes.CLEAR_ROUTE);
+                            resolve();
+                        }
+                    })
+                    .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
+                        swal({
+                            type: 'error',
+                            title: 'Can Not Delete Route!'
                         }).catch(swal.noop)
                         reject();
                     })

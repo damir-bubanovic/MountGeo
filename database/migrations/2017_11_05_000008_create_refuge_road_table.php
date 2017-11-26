@@ -16,7 +16,7 @@ class CreateRefugeRoadTable extends Migration
         Schema::create('refuge_road', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('refuge_id')->unsigned();
-            $table->foreign('refuge_id')->references('id')->on('refuges');
+            $table->foreign('refuge_id')->references('id')->on('refuges')->onDelete('cascade');
             $table->tinyInteger('road');
             $table->tinyInteger('macadam');
             $table->tinyInteger('foot');

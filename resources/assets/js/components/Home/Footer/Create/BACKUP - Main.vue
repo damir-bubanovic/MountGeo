@@ -1,13 +1,13 @@
 <template>
-    <div v-loading="loading" element-loading-text="Loading...">
+    <div>
         <el-row type="flex" justify="center" class="el-create-edit-delete-info">
-            <el-col :span="9">
+            <el-col :span="6">
                 <p>Create</p>
             </el-col>
-            <!-- <el-col :span="6" class="el-edit">
+            <el-col :span="6" class="el-edit">
                 <p>Edit</p>
-            </el-col> -->
-            <el-col :span="9" class="el-delete">
+            </el-col>
+            <el-col :span="6" class="el-delete">
                 <p>Delete</p>
             </el-col>
         </el-row>
@@ -15,7 +15,7 @@
             <el-col :span="18">
                 <el-slider
                     v-model="value"
-                    :step="100"
+                    :step="50"
                     :format-tooltip="formatTooltip"
                     show-stops>
                 </el-slider>
@@ -23,7 +23,7 @@
         </el-row>
         <information-create-selected-mountain></information-create-selected-mountain>
         <information-create v-if="value == 0"></information-create>
-        <!-- <information-edit v-if="value == 50"></information-edit> -->
+        <information-edit v-if="value == 50"></information-edit>
         <information-delete v-if="value == 100"></information-delete>
     </div>
 </template>
@@ -35,21 +35,12 @@
                 value: 0,
             }
         },
-        computed: {
-            /**
-             * Loading Spinner
-             */
-            loading() {
-                return this.$store.state.loading.loading;
-            },
-        },
         methods: {
             formatTooltip(val) {
                 if(val == 0) {
                     return 'Create'
-                // } else if(val == 50) {
-                //     return 'Edit'
-                // }
+                } else if(val == 50) {
+                    return 'Edit'
                 } else {
                     return 'Delete'
                 }

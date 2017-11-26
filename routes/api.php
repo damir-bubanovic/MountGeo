@@ -29,13 +29,18 @@ Route::group(['middleware' => 'auth.jwt'], function()
     Route::post('/create-route-gpx', 'RouteController@postRouteGPX');
     Route::post('/create-route-custom', 'RouteController@postRouteCustom');
     Route::post('/get-routes', 'RouteController@getRoutes');
+    Route::post('/get-route', 'RouteController@getRoute');
+    Route::post('/delete-route', 'RouteController@deleteRoute');
     Route::post('/get-full-route', 'RouteController@getFullRoute');
     Route::post('/get-full-route-gps', 'RouteController@getFullRouteGPS');
 
     Route::post('/get-stories', 'StoryController@getStories');
     Route::post('/get-story', 'StoryController@getStory');
     Route::post('/create-story', 'StoryController@postStory');
+    Route::post('/delete-story', 'StoryController@deleteStory');
 
     Route::post('/get-refuges', 'RefugeController@getRefuges');
+    Route::post('/get-refuge', 'RefugeController@getRefuge');
     Route::post('/create-refuge', 'RefugeController@postRefuge');
+    Route::post('/delete-refuge', 'RefugeController@deleteRefuge');
 });

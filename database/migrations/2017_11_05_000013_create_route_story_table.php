@@ -16,9 +16,9 @@ class CreateRouteStoryTable extends Migration
         Schema::create('route_story', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('route_id')->unsigned();
-            $table->foreign('route_id')->references('id')->on('routes');
+            $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
             $table->integer('story_id')->unsigned();
-            $table->foreign('story_id')->references('id')->on('story');
+            $table->foreign('story_id')->references('id')->on('story')->onDelete('cascade');
             $table->timestamp('created_at')->nullable();
         });
     }

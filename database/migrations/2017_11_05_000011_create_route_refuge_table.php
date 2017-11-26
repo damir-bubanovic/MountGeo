@@ -16,9 +16,9 @@ class CreateRouteRefugeTable extends Migration
         Schema::create('route_refuge', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('route_id')->unsigned();
-            $table->foreign('route_id')->references('id')->on('routes');
+            $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
             $table->integer('refuge_id')->unsigned();
-            $table->foreign('refuge_id')->references('id')->on('refuges');
+            $table->foreign('refuge_id')->references('id')->on('refuges')->onDelete('cascade');
             $table->timestamp('created_at')->nullable();
         });
     }

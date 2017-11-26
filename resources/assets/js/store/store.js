@@ -9,6 +9,7 @@ import mountain from './Information/mountain';
 import route from './Information/route';
 import story from './Information/story';
 import refuge from './Information/refuge';
+import loading from './Information/loading';
 
 
 Vue.use(Vuex)
@@ -21,6 +22,7 @@ export default new Vuex.Store({
         mountain,
         route,
         story,
-        refuge
+        refuge,
+        loading
     }
 });

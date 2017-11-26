@@ -18,7 +18,7 @@ class CreateStoryTable extends Migration
             $table->string('title', 60);
             $table->text('description')->nullable();
             $table->integer('mountain_id')->unsigned();
-            $table->foreign('mountain_id')->references('id')->on('mountains');
+            $table->foreign('mountain_id')->references('id')->on('mountains')->onDelete('cascade');
             $table->timestamps();
         });
     }

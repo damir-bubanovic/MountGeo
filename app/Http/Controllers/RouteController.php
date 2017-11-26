@@ -16,6 +16,10 @@ class RouteController extends Controller
     public function getRoutes(Request $request) {
         $user = JWTAuth::parseToken()->toUser();
 
+        $this->validate($request, array(
+            'mountain_id'            =>  'required|numeric',
+        ));
+
         $mountain_id = $request->{'mountain_id'};
 
         $routes = DB::table('routes')
@@ -30,8 +34,31 @@ class RouteController extends Controller
 
     }
 
+    /**
+     * Get Route
+     */
+    public function getRoute(Request $request) {
+        $user = JWTAuth::parseToken()->toUser();
 
-/**
+        $this->validate($request, array(
+            'route'            =>  'required|numeric',
+        ));
+
+        $route_id = $request->{'route'};
+
+        $route = DB::table('routes')
+                        ->select('id', 'name', 'description', 'difficulty', 'duration', 'distance', 'created_at', 'updated_at')
+                        ->where('id', $route_id)
+                        ->get();
+
+        return response()->json([
+            'route'  =>  $route
+        ], 200);
+
+    }
+
+
+    /**
      * Get Full Route
      * > get basic route info
      * > get route gps data
@@ -627,6 +654,24 @@ class RouteController extends Controller
 
         return response()->json([
             'Route Data Saved'
+        ], 200);
+    }
+
+
+    /**
+     * Delete Route
+     */
+    public function deleteRoute(Request $request) {
+        $this->validate($request, array(
+            'data.route'                    =>  'required|numeric',
+        ));
+
+        $route = DB::table('routes')
+                        ->where('id', $request->data['route'])
+                        ->delete();
+
+        return response()->json([
+            'Route Deleted'
         ], 200);
     }
 

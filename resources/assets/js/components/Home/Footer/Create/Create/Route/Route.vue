@@ -9,7 +9,7 @@
                 <el-step></el-step>
             </el-steps>
         </el-col>
-        <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18" v-loading="loading" element-loading-text="Loading...(Up to 20 min)">
+        <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
             <information-create-route-add-route v-on:step="next" v-if="active == 0"></information-create-route-add-route>
             <information-create-route-add-info v-on:step="next" v-if="active == 1"></information-create-route-add-info>
             <information-create-route-add-detail v-on:step="next" v-if="active == 2"></information-create-route-add-detail>
@@ -35,14 +35,6 @@
                 refuge: {},
                 story: {},
             }
-        },
-        computed: {
-            /**
-             * Loading Spinner on GPS Route Data File
-             */
-            loading() {
-                return this.$store.state.route.loading;
-            },
         },
         methods: {
             next(form) {

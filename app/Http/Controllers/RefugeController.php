@@ -18,6 +18,10 @@ class RefugeController extends Controller
     public function getRefuges(Request $request) {
         $user = JWTAuth::parseToken()->toUser();
 
+        $this->validate($request, array(
+            'mountain_id'            =>  'required|numeric',
+        ));
+
         $mountain_id = $request->{'mountain_id'};
 
         $refuges = DB::table('refuges')
@@ -31,6 +35,49 @@ class RefugeController extends Controller
         ], 200);
 
     }
+
+
+    /**
+     * Get Refuge
+     * 1) Verify request data
+     * 2) Get refuge from database from specific refuge id
+     */
+    public function getRefuge(Request $request) {
+        $user = JWTAuth::parseToken()->toUser();
+
+        $this->validate($request, array(
+            'refuge'            =>  'required|numeric',
+        ));
+
+        $refuge_id = $request->{'refuge'};
+
+        $refuge = DB::table('refuges')
+                        ->select('id', 'name', 'longitude', 'latitude', 'created_at', 'updated_at')
+                        ->where('id', $refuge_id)
+                        ->get();
+        $refuge_information = DB::table('refuge_information')
+                        ->select('open', 'close', 'water', 'food', 'beds')
+                        ->where('refuge_id', $refuge_id)
+                        ->get();
+        $refuge_road = DB::table('refuge_road')
+                        ->select('road', 'macadam', 'foot')
+                        ->where('refuge_id', $refuge_id)
+                        ->get();
+        $refuge_contacts = DB::table('refuge_contacts')
+                        ->select('person', 'email', 'phone')
+                        ->where('refuge_id', $refuge_id)
+                        ->get();
+
+
+        return response()->json([
+            'refuge'                =>  $refuge,
+            'refuge_information'    =>  $refuge_information,
+            'refuge_road'           =>  $refuge_road,
+            'refuge_contacts'       =>  $refuge_contacts,
+        ], 200);
+
+    }
+
 
     /**
      * Post Refuges
@@ -128,7 +175,24 @@ class RefugeController extends Controller
             'Refuge Data Saved'
         ], 200);
 
-
-
     }
+
+
+    /**
+     * Delete Refuge & Refuge_Contacts & Refuge_Road & Refuge_Information
+     */
+    public function deleteRefuge(Request $request) {
+        $this->validate($request, array(
+            'data.refuge'       =>  'required|numeric',
+        ));
+
+        $refuge = DB::table('refuges')
+                        ->where('id', $request->data['refuge'])
+                        ->delete();
+
+        return response()->json([
+            'Refuge Deleted'
+        ], 200);
+    }
+
 }

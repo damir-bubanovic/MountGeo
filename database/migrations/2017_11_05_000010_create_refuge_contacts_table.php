@@ -16,7 +16,7 @@ class CreateRefugeContactsTable extends Migration
         Schema::create('refuge_contacts', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('refuge_id')->unsigned();
-            $table->foreign('refuge_id')->references('id')->on('refuges');
+            $table->foreign('refuge_id')->references('id')->on('refuges')->onDelete('cascade');
             $table->string('person', 70);
             $table->string('email');
             $table->char('phone', 20);

@@ -39,9 +39,11 @@ export const GET_MOUNTAINS = 'GET_MOUNTAINS';
 export const MOUNTAIN_ID = 'MOUNTAIN_ID';
 /**
  * Loading
- * > loading components
+ * > loading on
+ * > loading oof
  */
-export const LOADING = 'LOADING';
+export const LOADING_ON = 'LOADING_ON';
+export const LOADING_OFF = 'LOADING_OFF';
 /**
  * Route
  * > upload kml file
@@ -51,6 +53,9 @@ export const LOADING = 'LOADING';
  * > post gpx route
  * > post custom route
  * > get list of routes
+ * > get route
+ * > delete route
+ * > clear route from vuex
  * > get full route
  * > get full route with gsp data
  * > elevation chart
@@ -62,6 +67,9 @@ export const ROUTE_KML = 'ROUTE_KML';
 export const ROUTE_GPX = 'ROUTE_GPX';
 export const ROUTE_CUSTOM = 'ROUTE_CUSTOM';
 export const GET_ROUTES = 'GET_ROUTES';
+export const GET_ROUTE = 'GET_ROUTE'
+export const DELETE_ROUTE = 'DELETE_ROUTE';
+export const CLEAR_ROUTE = 'CLEAR_ROUTE';
 export const GET_FULL_ROUTE = 'GET_FULL_ROUTE';
 export const GET_FULL_ROUTE_GPS = 'GET_FULL_ROUTE_GPS';
 export const ELEVATION_CHART = 'ELEVATION_CHART';
@@ -70,14 +78,24 @@ export const ELEVATION_CHART = 'ELEVATION_CHART';
  * > get list of stories
  * > get storie
  * > create story
+ * > delete story
+ * > clear story from vuex
  */
 export const GET_STORIES = 'GET_STORIES';
 export const GET_STORY = 'GET_STORY';
 export const CREATE_STORY = 'CREATE_STORY';
+export const DELETE_STORY = 'DELETE_STORY';
+export const CLEAR_STORY = 'CLEAR_STORY';
 /**
  * Refuge
  * > create refuge
  * > get list of refuges
+ * > get refuge
+ * > delete refuge
+ * > clear refuge from vuex
  */
 export const CREATE_REFUGE = 'CREATE_REFUGE';
 export const GET_REFUGES = 'GET_REFUGES';
+export const GET_REFUGE = 'GET_REFUGE';
+export const DELETE_REFUGE = 'DELETE_REFUGE';
+export const CLEAR_REFUGE = 'CLEAR_REFUGE';

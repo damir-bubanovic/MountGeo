@@ -17,7 +17,7 @@ class CreateRefugesTable extends Migration
             $table->increments('id');
             $table->string('name', 60);
             $table->integer('mountain_id')->unsigned();
-            $table->foreign('mountain_id')->references('id')->on('mountains');
+            $table->foreign('mountain_id')->references('id')->on('mountains')->onDelete('cascade');
             $table->decimal('longitude', 10, 7);
             $table->decimal('latitude', 10, 7);
             $table->timestamps();

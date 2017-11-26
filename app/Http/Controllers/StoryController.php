@@ -12,12 +12,14 @@ class StoryController extends Controller
     /**
      * Get Stories
      * 1) Verify request data
-     *     >> ALERT <<
-     *         - how do you validate object, research for mountain id
      * 2) Get stories from database from specific mountain id
      */
     public function getStories(Request $request) {
         $user = JWTAuth::parseToken()->toUser();
+
+        $this->validate($request, array(
+            'mountain_id'            =>  'required|numeric',
+        ));
 
         $mountain_id = $request->{'mountain_id'};
 
@@ -84,6 +86,24 @@ class StoryController extends Controller
 
         return response()->json([
             'Story Saved'
+        ], 200);
+    }
+
+
+    /**
+     * Delete Story
+     */
+    public function deleteStory(Request $request) {
+        $this->validate($request, array(
+            'data.story'                    =>  'required|numeric',
+        ));
+
+        $story = DB::table('story')
+                        ->where('id',$request->data['story'])
+                        ->delete();
+
+        return response()->json([
+            'Story Deleted'
         ], 200);
     }
 

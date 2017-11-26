@@ -6,7 +6,7 @@
             placeholder="Enter Route Detail"
             v-model="form.detail">
         </el-input>
-        <el-button class="el-button-route" type="primary" v-on:click="step">Add Mountain</el-button>
+        <el-button class="el-button-route" type="primary" v-on:click="step">Add Detail</el-button>
     </div>
 </template>
 

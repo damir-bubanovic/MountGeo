@@ -27,7 +27,7 @@
             </el-collapse-item>
         </el-collapse>
 
-        <el-button class="el-button-route" type="primary" v-on:click="step">Delete Stories</el-button>
+        <el-button class="el-button-route" type="primary" v-on:click="step">Delete Story</el-button>
     </div>
 </template>
 
@@ -76,7 +76,7 @@
                 this.$validator.validateAll()
                     .then((result) => {
                         if(result) {
-                            // this.$emit('step', this.form);
+                            this.$emit('step', this.form);
                         }
                     });
             }

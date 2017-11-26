@@ -8,7 +8,7 @@
         <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
             <information-delete-story-delete-story v-on:step="next" v-if="active == 0"></information-delete-story-delete-story>
             <div v-if="active == 1">
-                <h3>Delete Another Mountain?</h3>
+                <h3>Delete Another Story?</h3>
                 <el-button type="primary" v-on:click="next">Restart</el-button>
             </div>
         </el-col>
@@ -33,11 +33,13 @@
                 }
             },
             deleteStory() {
-                console.log('Delete Story: ' + this.story);
-                // this.$store.dispatch('CREATE_MOUNTAIN', { data: this.story })
-                //     .then(() => {
-                //         this.$store.dispatch('GET_MOUNTAINS')
-                //     });
+                this.$store.dispatch('DELETE_STORY', { data: this.story })
+                    .then(() => {
+                        var data = {
+                            mountain_id: this.$store.state.mountain.mountain_id
+                        };
+                        this.$store.dispatch('GET_STORIES', data);
+                    });
             }
         }
     }

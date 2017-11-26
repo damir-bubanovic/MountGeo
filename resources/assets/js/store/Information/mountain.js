@@ -39,14 +39,16 @@ const actions = {
         })
     },
     [MutationTypes.CREATE_MOUNTAIN]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
             axios.post('api/create-mountain' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 201) {
+                            commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
-                                title: 'Mountain Added!',
+                                title: 'Mountain Created!',
                                 showConfirmButton: false,
                                 timer: 1800
                             }).catch(swal.noop)
@@ -54,6 +56,7 @@ const actions = {
                         }
                     })
                     .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
                         swal({
                             type: 'error',
                             title: 'Mountain Not Added! Try Again!'

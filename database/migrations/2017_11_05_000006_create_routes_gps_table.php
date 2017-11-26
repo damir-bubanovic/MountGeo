@@ -16,7 +16,7 @@ class CreateRoutesGpsTable extends Migration
         Schema::create('routes_gps', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('route_id')->unsigned();
-            $table->foreign('route_id')->references('id')->on('routes');
+            $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
             $table->decimal('longitude', 10, 7);
             $table->decimal('latitude', 10, 7);
             $table->integer('altitude');
