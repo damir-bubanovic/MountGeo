@@ -1,5 +1,10 @@
 <template>
     <div class="map-chart">
+        <el-row type="flex" justify="end" class="map-chart-container-clear">
+            <el-col :xs="5" :sm="3" :md="2" :lg="2" :xl="2" v-if="showMapInfo">
+                <el-button v-on:click="clearFullRoute">Clear <i class="fa fa-globe fa-lg" aria-hidden="true"></i></el-button>
+            </el-col>
+        </el-row>
         <el-row :gutter="24" class="map-chart-container">
             <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
                 <div class="distance-container" v-bind:style="{ width: distanceKm.width + 'px' }">
@@ -98,6 +103,12 @@
                     this.compassImage = 'img/compass-75.jpg';
                     this.chartHeight = 75;
                 }
+            },
+            clearFullRoute() {
+                this.$store.dispatch('CLEAR_FULL_ROUTE_GPS')
+                    .then(() => {
+                        this.$store.dispatch('CLEAR_FULL_ROUTE');
+                    });
             }
         }
     }

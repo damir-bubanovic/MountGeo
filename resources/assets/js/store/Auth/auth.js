@@ -29,7 +29,6 @@ const actions = {
                             showConfirmButton: false,
                             timer: 1800
                         }).catch(swal.noop)
-
                         resolve();
                     })
                     .catch((error) => {

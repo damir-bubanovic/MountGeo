@@ -18,7 +18,7 @@
             <el-row :gutter="24">
                 <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="el-full-route">
                     <h5 class="el-full-route-title">Description:</h5>
-                    <p>{{ fullRoute.route[0].description }}</p>
+                    <span v-html="fullRoute.route[0].description"></span>
                 </el-col>
             </el-row>
         </el-tab-pane>
@@ -76,7 +76,7 @@
             <el-collapse v-model="activeStory" accordion>
                 <span v-for="story in fullRoute.story">
                     <el-collapse-item v-bind:title="story.title" v-bind:name="story.title" class="el-collapse-item-title">
-                        <div class="el-collapse-item-story">{{ story.description }}</div>
+                        <div class="el-collapse-item-story" v-html="story.description"></div>
                     </el-collapse-item>
                 </span>
             </el-collapse>

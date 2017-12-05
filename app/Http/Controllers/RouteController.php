@@ -51,10 +51,125 @@ class RouteController extends Controller
                         ->where('id', $route_id)
                         ->get();
 
+        $refuge = DB::table('route_refuge')
+                            ->join('refuges', 'route_refuge.refuge_id', '=', 'refuges.id')
+                            ->select(
+                                'refuges.id', 'refuges.name'
+                            )
+                            ->where('route_refuge.route_id', $route_id)
+                            ->get();
+
+        $story = DB::table('story')
+                        ->join('route_story', 'story.id', '=', 'route_story.story_id')
+                        ->select('story.id', 'story.title')
+                        ->where('route_story.route_id', $route_id)
+                        ->get();
+
         return response()->json([
-            'route'  =>  $route
+            'route'   =>  $route,
+            'refuge'  =>  $refuge,
+            'story'   =>  $story,
         ], 200);
 
+    }
+
+
+    /**
+     * Update Route
+     */
+    public function updateRoute(Request $request) {
+        $user = JWTAuth::parseToken()->toUser();
+
+        $this->validate($request, array(
+            'route_id'                      =>  'required|numeric',
+            'route.name'                    =>  'required|string|max:60',
+            'information.difficulty'        =>  'required|numeric',
+            'information.day'               =>  'required|numeric',
+            'information.hour'              =>  'required|numeric',
+            'information.min'               =>  'required|numeric',
+            'description.detail'            =>  'required',
+            'beforeActiveRefuges.*'         =>  'present|numeric',
+            'afterActiveRefuges.*'          =>  'present|numeric',
+            'beforeActiveStories.*'         =>  'present|numeric',
+            'afterActiveStories.*'          =>  'present|numeric'
+        ));
+
+        /**
+         * Update Route
+         */
+        $now = Carbon::now();
+
+        /**
+         * Update Route
+         * > get route duration in seconds
+         * > update new
+         */
+        $route_duration =   $request->information['day'] * 86400 +
+                            $request->information['hour'] * 3600 +
+                            $request->information['min'] * 60;
+
+        $route = DB::table('routes')
+                        ->where('id', $request->route_id)
+                        ->update([
+                            'name'          =>  $request->route['name'],
+                            'description'   =>  $request->description['detail'],
+                            'difficulty'    =>  $request->information['difficulty'],
+                            'duration'      =>  $route_duration,
+                            'updated_at'    =>  $now
+                        ]);
+
+        /**
+         * Delete & Insert Refuges
+         * > if not active refuges
+         * > do not need before active refuges & stories mayby
+         */
+        $refuge = DB::table('route_refuge')
+                        ->where('route_id', $request->route_id)
+                        ->delete();
+
+        if(!empty($request->afterActiveRefuges)) {
+            $date_refuge = $request->afterActiveRefuges;
+
+            $data_refuge_number = count($date_refuge);
+
+            for($i = 0; $i < $data_refuge_number; $i++) {
+                $insert_data = array(
+                    'route_id'      =>  $request->route_id,
+                    'refuge_id'     =>  $request->afterActiveRefuges[$i],
+                    'created_at'    =>  $now
+                );
+                DB::table('route_refuge')->insert($insert_data);
+            }
+        }
+
+        /**
+         * Delete & Insert Stories
+         * > if not active story
+         * > do not need before active refuges & stories mayby
+         */
+        $story = DB::table('route_story')
+                        ->where('route_id', $request->route_id)
+                        ->delete();
+
+        if(!empty($request->afterActiveStories)) {
+            $data_story = $request->afterActiveStories;
+
+            $data_story_number = count($data_story);
+
+            for($i = 0; $i < $data_story_number; $i++) {
+                $insert_data = array(
+                    'route_id'      =>  $request->route_id,
+                    'story_id'      =>  $request->afterActiveStories[$i],
+                    'created_at'    =>  $now
+                );
+                DB::table('route_story')->insert($insert_data);
+            }
+        }
+
+
+        return response()->json([
+            'Route Updated'
+        ], 200);
     }
 
 
@@ -378,6 +493,11 @@ class RouteController extends Controller
             DB::table('route_story')->insert($insert_route_story_data);
         }
 
+        /**
+         * Delete file from storage
+         */
+        Storage::disk('public')->delete($request->route['routeFile']);
+
         // Restore default limit
         ini_set('max_execution_time', $normalTimeLimit);
 
@@ -514,6 +634,11 @@ class RouteController extends Controller
             );
             DB::table('route_story')->insert($insert_route_story_data);
         }
+
+        /**
+         * Delete file from storage
+         */
+        Storage::disk('public')->delete($request->route['routeFile']);
 
         // Restore default limit
         ini_set('max_execution_time', $normalTimeLimit);

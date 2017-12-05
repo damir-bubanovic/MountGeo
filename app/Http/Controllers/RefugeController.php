@@ -106,7 +106,7 @@ class RefugeController extends Controller
             'information.road'          =>  'required|boolean',
             'information.macadam'       =>  'required|boolean',
             'information.foot'          =>  'required|boolean',
-            'contact.0.*.contact'       =>  'required|string',
+            'contact.0.*.contact'       =>  'string',
             'contact.0.*.email'         =>  'email',
             'contact.0.*.phone'         =>  'numeric'
         ));
@@ -175,6 +175,94 @@ class RefugeController extends Controller
             'Refuge Data Saved'
         ], 200);
 
+    }
+
+
+    /**
+     * Update Refuge & Refuge_Contacts & Refuge_Road & Refuge_Information
+     */
+    public function updateRefuge(Request $request) {
+        $user = JWTAuth::parseToken()->toUser();
+
+        $this->validate($request, array(
+            'refuge_id'                 =>  'required|numeric',
+            'refuge.name'               =>  'required|string|min:2|max:60',
+            'refuge.longitude'          =>  'required|gps_lng',
+            'refuge.latitude'           =>  'required|gps_lat',
+            'information.startTime'     =>  'required',
+            'information.endTime'       =>  'required',
+            'information.water'         =>  'required|boolean',
+            'information.food'          =>  'required|boolean',
+            'information.beds'          =>  'required|numeric',
+            'information.road'          =>  'required|boolean',
+            'information.macadam'       =>  'required|boolean',
+            'information.foot'          =>  'required|boolean',
+            'contact.0.*.person'        =>  'string',
+            'contact.0.*.email'         =>  'email',
+            'contact.0.*.phone'         =>  'numeric'
+        ));
+
+        /**
+         * Update Route
+         */
+        $now = Carbon::now();
+
+        $refuge = DB::table('refuges')
+                        ->where('id', $request->refuge['refuge_id'])
+                        ->update([
+                            'name'          =>  $request->refuge['name'],
+                            'longitude'     =>  $request->refuge['longitude'],
+                            'latitude'      =>  $request->refuge['latitude'],
+                            'updated_at'    =>  $now
+                        ]);
+
+        $refuge_information = DB::table('refuge_information')
+                        ->where('refuge_id', $request->refuge['refuge_id'])
+                        ->update([
+                            'open'          =>  $request->information['startTime'],
+                            'close'         =>  $request->information['endTime'],
+                            'water'         =>  $request->information['water'],
+                            'food'          =>  $request->information['food'],
+                            'beds'          =>  $request->information['beds'],
+                            'updated_at'    =>  $now
+                        ]);
+
+        $refuge_road = DB::table('refuge_road')
+                        ->where('refuge_id', $request->refuge['refuge_id'])
+                        ->update([
+                            'road'          =>  $request->information['road'],
+                            'macadam'       =>  $request->information['macadam'],
+                            'foot'          =>  $request->information['foot'],
+                            'updated_at'    =>  $now
+                        ]);
+
+        $refuge_contacts_delete = DB::table('refuge_contacts')
+                        ->where('refuge_id', $request->refuge['refuge_id'])
+                        ->delete();
+
+        /**
+         * Update Refuge Contact
+         * > get each contact
+         * > loop through contact & update them to database
+         */
+        $data_contact = $request->contact[0];
+
+        $data_contact_number = count($data_contact);
+
+        for($i = 0; $i < $data_contact_number; $i++) {
+            $insert_data = array(
+                'refuge_id'     =>  $request->refuge['refuge_id'],
+                'person'        =>  $data_contact[$i]['person'],
+                'email'         =>  $data_contact[$i]['email'],
+                'phone'         =>  $data_contact[$i]['phone'],
+                'updated_at'    =>  $now
+            );
+            DB::table('refuge_contacts')->insert($insert_data);
+        }
+
+        return response()->json([
+            'Refuge Updated'
+        ], 200);
     }
 
 

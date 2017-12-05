@@ -82,6 +82,9 @@
             }
         },
         computed: {
+            /**
+             * List of Refuges
+             */
             refuges() {
                 return {
                     list: this.$store.state.refuge.refuges
@@ -114,7 +117,15 @@
                 this.$validator.validateAll()
                     .then((result) => {
                         if(result) {
-                            this.$emit('step', this.form);
+                            if(this.$store.state.mountain.mountain.mountain_id == null) {
+                                this.$notify({
+                                    title: 'Warning',
+                                    message: 'Please Select Mountain',
+                                    type: 'warning'
+                                });
+                            } else {
+                                this.$emit('step', this.form);
+                            }
                         }
                     });
             }

@@ -10,12 +10,7 @@
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
             {{ errors.first('title') }}
         </span>
-        <el-input
-            type="textarea"
-            :rows="8"
-            placeholder="Enter Story Detail"
-            v-model="form.detail">
-        </el-input>
+        <tinymce id="create-story" v-model="form.detail" :content='content' :options='options'></tinymce>
         <el-button type="primary" v-on:click="step">Add Story</el-button>
     </div>
 </template>
@@ -28,6 +23,18 @@
                     title: '',
                     detail: '',
                     mountain: ''
+                },
+                content: '',
+                options: {
+                    plugins: "textcolor colorpicker lists",
+                    toolbar: [
+                        'undo redo | formatselect | bold italic underline strikethrough | numlist bullist',
+                        'indent outdent | alignleft aligncenter alignright alignnone | cut copy paste | forecolor backcolor',
+                    ],
+                    branding: false,
+                    elementpath: false,
+                    menubar: false,
+                    height : 300,
                 }
             }
         },
@@ -39,16 +46,24 @@
                 this.$validator.validateAll()
                     .then((result) => {
                         if(result) {
-                            /**
-                             * Setup mountain_id & append it to info selected
-                             */
-                            var mountain_id = this.$store.state.mountain.mountain_id;
-                            this.form.mountain = mountain_id;
+                            if(this.$store.state.mountain.mountain_id == null) {
+                                this.$notify({
+                                    title: 'Warning',
+                                    message: 'Please Select Mountain',
+                                    type: 'warning'
+                                });
+                            } else {
+                                /**
+                                 * Setup mountain_id & append it to info selected
+                                 */
+                                var mountain_id = this.$store.state.mountain.mountain_id;
+                                this.form.mountain = mountain_id;
 
-                            /**
-                             * Send objects with array
-                             */
-                            this.$emit('step', this.form);
+                                /**
+                                 * Send objects with array
+                                 */
+                                this.$emit('step', this.form);
+                            }
                         }
                     });
             }

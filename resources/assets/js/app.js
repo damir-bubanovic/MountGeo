@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
 
 /**
@@ -24,6 +25,7 @@ Vue.component('home-header', require('./Components/Home/Header.vue'));
 Vue.component('home-footer', require('./Components/Home/Footer.vue'));
 Vue.component('map-main', require('./Components/Home/Map.vue'));
 Vue.component('map-chart', require('./Components/Home/Map/MapChart.vue'));
+Vue.component('map-type', require('./Components/Home/Map/MapType.vue'));
 
 Vue.component('information', require('./Components/Home/Footer/Information.vue'));
 Vue.component('information-main', require('./Components/Home/Footer/Create/Main.vue'));
@@ -48,6 +50,7 @@ Vue.component('information-create-refuge-add-info', require('./Components/Home/F
 Vue.component('information-create-refuge-add-contact', require('./Components/Home/Footer/Create/Create/Refuge/AddContact.vue'));
 
 Vue.component('information-delete-mountain', require('./Components/Home/Footer/Create/Delete/Mountain/Mountain.vue'));
+Vue.component('information-delete-mountain-delete-mountain', require('./Components/Home/Footer/Create/Delete/Mountain/DeleteMountain.vue'));
 Vue.component('information-delete-refuge', require('./Components/Home/Footer/Create/Delete/Refuge/Refuge.vue'));
 Vue.component('information-delete-refuge-delete-refuge', require('./Components/Home/Footer/Create/Delete/Refuge/DeleteRefuge.vue'));
 Vue.component('information-delete-route', require('./Components/Home/Footer/Create/Delete/Route/Route.vue'));
@@ -56,9 +59,20 @@ Vue.component('information-delete-story', require('./Components/Home/Footer/Crea
 Vue.component('information-delete-story-delete-story', require('./Components/Home/Footer/Create/Delete/Story/DeleteStory.vue'));
 
 Vue.component('information-edit-mountain', require('./Components/Home/Footer/Create/Edit/Mountain/Mountain.vue'));
+Vue.component('information-edit-mountain-edit-mountain', require('./Components/Home/Footer/Create/Edit/Mountain/EditMountain.vue'));
 Vue.component('information-edit-refuge', require('./Components/Home/Footer/Create/Edit/Refuge/Refuge.vue'));
+Vue.component('information-edit-refuge-edit-refuge', require('./Components/Home/Footer/Create/Edit/Refuge/EditRefuge.vue'));
+Vue.component('information-edit-refuge-edit-info', require('./Components/Home/Footer/Create/Edit/Refuge/EditInformation.vue'));
+Vue.component('information-edit-refuge-edit-contact', require('./Components/Home/Footer/Create/Edit/Refuge/EditContact.vue'));
 Vue.component('information-edit-route', require('./Components/Home/Footer/Create/Edit/Route/Route.vue'));
+Vue.component('information-edit-route-edit-detail', require('./Components/Home/Footer/Create/Edit/Route/EditDetail.vue'));
+Vue.component('information-edit-route-edit-info', require('./Components/Home/Footer/Create/Edit/Route/EditInformation.vue'));
+Vue.component('information-edit-route-edit-refuge', require('./Components/Home/Footer/Create/Edit/Route/EditRefuge.vue'));
+Vue.component('information-edit-route-edit-route', require('./Components/Home/Footer/Create/Edit/Route/EditRoute.vue'));
+Vue.component('information-edit-route-edit-story', require('./Components/Home/Footer/Create/Edit/Route/EditStory.vue'));
+
 Vue.component('information-edit-story', require('./Components/Home/Footer/Create/Edit/Story/Story.vue'));
+Vue.component('information-edit-story-edit-story', require('./Components/Home/Footer/Create/Edit/Story/EditStory.vue'));
 
 
 Vue.component('information-create-story', require('./Components/Home/Footer/Create/Create/Story/Story.vue'));
@@ -90,9 +104,15 @@ import store from './store/store';
 import VeeValidate from 'vee-validate';
 Vue.use(VeeValidate);
 
+/**
+ * TinyMCE
+ */
+import VueTinymce from 'vue-tinymce';
+Vue.use(VueTinymce)
+
 
 const app = new Vue({
     el: '#app',
     router,
-    store
+    store,
 });

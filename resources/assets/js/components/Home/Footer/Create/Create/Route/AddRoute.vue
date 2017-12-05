@@ -96,21 +96,29 @@
                 this.$validator.validateAll()
                     .then((result) => {
                         if(result) {
-                            /**
-                             * Setup mountain_id & append it to info selected
-                             */
-                            var mountain_id = this.$store.state.mountain.mountain_id;
-                            this.form.mountain = mountain_id;
+                            if(this.$store.state.mountain.mountain.mountain_id == null) {
+                                this.$notify({
+                                    title: 'Warning',
+                                    message: 'Please Select Mountain',
+                                    type: 'warning'
+                                });
+                            } else {
+                                /**
+                                 * Setup mountain_id & append it to info selected
+                                 */
+                                var mountain_id = this.$store.state.mountain.mountain.mountain_id;
+                                this.form.mountain = mountain_id;
 
-                            /**
-                             * Send Data
-                             * > set routeFile to stored file name
-                             * > set routeFileExt to stored file name extension
-                             * > send data
-                             */
-                            this.form.routeFile = this.fileNameStored.fileStored;
-                            this.form.routeFileExt = this.fileNameStored.fileStoredExt;
-                            this.$emit('step', this.form);
+                                /**
+                                 * Send Data
+                                 * > set routeFile to stored file name
+                                 * > set routeFileExt to stored file name extension
+                                 * > send data
+                                 */
+                                this.form.routeFile = this.fileNameStored.fileStored;
+                                this.form.routeFileExt = this.fileNameStored.fileStoredExt;
+                                this.$emit('step', this.form);
+                            }
                         }
                     });
             }

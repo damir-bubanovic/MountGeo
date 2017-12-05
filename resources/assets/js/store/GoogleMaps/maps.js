@@ -17,8 +17,11 @@ const state = {
         duration: 0
     },
     map: null,
+    mapType: false,
     refuges: [],
+    refugeMarkers: [],
     path: [],
+    routePath: [],
     elevation: [],
     route: {
         distance: null,
@@ -336,6 +339,15 @@ const mutations = {
             }
         });
     },
+    [MutationTypes.GOOGLE_MAPS_TYPE](state) {
+        if(state.mapType == false) {
+            state.map.setMapTypeId('terrain');
+            state.mapType = true;
+        } else {
+            state.map.setMapTypeId('roadmap');
+            state.mapType = false;
+        }
+    },
     /**
      * Get Full Route
      */
@@ -403,26 +415,58 @@ const mutations = {
                 labelClass: "refugeMarker",
                 labelInBackground: true
             });
+            state.refugeMarkers.push(marker);
         });
 
         /**
          * Route Path
          * > create a path polyline & set it to map
          */
-        var routePath = new google.maps.Polyline({
+        state.routePath = new google.maps.Polyline({
             path: state.path,
             geodesic: true,
             strokeColor: '#DD12BF',
             strokeOpacity: 1.0,
             strokeWeight: 2
         });
-        routePath.setMap(state.map);
+        state.routePath.setMap(state.map);
 
         /**
          * Zoom In & set New Map Center
          */
         state.map.setZoom(state.zoom);
         var newMapCenter = new google.maps.LatLng(state.center.lat, state.center.lng);
+        state.map.setCenter(newMapCenter);
+
+    },
+    [MutationTypes.CLEAR_FULL_ROUTE_GPS](state) {
+        /**
+         * Clear Route
+         * > clear list of refuges
+         * > remove refuge markers from the map
+         * > remove path
+         * > remove path from map
+         * > remove elevation data
+         * > remove distance
+         * > remove duration
+         * > set map to original coordinates & zoom
+         */
+        state.showMapInfo = false;
+        state.refuges = [];
+
+        for(var i = 0; i < state.refugeMarkers.length; i++) {
+            state.refugeMarkers[i].setMap(null);
+        }
+
+        state.path = [];
+        state.routePath.setMap(null);
+        state.elevation = [];
+
+        state.route.distance = null;
+        state.route.duration = null;
+
+        state.map.setZoom(9);
+        var newMapCenter = new google.maps.LatLng(45.80, 15.97);
         state.map.setCenter(newMapCenter);
 
     },
@@ -604,6 +648,9 @@ const actions = {
     [MutationTypes.GOOGLE_MAPS]({commit}) {
         commit(MutationTypes.GOOGLE_MAPS)
     },
+    [MutationTypes.GOOGLE_MAPS_TYPE]({commit}) {
+        commit(MutationTypes.GOOGLE_MAPS_TYPE)
+    },
     [MutationTypes.GET_FULL_ROUTE_GPS]({commit}, data) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -625,6 +672,9 @@ const actions = {
                         reject();
                     })
         })
+    },
+    [MutationTypes.CLEAR_FULL_ROUTE_GPS]({commit}) {
+        commit(MutationTypes.CLEAR_FULL_ROUTE_GPS)
     },
     [MutationTypes.ELEVATION_CHART]({commit}) {
         commit(MutationTypes.ELEVATION_CHART);

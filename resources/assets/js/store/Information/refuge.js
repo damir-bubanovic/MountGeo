@@ -18,7 +18,6 @@ const mutations = {
     [MutationTypes.GET_REFUGE](state, { response }) {
         state.refuge = response.data;
         state.showRefuge = true;
-        console.log(JSON.stringify(state.refuge));
     },
     [MutationTypes.CLEAR_STORY](state) {
         state.showRefuge = false;
@@ -86,6 +85,33 @@ const actions = {
                         swal({
                             type: 'error',
                             title: 'Can Not Create Refuge!'
+                        }).catch(swal.noop)
+                        reject();
+                    })
+        })
+    },
+    [MutationTypes.UPDATE_REFUGE]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
+        const token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            axios.post('api/update-refuge' + '?token=' + token, data)
+                    .then((response) => {
+                        if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
+                            swal({
+                                type: 'success',
+                                title: 'Refuge Updated!',
+                                showConfirmButton: false,
+                                timer: 1800
+                            }).catch(swal.noop)
+                            resolve();
+                        }
+                    })
+                    .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
+                        swal({
+                            type: 'error',
+                            title: 'Can Not Update Refuge!'
                         }).catch(swal.noop)
                         reject();
                     })

@@ -9,7 +9,14 @@
         </p>
         <el-button class="el-button-route" type="primary" v-on:click="addPerson">Add More Contacts</el-button>
         <hr>
-        <el-button class="el-button-route" type="primary" v-on:click="step">Add Contacts</el-button>
+        <el-row :gutter="20">
+            <el-col :span="15">
+                <el-button type="primary" v-on:click="step">Add Contact</el-button>
+            </el-col>
+            <el-col :span="9">
+                <el-button type="danger" v-on:click="cancel">Cancel</el-button>
+            </el-col>
+        </el-row>
     </div>
 </template>
 
@@ -28,6 +35,9 @@
             },
             removePerson(person) {
                 this.form.splice(person, 1);
+            },
+            cancel() {
+                this.$emit('cancel');
             },
             step() {
                 /**

@@ -23,7 +23,7 @@
                     </el-col>
                 </el-row>
                 <br>
-                <div class="el-collapse-item-story">{{ fullStory.description }}</div>
+                <div class="el-collapse-item-story" v-html="fullStory.description"></div>
             </el-collapse-item>
         </el-collapse>
 
@@ -76,7 +76,15 @@
                 this.$validator.validateAll()
                     .then((result) => {
                         if(result) {
-                            this.$emit('step', this.form);
+                            if(this.$store.state.mountain.mountain.mountain_id == null) {
+                                this.$notify({
+                                    title: 'Warning',
+                                    message: 'Please Select Mountain',
+                                    type: 'warning'
+                                });
+                            } else {
+                                this.$emit('step', this.form);
+                            }
                         }
                     });
             }

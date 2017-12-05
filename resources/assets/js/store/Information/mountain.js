@@ -7,15 +7,21 @@ import swal from 'sweetalert2';
 
 const state = {
     mountains: [],
-    mountain_id: null,
+    mountain: [],
+    showMountain: false
 };
 
 const mutations = {
     [MutationTypes.GET_MOUNTAINS](state, { response }) {
         state.mountains = response.data.mountains;
     },
-    [MutationTypes.MOUNTAIN_ID](state, data) {
-        state.mountain_id = data.mountain_id;
+    [MutationTypes.SELECTED_MOUNTAIN](state, data) {
+        state.mountain = data;
+        state.showMountain = true;
+    },
+    [MutationTypes.CLEAR_MOUNTAIN](state) {
+        state.showMountain = false;
+        state.mountain = [];
     }
 };
 const actions = {
@@ -65,12 +71,71 @@ const actions = {
                     })
         })
     },
+    [MutationTypes.UPDATE_MOUNTAIN]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
+        const token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            axios.post('api/update-mountain' + '?token=' + token, data)
+                    .then((response) => {
+                        if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
+                            swal({
+                                type: 'success',
+                                title: 'Mountain Updated!',
+                                showConfirmButton: false,
+                                timer: 1800
+                            }).catch(swal.noop)
+                            resolve();
+                        }
+                    })
+                    .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
+                        swal({
+                            type: 'error',
+                            title: 'Can Not Update Mountain!'
+                        }).catch(swal.noop)
+                        reject();
+                    })
+        })
+    },
     /**
-     * Selected Mountain Id & Api Get Stories
-     * > on selected mountain id get stories from database & show them
+     * Selected Mountain
      */
-    [MutationTypes.MOUNTAIN_ID]({ commit }, data) {
-        commit(MutationTypes.MOUNTAIN_ID, data);
+    [MutationTypes.SELECTED_MOUNTAIN]({ commit }, data) {
+        commit(MutationTypes.SELECTED_MOUNTAIN, data);
+    },
+    /**
+     * Delete Mountain
+     */
+    [MutationTypes.DELETE_MOUNTAIN]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
+        const token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            axios.post('api/delete-mountain' + '?token=' + token, data)
+                    .then((response) => {
+                        if(response.status == 200) {
+                            commit(MutationTypes.LOADING_OFF);
+                            swal({
+                                type: 'success',
+                                title: 'Mountain Deleted!',
+                                showConfirmButton: false,
+                                timer: 1800
+                            }).catch(swal.noop)
+                            resolve();
+                        }
+                    })
+                    .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
+                        swal({
+                            type: 'error',
+                            title: 'Mountain Not Deleted! Try Again!'
+                        }).catch(swal.noop)
+                        reject();
+                    })
+        })
+    },
+    [MutationTypes.CLEAR_MOUNTAIN]({commit}) {
+        commit(MutationTypes.CLEAR_MOUNTAIN);
     }
 };
 

@@ -1,9 +1,10 @@
 <template>
-    <div>
+    <div v-if="showRoute">
+        <hr>
         <div class="block">
-            <span class="demonstration">Enter Route Difficulty</span>
+            <span class="demonstration">Edit Route Difficulty</span>
             <el-rate
-                v-model="form.difficulty"
+                v-model="fullRoute.difficulty"
                 :texts="['Beginner', 'Novice', 'Intermediate', 'Advanced', 'Expert']"
                 show-text>
             </el-rate>
@@ -17,7 +18,7 @@
                 <el-input-number type="number" size="small" v-model="form.day" :min="0" :max="30"
                     v-validate="'numeric|min_value:0|max_value:30'" data-vv-delay="1000"
                     data-vv-name="day" data-vv-as="day"
-                    @blur="$validator.validate('day', form.day)"
+                    @blur="$validator.validate('day', fullRoute.day)"
                     :class="errors.has('day')"
                 ></el-input-number>
                 <span v-show="errors.has('day')" class="help is-danger">
@@ -52,7 +53,7 @@
         </el-row>
         <el-row :gutter="20">
             <el-col :span="15">
-                <el-button type="primary" v-on:click="step">Add Info</el-button>
+                <el-button type="primary" v-on:click="step">Edit Info</el-button>
             </el-col>
             <el-col :span="9">
                 <el-button type="danger" v-on:click="cancel">Cancel</el-button>
@@ -73,6 +74,29 @@
                 }
             }
         },
+        computed: {
+            /**
+             * Route Information Data
+             */
+            fullRoute() {
+                var duration = this.$store.state.route.route.route[0].duration;
+                var days = Math.floor(duration / 86400);
+                var hours = Math.floor((duration - (days * 86400)) / 3600);
+                var minutes = Math.floor((duration - (days * 86400) - (hours * 3600)) / 60);
+
+                this.form.day = days;
+                this.form.hour = hours;
+                this.form.min = minutes;
+
+                return this.$store.state.route.route.route[0]
+            },
+            /**
+             * Show Route
+             */
+            showRoute() {
+                return this.$store.state.route.showRoute
+            }
+        },
         methods: {
             cancel() {
                 this.$emit('cancel');
@@ -84,6 +108,8 @@
                 this.$validator.validateAll()
                     .then((result) => {
                         if(result) {
+                            this.form.difficulty = this.fullRoute.difficulty;
+
                             this.$emit('step', this.form);
                         }
                     });

@@ -39,7 +39,7 @@
                     </el-col>
                 </el-row>
                 <br>
-                <div class="el-collapse-item-story">{{ fullRoute.description }}</div>
+                <div class="el-collapse-item-story" v-html="fullRoute.description"></div>
             </el-collapse-item>
         </el-collapse>
 
@@ -66,7 +66,7 @@
                 }
             },
             /**
-             * Story Information Data
+             * Route Information Data
              */
             fullRoute() {
                 return this.$store.state.route.route[0]
@@ -103,7 +103,15 @@
                 this.$validator.validateAll()
                     .then((result) => {
                         if(result) {
-                            this.$emit('step', this.form);
+                            if(this.$store.state.mountain.mountain.mountain_id == null) {
+                                this.$notify({
+                                    title: 'Warning',
+                                    message: 'Please Select Mountain',
+                                    type: 'warning'
+                                });
+                            } else {
+                                this.$emit('step', this.form);
+                            }
                         }
                     });
             }

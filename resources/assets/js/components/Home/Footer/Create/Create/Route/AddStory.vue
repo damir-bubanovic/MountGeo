@@ -8,7 +8,14 @@
                 :value="story.id">
             </el-option>
         </el-select>
-        <el-button class="el-button-route" type="primary" v-on:click="step">Add Stories</el-button>
+        <el-row :gutter="20">
+            <el-col :span="15">
+                <el-button type="primary" v-on:click="step">Add Stories</el-button>
+            </el-col>
+            <el-col :span="9">
+                <el-button type="danger" v-on:click="cancel">Cancel</el-button>
+            </el-col>
+        </el-row>
     </div>
 </template>
 
@@ -29,6 +36,9 @@
             }
         },
         methods: {
+            cancel() {
+                this.$emit('cancel');
+            },
             step() {
                 /**
                  * Send objects with array

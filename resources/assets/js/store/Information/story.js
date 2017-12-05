@@ -90,6 +90,33 @@ const actions = {
                     })
         })
     },
+    [MutationTypes.UPDATE_STORY]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
+        const token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            axios.post('api/update-story' + '?token=' + token, data)
+                    .then((response) => {
+                        if(response.status == 200) {
+                            swal({
+                                type: 'success',
+                                title: 'Story Edited!',
+                                showConfirmButton: false,
+                                timer: 1800
+                            }).catch(swal.noop)
+                            commit(MutationTypes.LOADING_OFF);
+                            resolve();
+                        }
+                    })
+                    .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
+                        swal({
+                            type: 'error',
+                            title: 'Can Not Edit Story!'
+                        }).catch(swal.noop)
+                        reject();
+                    })
+        })
+    },
     [MutationTypes.DELETE_STORY]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -117,6 +144,9 @@ const actions = {
                         reject();
                     })
         })
+    },
+    [MutationTypes.CLEAR_STORY]({commit}) {
+        commit(MutationTypes.CLEAR_STORY);
     }
 };
 

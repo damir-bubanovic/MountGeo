@@ -36,7 +36,7 @@
                 this.$store.dispatch('DELETE_STORY', { data: this.story })
                     .then(() => {
                         var data = {
-                            mountain_id: this.$store.state.mountain.mountain_id
+                            mountain_id: this.$store.state.mountain.mountain.mountain_id
                         };
                         this.$store.dispatch('GET_STORIES', data);
                     });

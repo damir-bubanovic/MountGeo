@@ -11,10 +11,10 @@
         </el-col>
         <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
             <information-create-route-add-route v-on:step="next" v-if="active == 0"></information-create-route-add-route>
-            <information-create-route-add-info v-on:step="next" v-if="active == 1"></information-create-route-add-info>
-            <information-create-route-add-detail v-on:step="next" v-if="active == 2"></information-create-route-add-detail>
-            <information-create-route-add-refuge v-on:step="next" v-if="active == 3"></information-create-route-add-refuge>
-            <information-create-route-add-story v-on:step="next" v-if="active == 4"></information-create-route-add-story>
+            <information-create-route-add-info v-on:cancel="reset" v-on:step="next" v-if="active == 1"></information-create-route-add-info>
+            <information-create-route-add-detail v-on:cancel="reset" v-on:step="next" v-if="active == 2"></information-create-route-add-detail>
+            <information-create-route-add-refuge v-on:cancel="reset" v-on:step="next" v-if="active == 3"></information-create-route-add-refuge>
+            <information-create-route-add-story v-on:cancel="reset" v-on:step="next" v-if="active == 4"></information-create-route-add-story>
             <div v-if="active == 5">
                 <h3>Add Another Route?</h3>
                 <el-button type="primary" v-on:click="next">Restart</el-button>
@@ -37,6 +37,15 @@
             }
         },
         methods: {
+            reset() {
+                this.active = 0;
+                this.route = {};
+                this.customroute = {};
+                this.information = {};
+                this.description = {};
+                this.refuge = {};
+                this.story = {};
+            },
             next(form) {
                 if (this.active++ > 4) {
                     this.active = 0;

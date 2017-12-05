@@ -6,9 +6,9 @@
             placeholder="Select Mountain to Add New...">
                 <el-option
                     v-for="mountain in mountains.list"
-                    :key="mountain.id"
+                    :key="mountain.id + mountain.name"
                     :label="mountain.name"
-                    :value="mountain.id">
+                    :value="mountain.id + mountain.name">
                 </el-option>
             </el-select>
         </el-col>
@@ -19,7 +19,7 @@
     export default {
         data() {
             return {
-                value: '',
+                value: ''
             }
         },
         mounted() {
@@ -35,9 +35,10 @@
         methods: {
             selectedMountain() {
                 var data = {
-                    mountain_id: this.value
+                    mountain_id: this.value.replace(/[^0-9\.]+/g, ''),
+                    mountain_name: this.value.replace(/[0-9]/g, ''),
                 };
-                this.$store.dispatch('MOUNTAIN_ID', data)
+                this.$store.dispatch('SELECTED_MOUNTAIN', data)
                     .then(() => {
                         this.$store.dispatch('GET_ROUTES', data);
                     })

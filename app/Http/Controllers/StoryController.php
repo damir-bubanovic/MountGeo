@@ -65,6 +65,8 @@ class StoryController extends Controller
      * Post Story
      */
     public function postStory(Request $request) {
+        $user = JWTAuth::parseToken()->toUser();
+
         $this->validate($request, array(
             'data.mountain'            =>  'required|numeric',
             'data.title'               =>  'required|string|max:60',
@@ -91,9 +93,42 @@ class StoryController extends Controller
 
 
     /**
+     * Update Story
+     */
+    public function updateStory(Request $request) {
+        $user = JWTAuth::parseToken()->toUser();
+
+        $this->validate($request, array(
+            'data.story'               =>  'required|numeric',
+            'data.title'               =>  'required|string|max:60',
+            'data.detail'              =>  'required'
+        ));
+
+        /**
+         * Update Story
+         */
+        $now = Carbon::now();
+
+        $store = DB::table('story')
+                        ->where('id', $request->data['story'])
+                        ->update([
+                            'title'         =>  $request->data['title'],
+                            'description'   =>  $request->data['detail'],
+                            'updated_at'    =>  $now
+                        ]);
+
+        return response()->json([
+            'Story Updated'
+        ], 200);
+    }
+
+
+    /**
      * Delete Story
      */
     public function deleteStory(Request $request) {
+        $user = JWTAuth::parseToken()->toUser();
+
         $this->validate($request, array(
             'data.story'                    =>  'required|numeric',
         ));

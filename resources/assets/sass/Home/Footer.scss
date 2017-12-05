@@ -2,6 +2,7 @@
  * Home - Footer
  * > navigation bottom positioning
  * > user location button activated
+ * > z-index swal2
  */
 .el-navigation-bottom {
     bottom: 25px;
@@ -33,4 +34,9 @@
 
 .targetLocationButton {
     border-bottom: 3px solid red !important;
+}
+
+
+.swal2-container {
+    z-index: 2001 !important;
 }

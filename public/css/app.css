@@ -12800,6 +12800,7 @@ body.swal2-iosfix {
  * Home - Footer
  * > navigation bottom positioning
  * > user location button activated
+ * > z-index swal2
  */
 
 .el-navigation-bottom {
@@ -12834,6 +12835,10 @@ body.swal2-iosfix {
   border-bottom: 3px solid red !important;
 }
 
+.swal2-container {
+  z-index: 2001 !important;
+}
+
 /**
  * Home - GoogleMaps
  * > map initialization
@@ -12842,6 +12847,8 @@ body.swal2-iosfix {
  *     > distance container
  *     > distance travel container
  * > refuge marker
+ * > map chart clear container
+ * > map type switch & container
  */
 
 #map {
@@ -12913,6 +12920,42 @@ body.swal2-iosfix {
   font-weight: bold;
   font-size: 14px;
   color: #972482;
+}
+
+.map-chart-container-clear {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+
+.map-chart-container-clear .el-button {
+  font-weight: 800;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: red;
+  border: none;
+  border-radius: 0px;
+}
+
+.map-chart-container-clear .el-button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #cc0000;
+}
+
+.map-type {
+  height: auto;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  position: absolute !important;
+}
+
+.map-type .el-switch {
+  padding: 2px 5px 25px 5px;
+  margin: 2px 5px 5px 10px;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.map-type .el-switch__label {
+  font-weight: bolder !important;
 }
 
 /**
@@ -13029,6 +13072,10 @@ body.swal2-iosfix {
 
 .el-delete-option {
   width: 100%;
+}
+
+.el-delete-title {
+  font-weight: bold;
 }
 
 /**

@@ -19,7 +19,7 @@ const state = {
 
 const mutations = {
     /**
-     * Uploaded GPS File Storage Location
+     * Uploaded GPS File in Storage Location
      * > for later processing gps data from file
      */
     [MutationTypes.FILE_STORED](state, { response }) {
@@ -36,7 +36,7 @@ const mutations = {
      * Get Route
      */
     [MutationTypes.GET_ROUTE](state, { response }) {
-        state.route = response.data.route;
+        state.route = response.data;
         state.showRoute = true;
     },
     /**
@@ -52,6 +52,13 @@ const mutations = {
     [MutationTypes.CLEAR_ROUTE](state) {
         state.showRoute = false;
         state.route = [];
+    },
+    /**
+     * Clear Route
+     */
+    [MutationTypes.CLEAR_FULL_ROUTE](state) {
+        state.fullRoute = [];
+        state.showFullRoute = false;
     }
 };
 const actions = {
@@ -198,6 +205,33 @@ const actions = {
                     })
         })
     },
+    [MutationTypes.UPDATE_ROUTE]({commit}, data) {
+        commit(MutationTypes.LOADING_ON);
+        const token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            axios.post('api/update-route' + '?token=' + token, data)
+                    .then((response) => {
+                        if(response.status == 200) {
+                            swal({
+                                type: 'success',
+                                title: 'Route Edited!',
+                                showConfirmButton: false,
+                                timer: 1800
+                            }).catch(swal.noop)
+                            commit(MutationTypes.LOADING_OFF);
+                            resolve();
+                        }
+                    })
+                    .catch((error) => {
+                        commit(MutationTypes.LOADING_OFF);
+                        swal({
+                            type: 'error',
+                            title: 'Can Not Edit Route!'
+                        }).catch(swal.noop)
+                        reject();
+                    })
+        })
+    },
     [MutationTypes.GET_ROUTES]({commit}, data) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -282,6 +316,12 @@ const actions = {
                         reject();
                     })
         })
+    },
+    [MutationTypes.CLEAR_ROUTE]({commit}) {
+        commit(MutationTypes.CLEAR_ROUTE);
+    },
+    [MutationTypes.CLEAR_FULL_ROUTE]({commit}) {
+        commit(MutationTypes.CLEAR_FULL_ROUTE);
     }
 
 };
