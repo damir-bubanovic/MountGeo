@@ -19,7 +19,7 @@ const mutations = {
         state.refuge = response.data;
         state.showRefuge = true;
     },
-    [MutationTypes.CLEAR_STORY](state) {
+    [MutationTypes.CLEAR_REFUGE](state) {
         state.showRefuge = false;
         state.refuge = [];
     }

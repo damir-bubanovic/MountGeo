@@ -7,8 +7,8 @@
             <el-input type="tel" placeholder="Enter phone number" v-model="person.phone"></el-input>
             <a class="remove-button" v-on:click="removePerson(person)">Remove</a>
         </p>
-        <p v-for="person in form">
-            <el-input placeholder="Contact Name" v-model="person.contact"></el-input>
+        <p v-for="person in form" v-if="showNewPerson">
+            <el-input placeholder="Contact Name" v-model="person.person"></el-input>
             <el-input type="email" placeholder="Enter email address" v-model="person.email"></el-input>
             <el-input type="tel" placeholder="Enter phone number" v-model="person.phone"></el-input>
             <a class="remove-button" v-on:click="removeNewPerson(person)">Remove</a>
@@ -30,8 +30,9 @@
     export default {
         data() {
             return {
+                showNewPerson: false,
                 form: [
-                    { contact: '', email: '', phone: '' }
+                    { person: '', email: '', phone: '' }
                 ],
             }
         },
@@ -51,7 +52,10 @@
         },
         methods: {
             addNewPerson() {
-                this.form.push({ contact: '', email: '', phone: '' });
+                if(this.showNewPerson) {
+                    this.form.push({ person: '', email: '', phone: '' });
+                };
+                this.showNewPerson = true;
             },
             removeNewPerson(person) {
                 this.form.splice(person, 1);
@@ -72,10 +76,11 @@
                             /**
                              * Push Database Edited Data to form array
                              */
-                            if(this.form[0].contact == '') {
+                            if(this.form[0].person == '') {
                                 this.form = this.fullRefuge.refuge_contacts;
                             } else {
-                                this.form.push(this.fullRefuge.refuge_contacts);
+                                var arrayMerge = this.form.concat(this.fullRefuge.refuge_contacts);
+                                this.form = arrayMerge;
                             }
 
                             this.$emit('step', this.form);

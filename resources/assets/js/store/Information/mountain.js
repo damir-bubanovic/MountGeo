@@ -13,6 +13,7 @@ const state = {
 
 const mutations = {
     [MutationTypes.GET_MOUNTAINS](state, { response }) {
+        state.mountains = [];
         state.mountains = response.data.mountains;
     },
     [MutationTypes.SELECTED_MOUNTAIN](state, data) {

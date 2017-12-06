@@ -46,7 +46,7 @@
                 this.$validator.validateAll()
                     .then((result) => {
                         if(result) {
-                            if(this.$store.state.mountain.mountain_id == null) {
+                            if(this.$store.state.mountain.mountain.mountain_id == null) {
                                 this.$notify({
                                     title: 'Warning',
                                     message: 'Please Select Mountain',
@@ -56,7 +56,7 @@
                                 /**
                                  * Setup mountain_id & append it to info selected
                                  */
-                                var mountain_id = this.$store.state.mountain.mountain_id;
+                                var mountain_id = this.$store.state.mountain.mountain.mountain_id;
                                 this.form.mountain = mountain_id;
 
                                 /**

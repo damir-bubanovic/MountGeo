@@ -66,7 +66,7 @@ class MountainController extends Controller
         ));
 
         /**
-         * Update Story
+         * Update Mountain
          */
         $now = Carbon::now();
 
@@ -74,7 +74,7 @@ class MountainController extends Controller
                         ->where('id', $request->{'mountain_id'})
                         ->update([
                             'name'         =>  $request->name,
-                            'updated_at'    =>  $now
+                            'updated_at'   =>  $now
                         ]);
 
         return response()->json([

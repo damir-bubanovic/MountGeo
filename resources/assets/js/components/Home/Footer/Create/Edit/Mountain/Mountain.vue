@@ -47,7 +47,11 @@
                 }
             },
             editMountain() {
-                this.$store.dispatch('UPDATE_MOUNTAIN', { data: this.mountain })
+                var data = {
+                    mountain_id: this.$store.state.mountain.mountain.mountain_id,
+                    name: this.mountain.name
+                };
+                this.$store.dispatch('UPDATE_MOUNTAIN', data)
                     .then(() => {
                         var data = {
                             mountain_id: this.$store.state.mountain.mountain.mountain_id

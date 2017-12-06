@@ -20,14 +20,14 @@
         <link href='//fonts.googleapis.com/css?family=Ceviche One' rel='stylesheet'>
 
         <!-- Test GoogleMaps -->
-        <script
+        {{-- <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6DGiJ9ZOK-m9-5ES0YLvcHk6AMWP5tg4&v=3">
-        </script>
+        </script> --}}
 
         <!-- GoogleMaps -->
-        {{-- <script
+        <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnCMsb5RhAGbI1QIHaxAQA8McFQfJGls8&v=3">
-        </script> --}}
+        </script>
 
         <!-- TinyMCE -->
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=o3duw8ohixzgkb542ts59ajsvscealo3g4y6dpvltv6k3pu6"></script>

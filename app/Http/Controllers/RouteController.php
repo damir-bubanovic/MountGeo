@@ -81,23 +81,26 @@ class RouteController extends Controller
         $user = JWTAuth::parseToken()->toUser();
 
         $this->validate($request, array(
-            'route_id'                      =>  'required|numeric',
-            'route.name'                    =>  'required|string|max:60',
-            'information.difficulty'        =>  'required|numeric',
-            'information.day'               =>  'required|numeric',
-            'information.hour'              =>  'required|numeric',
-            'information.min'               =>  'required|numeric',
-            'description.detail'            =>  'required',
-            'beforeActiveRefuges.*'         =>  'present|numeric',
-            'afterActiveRefuges.*'          =>  'present|numeric',
-            'beforeActiveStories.*'         =>  'present|numeric',
-            'afterActiveStories.*'          =>  'present|numeric'
+            'route_id'                              =>  'required|numeric',
+            'route.name'                            =>  'required|string|max:60',
+            'information.difficulty'                =>  'required|numeric',
+            'information.day'                       =>  'required|numeric',
+            'information.hour'                      =>  'required|numeric',
+            'information.min'                       =>  'required|numeric',
+            'description.detail'                    =>  'required',
+            'refuge.beforeActiveRefuges.*'          =>  'numeric',
+            'refuge.afterActiveRefuges.*'           =>  'numeric',
+            'story.beforeActiveStories.*'           =>  'numeric',
+            'story.afterActiveStories.*'            =>  'numeric'
         ));
 
         /**
          * Update Route
          */
         $now = Carbon::now();
+
+        // print_r($request->refuge['afterActiveRefuges']);
+        // print($request->refuge['afterActiveRefuges'][0]);
 
         /**
          * Update Route
@@ -127,15 +130,11 @@ class RouteController extends Controller
                         ->where('route_id', $request->route_id)
                         ->delete();
 
-        if(!empty($request->afterActiveRefuges)) {
-            $date_refuge = $request->afterActiveRefuges;
-
-            $data_refuge_number = count($date_refuge);
-
-            for($i = 0; $i < $data_refuge_number; $i++) {
+        if(!empty($request->refuge['afterActiveRefuges'])) {
+            for ($i = 0; $i < count($request->refuge['afterActiveRefuges']); $i++) {
                 $insert_data = array(
                     'route_id'      =>  $request->route_id,
-                    'refuge_id'     =>  $request->afterActiveRefuges[$i],
+                    'refuge_id'     =>  $request->refuge['afterActiveRefuges'][$i],
                     'created_at'    =>  $now
                 );
                 DB::table('route_refuge')->insert($insert_data);
@@ -151,15 +150,11 @@ class RouteController extends Controller
                         ->where('route_id', $request->route_id)
                         ->delete();
 
-        if(!empty($request->afterActiveStories)) {
-            $data_story = $request->afterActiveStories;
-
-            $data_story_number = count($data_story);
-
-            for($i = 0; $i < $data_story_number; $i++) {
+        if(!empty($request->story['afterActiveStories'])) {
+            for ($i = 0; $i < count($request->story['afterActiveStories']); $i++) {
                 $insert_data = array(
                     'route_id'      =>  $request->route_id,
-                    'story_id'      =>  $request->afterActiveStories[$i],
+                    'story_id'      =>  $request->story['afterActiveStories'][$i],
                     'created_at'    =>  $now
                 );
                 DB::table('route_story')->insert($insert_data);

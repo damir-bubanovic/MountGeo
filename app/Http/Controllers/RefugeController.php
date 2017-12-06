@@ -197,7 +197,7 @@ class RefugeController extends Controller
             'information.road'          =>  'required|boolean',
             'information.macadam'       =>  'required|boolean',
             'information.foot'          =>  'required|boolean',
-            'contact.0.*.person'        =>  'string',
+            'contact.0.*.person'       =>  'string',
             'contact.0.*.email'         =>  'email',
             'contact.0.*.phone'         =>  'numeric'
         ));
@@ -208,7 +208,7 @@ class RefugeController extends Controller
         $now = Carbon::now();
 
         $refuge = DB::table('refuges')
-                        ->where('id', $request->refuge['refuge_id'])
+                        ->where('id', $request->refuge_id)
                         ->update([
                             'name'          =>  $request->refuge['name'],
                             'longitude'     =>  $request->refuge['longitude'],
@@ -217,7 +217,7 @@ class RefugeController extends Controller
                         ]);
 
         $refuge_information = DB::table('refuge_information')
-                        ->where('refuge_id', $request->refuge['refuge_id'])
+                        ->where('refuge_id', $request->refuge_id)
                         ->update([
                             'open'          =>  $request->information['startTime'],
                             'close'         =>  $request->information['endTime'],
@@ -228,7 +228,7 @@ class RefugeController extends Controller
                         ]);
 
         $refuge_road = DB::table('refuge_road')
-                        ->where('refuge_id', $request->refuge['refuge_id'])
+                        ->where('refuge_id', $request->refuge_id)
                         ->update([
                             'road'          =>  $request->information['road'],
                             'macadam'       =>  $request->information['macadam'],
@@ -237,7 +237,7 @@ class RefugeController extends Controller
                         ]);
 
         $refuge_contacts_delete = DB::table('refuge_contacts')
-                        ->where('refuge_id', $request->refuge['refuge_id'])
+                        ->where('refuge_id', $request->refuge_id)
                         ->delete();
 
         /**
@@ -251,7 +251,7 @@ class RefugeController extends Controller
 
         for($i = 0; $i < $data_contact_number; $i++) {
             $insert_data = array(
-                'refuge_id'     =>  $request->refuge['refuge_id'],
+                'refuge_id'     =>  $request->refuge_id,
                 'person'        =>  $data_contact[$i]['person'],
                 'email'         =>  $data_contact[$i]['email'],
                 'phone'         =>  $data_contact[$i]['phone'],

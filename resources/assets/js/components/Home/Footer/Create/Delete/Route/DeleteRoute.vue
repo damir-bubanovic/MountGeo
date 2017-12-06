@@ -69,7 +69,7 @@
              * Route Information Data
              */
             fullRoute() {
-                return this.$store.state.route.route[0]
+                return this.$store.state.route.route.route[0]
             },
             /**
              * Show Route
@@ -83,7 +83,7 @@
                 var data = {
                     route: this.form.route
                 };
-                this.$store.dispatch('GET_ROUTE', data)
+                this.$store.dispatch('GET_ROUTE', data);
             },
             /**
              * Get Duration

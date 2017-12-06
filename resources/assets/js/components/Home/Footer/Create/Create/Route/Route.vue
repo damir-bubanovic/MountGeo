@@ -84,9 +84,21 @@
 
                 if(this.$store.state.maps.userPathMarkers.markers[0] == null) {
                     if (fileNameExtension == 'kml') {
-                        this.$store.dispatch('ROUTE_KML', data);
+                        this.$store.dispatch('ROUTE_KML', data)
+                            .then(() => {
+                                var data = {
+                                    mountain_id: this.$store.state.mountain.mountain.mountain_id
+                                };
+                                this.$store.dispatch('GET_ROUTES', data);
+                            });
                     } else if(fileNameExtension == 'gpx') {
-                        this.$store.dispatch('ROUTE_GPX', data);
+                        this.$store.dispatch('ROUTE_GPX', data)
+                            .then(() => {
+                                var data = {
+                                    mountain_id: this.$store.state.mountain.mountain.mountain_id
+                                };
+                                this.$store.dispatch('GET_ROUTES', data);
+                            });
                     } else {
                         this.$notify({
                             title: 'No Route Path',
@@ -95,7 +107,13 @@
                         });
                     }
                 } else {
-                    this.$store.dispatch('ROUTE_CUSTOM', data);
+                    this.$store.dispatch('ROUTE_CUSTOM', data)
+                        .then(() => {
+                            var data = {
+                                mountain_id: this.$store.state.mountain.mountain.mountain_id
+                            };
+                            this.$store.dispatch('GET_ROUTES', data);
+                        });
                 }
             }
         }

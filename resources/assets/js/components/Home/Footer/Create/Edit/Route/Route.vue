@@ -104,8 +104,6 @@
                     story: this.story,
                 }
 
-                console.log(JSON.stringify(data));
-
                 this.$store.dispatch('UPDATE_ROUTE', data)
                     .then(() => {
                         var data = {

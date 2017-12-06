@@ -91,7 +91,6 @@
                     information: this.information,
                     contact: this.contact
                 }
-                console.log(JSON.stringify(data));
                 this.$store.dispatch('UPDATE_REFUGE', data)
                     .then(() => {
                         var data = {
