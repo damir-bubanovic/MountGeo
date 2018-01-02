@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- ****** LOGIN PAGE ****** -->
         <app-header></app-header>
             <el-main>
                 <form class="el-form-enter">
@@ -13,6 +14,8 @@
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         {{ errors.first('email') }}
                     </span>
+
+
                     <el-input type="password" placeholder="Password" v-model="form.password"
                         v-validate="'required|min:6'" data-vv-delay="1000"
                         data-vv-name="password" data-vv-as="password"
@@ -23,6 +26,7 @@
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         {{ errors.first('password') }}
                     </span>
+
                     <el-button type="primary" v-on:click="login">Login</el-button>
                 </form>
             </el-main>
@@ -41,6 +45,10 @@
             }
         },
         methods: {
+            /**
+             * Validate user data & page redirect
+             * @return {router} [on succes redirect to home page, on failure redirect to login page]
+             */
             login() {
                 this.$validator.validateAll()
                     .then((result) => {

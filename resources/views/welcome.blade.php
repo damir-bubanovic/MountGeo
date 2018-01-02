@@ -45,6 +45,7 @@
 
     </head>
     <body>
+        <!-- ****** VUE / APP STARTER ****** -->
         <div id="app">
             <app-starter></app-starter>
         </div>

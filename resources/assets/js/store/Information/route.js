@@ -26,36 +26,41 @@ const mutations = {
         state.uploadedFile.fileStored = response.data.fileStored;
         state.uploadedFile.fileStoredExt = response.data.fileStoredExt;
     },
-    /**
-     * Get Route List
-     */
+
+
+
+
     [MutationTypes.GET_ROUTES](state, { response }) {
         state.routes = response.data.routes;
     },
-    /**
-     * Get Route
-     */
+
+
+
+
     [MutationTypes.GET_ROUTE](state, { response }) {
         state.route = response.data;
         state.showRoute = true;
     },
-    /**
-     * Get Full Route
-     */
+
+
+
+
     [MutationTypes.GET_FULL_ROUTE](state, { response }) {
         state.fullRoute = response.data;
         state.showFullRoute = true;
     },
-    /**
-     * Clear Route
-     */
+
+
+
+
     [MutationTypes.CLEAR_ROUTE](state) {
         state.showRoute = false;
         state.route = [];
     },
-    /**
-     * Clear Route
-     */
+
+
+
+
     [MutationTypes.CLEAR_FULL_ROUTE](state) {
         state.fullRoute = [];
         state.showFullRoute = false;
@@ -90,6 +95,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.ROUTE_KML]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -119,6 +128,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.FILE_GPX]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -147,6 +160,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.ROUTE_GPX]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -176,6 +193,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.ROUTE_CUSTOM]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -205,6 +226,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.UPDATE_ROUTE]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -232,6 +257,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.GET_ROUTES]({commit}, data) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -251,6 +280,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.GET_ROUTE]({commit}, data) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -270,6 +303,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.GET_FULL_ROUTE]({commit}, data) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -289,6 +326,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.DELETE_ROUTE]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -317,9 +358,17 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.CLEAR_ROUTE]({commit}) {
         commit(MutationTypes.CLEAR_ROUTE);
     },
+
+
+
+
     [MutationTypes.CLEAR_FULL_ROUTE]({commit}) {
         commit(MutationTypes.CLEAR_FULL_ROUTE);
     }

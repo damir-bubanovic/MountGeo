@@ -10,6 +10,7 @@ import route from './Information/route';
 import story from './Information/story';
 import refuge from './Information/refuge';
 import loading from './Information/loading';
+import clear from './Information/clear';
 
 
 Vue.use(Vuex)
@@ -23,6 +24,7 @@ export default new Vuex.Store({
         route,
         story,
         refuge,
-        loading
+        loading,
+        clear
     }
 });

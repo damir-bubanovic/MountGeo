@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- ****** REGISTER PAGE ****** -->
         <app-header></app-header>
             <el-main>
                 <form class="el-form-enter">
@@ -13,6 +14,8 @@
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         {{ errors.first('name') }}
                     </span>
+
+
                     <el-input type="email" placeholder="Email" v-model="form.email"
                         v-validate="'required|email'" data-vv-delay="2000"
                         data-vv-name="email" data-vv-as="email"
@@ -23,6 +26,8 @@
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         {{ errors.first('email') }}
                     </span>
+
+
                     <el-input type="password" placeholder="Password" v-model="form.password"
                         v-validate="'required|min:6'" data-vv-delay="1000"
                         data-vv-name="password" data-vv-as="password"
@@ -33,6 +38,8 @@
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         {{ errors.first('password') }}
                     </span>
+
+
                     <el-input type="password" placeholder="Confirm Password" v-model="form.password_confirmation"
                         v-validate="'required|min:6'" data-vv-delay="1000"
                         data-vv-name="password_confirmation" data-vv-as="password"
@@ -43,6 +50,7 @@
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         {{ errors.first('password_confirmation') }}
                     </span>
+
                     <el-button type="primary" v-on:click="register">Register</el-button>
                 </form>
             </el-main>
@@ -63,6 +71,10 @@
             }
         },
         methods: {
+            /**
+             * Validate user data & page redirect
+             * @return {router} [on succes redirect to login page, on failure redirect to register page]
+             */
             register() {
                 this.$validator.validateAll()
                     .then((result) => {

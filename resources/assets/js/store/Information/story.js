@@ -15,10 +15,18 @@ const mutations = {
     [MutationTypes.GET_STORIES](state, { response }) {
         state.stories = response.data.stories;
     },
+
+
+
+
     [MutationTypes.GET_STORY](state, { response }) {
         state.story = response.data.story;
         state.showStory = true;
     },
+
+
+
+
     [MutationTypes.CLEAR_STORY](state) {
         state.showStory = false;
         state.story = [];
@@ -44,6 +52,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.GET_STORY]({commit}, data) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -63,6 +75,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.CREATE_STORY]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -90,6 +106,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.UPDATE_STORY]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -117,6 +137,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.DELETE_STORY]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -145,6 +169,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.CLEAR_STORY]({commit}) {
         commit(MutationTypes.CLEAR_STORY);
     }

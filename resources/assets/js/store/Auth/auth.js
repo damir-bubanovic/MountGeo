@@ -16,8 +16,13 @@ const mutations = {
 };
 const actions = {
     [MutationTypes.WELCOME_LOGIN_REGISTER_PAGE]({commit}) {
-        
+        /**
+         * For Email Authentification make register page visible
+         */
     },
+
+
+
     [MutationTypes.REGISTER]({commit}, data) {
         return new Promise((resolve, reject) => {
             axios.post('api/register', data,
@@ -51,6 +56,9 @@ const actions = {
                     })
         })
     },
+
+
+
     [MutationTypes.LOGIN]({commit}, data) {
         return new Promise((resolve, reject) => {
             axios.post('api/login', data,
@@ -66,10 +74,9 @@ const actions = {
                     })
         })
     },
-    /**
-     * Logout
-     * > do better with this & look it up more
-     */
+
+
+
     [MutationTypes.LOGOUT]({commit}) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {

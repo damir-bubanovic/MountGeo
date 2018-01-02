@@ -60,6 +60,24 @@
             },
             showRoute() {
                 return this.$store.state.route.showFullRoute
+            },
+            clear() {
+                console.log(this.$store.state.clear.clearDatabase);
+                return this.$store.state.clear.clearDatabase;
+            }
+        },
+        watch: {
+            /**
+             * Clear selected values - watch computed (state) property
+             */
+            clear(value) {
+                // if (value) {
+                //     console.log("Value is true and " + value);
+                // } else {
+                //     console.log("Value is false " + value);
+                // }
+                this.mountain_id = '';
+                this.route_id = '';
             }
         },
         methods: {

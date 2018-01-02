@@ -1,7 +1,7 @@
 <template>
     <el-row :gutter="24">
         <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18" :offset="4" class="el-selected-mountain">
-            <el-select v-model="value"
+            <el-select v-model="mountain"
             @change="selectedMountain"
             placeholder="Select Mountain to Add New...">
                 <el-option
@@ -19,7 +19,7 @@
     export default {
         data() {
             return {
-                value: ''
+                mountain: ''
             }
         },
         mounted() {
@@ -30,13 +30,24 @@
                 return {
                     list: this.$store.state.mountain.mountains
                 }
+            },
+            clear() {
+                return this.$store.state.clear.clearInformation;
+            }
+        },
+        watch: {
+            /**
+             * Clear selected values - watch computed (state) property
+             */
+            clear() {
+                this.mountain = '';
             }
         },
         methods: {
             selectedMountain() {
                 var data = {
-                    mountain_id: this.value.replace(/[^0-9\.]+/g, ''),
-                    mountain_name: this.value.replace(/[0-9]/g, ''),
+                    mountain_id: this.mountain.replace(/[^0-9\.]+/g, ''),
+                    mountain_name: this.mountain.replace(/[0-9]/g, ''),
                 };
                 this.$store.dispatch('SELECTED_MOUNTAIN', data)
                     .then(() => {

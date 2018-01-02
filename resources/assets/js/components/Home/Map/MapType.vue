@@ -1,5 +1,6 @@
 <template>
     <div class="map-type">
+        <!-- ****** GOOGLE MAP TYPE ****** -->
         <el-switch
             v-model="value"
             @change="mapType"

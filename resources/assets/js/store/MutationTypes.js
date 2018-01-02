@@ -118,3 +118,14 @@ export const GET_REFUGES = 'GET_REFUGES';
 export const GET_REFUGE = 'GET_REFUGE';
 export const DELETE_REFUGE = 'DELETE_REFUGE';
 export const CLEAR_REFUGE = 'CLEAR_REFUGE';
+/**
+ * Clear Select Values
+ * > clear database component section
+ * > reload clear database event
+ * > clear information component section
+ * > reload clear information event
+ */
+export const CLEAR_SELECT_VALUES_DATABASE = "CLEAR_SELECT_VALUES_DATABASE";
+export const RELOAD_CLEAR_DATABASE_EVENT = "RELOAD_CLEAR_DATABASE_EVENT";
+export const CLEAR_SELECT_VALUES_INFORMATION = "CLEAR_SELECT_VALUES_INFORMATION";
+export const RELOAD_CLEAR_INFORMATION_EVENT = "RELOAD_CLEAR_INFORMATION_EVENT";

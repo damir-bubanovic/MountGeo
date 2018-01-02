@@ -339,6 +339,10 @@ const mutations = {
             }
         });
     },
+
+
+
+
     [MutationTypes.GOOGLE_MAPS_TYPE](state) {
         if(state.mapType == false) {
             state.map.setMapTypeId('terrain');
@@ -348,9 +352,10 @@ const mutations = {
             state.mapType = false;
         }
     },
-    /**
-     * Get Full Route
-     */
+
+
+
+
     [MutationTypes.GET_FULL_ROUTE_GPS](state, { response }) {
         /**
          * Push refuge(markers) to refuges array
@@ -393,6 +398,10 @@ const mutations = {
          */
         state.showMapInfo = true;
     },
+
+
+
+
     [MutationTypes.SHOW_FULL_ROUTE_GPS](state) {
         /**
          * Refuge Markers
@@ -439,6 +448,10 @@ const mutations = {
         state.map.setCenter(newMapCenter);
 
     },
+
+
+
+
     [MutationTypes.CLEAR_FULL_ROUTE_GPS](state) {
         /**
          * Clear Route
@@ -470,6 +483,10 @@ const mutations = {
         state.map.setCenter(newMapCenter);
 
     },
+
+
+
+
     [MutationTypes.ELEVATION_CHART](state) {
         /**
          * Google Chart
@@ -504,6 +521,10 @@ const mutations = {
         }
 
     },
+
+
+
+
     [MutationTypes.SHOW_USER_LOCATION](state) {
         /**
          * User Location Marker
@@ -528,6 +549,10 @@ const mutations = {
 
         state.userLocationButton = true;
     },
+
+
+
+
     [MutationTypes.HIDE_USER_LOCATION](state) {
         /**
          * Remove User Location Marker
@@ -543,6 +568,10 @@ const mutations = {
         state.userLocation.lng = null;
         state.userLocationButton = false;
     },
+
+
+
+
     [MutationTypes.SHOW_TARGET_LOCATION](state) {
         /**
          * Show Target Location
@@ -577,9 +606,11 @@ const mutations = {
 
             state.targetMarker = marker;
         }
-        console.log(state.targetMarker);
-
     },
+
+
+
+
     [MutationTypes.HIDE_TARGET_LOCATION](state) {
         /**
          * Hide Target Location
@@ -589,6 +620,10 @@ const mutations = {
         state.targetLocationButton = false;
         state.targetMarker.setMap(null);
     },
+
+
+
+
     [MutationTypes.CREATE_USER_PATH_MARKER](state) {
         /**
          * Custom Path
@@ -629,6 +664,10 @@ const mutations = {
 
 
     },
+
+
+
+
     [MutationTypes.CLEAR_USER_PATH_MARKERS](state) {
         /**
          * Remove Path Markers
@@ -648,9 +687,17 @@ const actions = {
     [MutationTypes.GOOGLE_MAPS]({commit}) {
         commit(MutationTypes.GOOGLE_MAPS)
     },
+
+
+
+
     [MutationTypes.GOOGLE_MAPS_TYPE]({commit}) {
         commit(MutationTypes.GOOGLE_MAPS_TYPE)
     },
+
+
+
+
     [MutationTypes.GET_FULL_ROUTE_GPS]({commit}, data) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -673,12 +720,24 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.CLEAR_FULL_ROUTE_GPS]({commit}) {
         commit(MutationTypes.CLEAR_FULL_ROUTE_GPS)
     },
+
+
+
+
     [MutationTypes.ELEVATION_CHART]({commit}) {
         commit(MutationTypes.ELEVATION_CHART);
     },
+
+
+
+
     [MutationTypes.SHOW_USER_LOCATION]({commit}) {
         if(state.userLocationButton == false) {
             if('geolocation' in navigator) {
@@ -694,6 +753,10 @@ const actions = {
             commit(MutationTypes.HIDE_USER_LOCATION);
         }
     },
+
+
+
+
     [MutationTypes.SHOW_TARGET_LOCATION]({commit}) {
         if(state.targetLocationButton == false) {
             commit(MutationTypes.SHOW_TARGET_LOCATION);
@@ -701,6 +764,10 @@ const actions = {
             commit(MutationTypes.HIDE_TARGET_LOCATION);
         }
     },
+
+
+
+
     [MutationTypes.CREATE_USER_PATH_MARKER]({commit}) {
         if(state.userPathMarkers.enableMarkers) {
             state.userPathMarkers.enableMarkers = false;
@@ -708,9 +775,14 @@ const actions = {
             commit(MutationTypes.CREATE_USER_PATH_MARKER)
         }
     },
+
+
+
+
     [MutationTypes.CLEAR_USER_PATH_MARKERS]({commit}) {
         commit(MutationTypes.CLEAR_USER_PATH_MARKERS)
     }
+
 }
 
 export default {

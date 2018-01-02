@@ -15,10 +15,16 @@ const mutations = {
     [MutationTypes.GET_REFUGES](state, { response }) {
         state.refuges = response.data.refuges;
     },
+
+
+
     [MutationTypes.GET_REFUGE](state, { response }) {
         state.refuge = response.data;
         state.showRefuge = true;
     },
+
+
+
     [MutationTypes.CLEAR_REFUGE](state) {
         state.showRefuge = false;
         state.refuge = [];
@@ -44,6 +50,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.GET_REFUGE]({commit}, data) {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -63,6 +73,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.CREATE_REFUGE]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -90,6 +104,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.UPDATE_REFUGE]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -117,6 +135,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.DELETE_REFUGE]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');

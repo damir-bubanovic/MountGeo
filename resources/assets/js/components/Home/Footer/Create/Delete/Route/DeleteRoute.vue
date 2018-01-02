@@ -76,6 +76,20 @@
              */
             showRoute() {
                 return this.$store.state.route.showRoute
+            },
+            /**
+             * Clear Selected Route
+             */
+            clear() {
+                return this.$store.state.clear.clearInformation;
+            }
+        },
+        watch: {
+            /**
+             * Clear selected values - watch computed (state) property
+             */
+            clear() {
+                this.form.route = '';
             }
         },
         methods: {

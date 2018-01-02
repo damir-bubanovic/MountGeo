@@ -1,26 +1,32 @@
 <template>
     <div class="map-chart">
+        <!-- ****** GOOGLE MAP CHART - VIEW ROUTE DATA ****** -->
         <el-row type="flex" justify="end" class="map-chart-container-clear">
             <el-col :xs="5" :sm="3" :md="2" :lg="2" :xl="2" v-if="showMapInfo">
                 <el-button v-on:click="clearFullRoute">Clear <i class="fa fa-globe fa-lg" aria-hidden="true"></i></el-button>
             </el-col>
         </el-row>
+
+
         <el-row :gutter="24" class="map-chart-container">
             <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
                 <div class="distance-container" v-bind:style="{ width: distanceKm.width + 'px' }">
                     <p>{{ distanceKm.kilometers }}</p>
                 </div>
             </el-col>
+
             <el-col :xs="12" :sm="12" :md="8" :lg="8" :xl="8">
                 <div class="distance-travel-container" v-if="showMapInfo">
                     <p><i class="fa fa-globe" aria-hidden="true"></i> 5.7km(fake)</p>
                 </div>
             </el-col>
+
             <el-col :xs="12" :sm="12" :md="8" :lg="8" :xl="8">
                 <div class="distance-travel-container" v-if="showMapInfo">
                     <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{ getDuration(routeInfo.duration) }}</p>
                 </div>
             </el-col>
+
             <el-col :span="24">
                 <div v-if="showMapInfo">
                     <el-row :gutter="24">
@@ -69,7 +75,7 @@
         methods: {
             /**
              * Get Duration
-             * > stored as seconds in database (could be simpler)
+             * > stored as seconds in database
              */
             getDuration(number) {
                 var days = Math.floor(number / 86400);
@@ -108,6 +114,12 @@
                 this.$store.dispatch('CLEAR_FULL_ROUTE_GPS')
                     .then(() => {
                         this.$store.dispatch('CLEAR_FULL_ROUTE');
+                    })
+                    .then(() => {
+                        this.$store.dispatch('CLEAR_SELECT_VALUES_DATABASE');
+                    })
+                    .then(() => {
+                        this.$store.dispatch('RELOAD_CLEAR_DATABASE_EVENT');
                     });
             }
         }

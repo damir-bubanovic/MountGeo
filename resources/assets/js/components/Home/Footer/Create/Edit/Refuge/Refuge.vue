@@ -50,6 +50,20 @@
                     list: this.$store.state.refuge.refuges
                 }
             },
+            /**
+             * Clear Selected Refuge
+             */
+            clear() {
+                return this.$store.state.clear.clearInformation;
+            }
+        },
+        watch: {
+            /**
+             * Clear selected values - watch computed (state) property
+             */
+            clear() {
+                this.form.refuge = '';
+            }
         },
         methods: {
             selectedRefuge() {
@@ -97,6 +111,9 @@
                             mountain_id: this.$store.state.mountain.mountain.mountain_id
                         };
                         this.$store.dispatch('GET_REFUGES', data);
+                    })
+                    .then(() => {
+                        this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
                     });
             },
         }

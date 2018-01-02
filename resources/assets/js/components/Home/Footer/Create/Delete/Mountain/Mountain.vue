@@ -45,6 +45,9 @@
                 this.$store.dispatch('DELETE_MOUNTAIN', { data: this.mountain })
                     .then(() => {
                         this.$store.dispatch('GET_MOUNTAINS');
+                    })
+                    .then(() => {
+                        this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
                     });
             }
         }

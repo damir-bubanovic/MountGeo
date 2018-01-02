@@ -1,5 +1,6 @@
 <template>
     <el-header>
+        <!-- ****** HEADER COMPONENT ****** -->
         <el-row :gutter="24">
             <el-col :xs="4" :sm="3" :md="3" :lg="2" :xl="1" class="el-header-logo">
                 <a v-on:click="welcomePage"><img src="/img/logo.png" alt="MountGeo Logo"></a>

@@ -10,23 +10,30 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
+/**
+ * Vue / App Starter
+ */
 Vue.component('app-starter', require('./App.vue'));
 
+/**
+ * Header & Footer Starter
+ */
 Vue.component('app-header', require('./Components/Auth/Header.vue'));
 Vue.component('app-footer', require('./Components/Auth/Footer.vue'));
 
+/**
+ * Home Compoment with Google Maps & Charts
+ */
 Vue.component('home-header', require('./Components/Home/Header.vue'));
 Vue.component('home-footer', require('./Components/Home/Footer.vue'));
 Vue.component('map-main', require('./Components/Home/Map.vue'));
 Vue.component('map-chart', require('./Components/Home/Map/MapChart.vue'));
 Vue.component('map-type', require('./Components/Home/Map/MapType.vue'));
 
+/**
+ * Create & Edit Route Data
+ */
 Vue.component('information', require('./Components/Home/Footer/Information.vue'));
 Vue.component('information-main', require('./Components/Home/Footer/Create/Main.vue'));
 Vue.component('information-create', require('./Components/Home/Footer/Create/Create/Create.vue'));
@@ -78,6 +85,9 @@ Vue.component('information-edit-story-edit-story', require('./Components/Home/Fo
 Vue.component('information-create-story', require('./Components/Home/Footer/Create/Create/Story/Story.vue'));
 Vue.component('information-create-story-add-story', require('./Components/Home/Footer/Create/Create/Story/AddStory.vue'));
 
+/**
+ * View Route Data
+ */
 Vue.component('information-database', require('./Components/Home/Footer/Database/Database.vue'));
 Vue.component('information-database-full-route', require('./Components/Home/Footer/Database/FullRoute.vue'));
 

@@ -1,7 +1,9 @@
 <template>
     <div>
+        <!-- ****** WELCOME PAGE ****** -->
         <app-header></app-header>
         <el-main>
+            <!-- carousel - app statements -->
             <el-row class="row-bg">
                 <el-col :span="24" class="el-carousel-auth">
                     <el-carousel :interval="4000" type="card" height="400px">
@@ -13,6 +15,7 @@
                     </el-carousel>
                 </el-col>
             </el-row>
+            <!-- /.carousel -->
         </el-main>
         <app-footer></app-footer>
     </div>

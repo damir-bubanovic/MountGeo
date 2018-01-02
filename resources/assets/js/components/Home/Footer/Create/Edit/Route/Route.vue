@@ -55,6 +55,20 @@
                 return {
                     list: this.$store.state.route.routes
                 }
+            },
+            /**
+             * Clear Selected Route
+             */
+            clear() {
+                return this.$store.state.clear.clearInformation;
+            }
+        },
+        watch: {
+            /**
+             * Clear selected values - watch computed (state) property
+             */
+            clear() {
+                this.form.route = '';
             }
         },
         methods: {
@@ -110,6 +124,9 @@
                             mountain_id: this.$store.state.mountain.mountain.mountain_id
                         };
                         this.$store.dispatch('GET_ROUTES', data);
+                    })
+                    .then(() => {
+                        this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
                     });
             },
         }

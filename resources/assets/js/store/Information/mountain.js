@@ -16,10 +16,18 @@ const mutations = {
         state.mountains = [];
         state.mountains = response.data.mountains;
     },
+
+
+
+
     [MutationTypes.SELECTED_MOUNTAIN](state, data) {
         state.mountain = data;
         state.showMountain = true;
     },
+
+
+
+
     [MutationTypes.CLEAR_MOUNTAIN](state) {
         state.showMountain = false;
         state.mountain = [];
@@ -45,6 +53,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.CREATE_MOUNTAIN]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -72,6 +84,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.UPDATE_MOUNTAIN]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -99,15 +115,17 @@ const actions = {
                     })
         })
     },
-    /**
-     * Selected Mountain
-     */
+
+
+
+
     [MutationTypes.SELECTED_MOUNTAIN]({ commit }, data) {
         commit(MutationTypes.SELECTED_MOUNTAIN, data);
     },
-    /**
-     * Delete Mountain
-     */
+
+
+
+
     [MutationTypes.DELETE_MOUNTAIN]({commit}, data) {
         commit(MutationTypes.LOADING_ON);
         const token = localStorage.getItem('token');
@@ -135,6 +153,10 @@ const actions = {
                     })
         })
     },
+
+
+
+
     [MutationTypes.CLEAR_MOUNTAIN]({commit}) {
         commit(MutationTypes.CLEAR_MOUNTAIN);
     }

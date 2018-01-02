@@ -85,6 +85,20 @@
              */
             showStory() {
                 return this.$store.state.story.showStory
+            },
+            /**
+             * Clear Selected Story
+             */
+            clear() {
+                return this.$store.state.clear.clearInformation;
+            }
+        },
+        watch: {
+            /**
+             * Clear selected values - watch computed (state) property
+             */
+            clear() {
+                this.form.story = '';
             }
         },
         methods: {

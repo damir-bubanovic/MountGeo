@@ -1,5 +1,6 @@
 <template>
     <el-footer class="el-navigation-bottom">
+        <!-- ****** FOOTER HOME ****** -->
         <el-menu :default-active="activeIndex" mode="horizontal">
             <el-menu-item index="1" v-on:click="targetLocation" v-bind:class="{ targetLocationButton: targetLocationButton }"><i class="fa fa-flag" aria-hidden="true"></i> <span class="el-hidden-phone">Target Location</span></el-menu-item>
             <el-menu-item index="2" v-on:click="userLocation" v-bind:class="{ userLocationButton: userLocationButton }"><i class="fa fa-map-marker" aria-hidden="true"></i> <span class="el-hidden-phone">Current Location</span></el-menu-item>
