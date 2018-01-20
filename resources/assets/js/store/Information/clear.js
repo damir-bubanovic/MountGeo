@@ -6,14 +6,12 @@ import swal from 'sweetalert2';
 
 const state = {
     clearDatabase: false,
-    clearinformation: false
+    clearInformation: false
 };
 
 const mutations = {
     [MutationTypes.CLEAR_SELECT_VALUES_DATABASE](state) {
-        console.log("First State is " + state.clearDatabase);
         state.clearDatabase = true;
-        console.log("Second State is " + state.clearDatabase);
     },
     [MutationTypes.RELOAD_CLEAR_DATABASE_EVENT](state) {
         state.clearDatabase = false;

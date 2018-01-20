@@ -95,10 +95,13 @@
         },
         watch: {
             /**
-             * Clear selected values - watch computed (state) property
+             * Clear selected values
+             * > in computed (state) property
+             * > reload clear event to be used again
              */
             clear() {
                 this.form.story = '';
+                this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
             }
         },
         methods: {

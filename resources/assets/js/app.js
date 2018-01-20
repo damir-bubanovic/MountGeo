@@ -121,6 +121,14 @@ import VueTinymce from 'vue-tinymce';
 Vue.use(VueTinymce)
 
 
+/**
+ * Vue Cookie
+ */
+var VueCookie = require('vue-cookie');
+Vue.use(VueCookie);
+
+
+
 const app = new Vue({
     el: '#app',
     router,

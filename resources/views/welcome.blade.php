@@ -9,7 +9,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Google Maps Verification -->
-        <meta name="google-site-verification" content="q6wLTHty_P7L7TahD49WU0Gk7c4s0Vzs2I2HMTdjOmM" />
+
 
         <title>MountGeo</title>
 
@@ -20,17 +20,12 @@
         <link href='//fonts.googleapis.com/css?family=Ceviche One' rel='stylesheet'>
 
         <!-- Test GoogleMaps -->
-        {{-- <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6DGiJ9ZOK-m9-5ES0YLvcHk6AMWP5tg4&v=3">
-        </script> --}}
-
-        <!-- GoogleMaps -->
         <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnCMsb5RhAGbI1QIHaxAQA8McFQfJGls8&v=3">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6DGiJ9ZOK-m9-5ES0YLvcHk6AMWP5tg4&v=3">
         </script>
 
         <!-- TinyMCE -->
-        <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=o3duw8ohixzgkb542ts59ajsvscealo3g4y6dpvltv6k3pu6"></script>
+
 
         <!-- Marker With Label -->
         {{ Html::script('js/markerwithlabel.js') }}

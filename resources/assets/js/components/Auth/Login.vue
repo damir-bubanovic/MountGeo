@@ -55,6 +55,7 @@
                         if(result) {
                             this.$store.dispatch('LOGIN', this.form)
                                 .then(() => {
+                                    this.$cookie.set('username', this.$store.state.auth.username, 1);
                                     this.$router.push('/home');
                                 })
                                 .catch((error) => {

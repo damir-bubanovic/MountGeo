@@ -13,6 +13,7 @@ import loading from './Information/loading';
 import clear from './Information/clear';
 
 
+
 Vue.use(Vuex)
 
 
@@ -26,5 +27,5 @@ export default new Vuex.Store({
         refuge,
         loading,
         clear
-    }
+    },
 });

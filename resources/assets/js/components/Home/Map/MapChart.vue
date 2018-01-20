@@ -117,9 +117,6 @@
                     })
                     .then(() => {
                         this.$store.dispatch('CLEAR_SELECT_VALUES_DATABASE');
-                    })
-                    .then(() => {
-                        this.$store.dispatch('RELOAD_CLEAR_DATABASE_EVENT');
                     });
             }
         }

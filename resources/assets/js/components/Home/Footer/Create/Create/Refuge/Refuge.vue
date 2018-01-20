@@ -66,9 +66,6 @@
                             mountain_id: this.$store.state.mountain.mountain.mountain_id
                         };
                         this.$store.dispatch('GET_REFUGES', data);
-                    })
-                    .then(() => {
-                        this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
                     });
             },
         }

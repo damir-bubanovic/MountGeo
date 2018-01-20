@@ -14,10 +14,8 @@ return [
     |
     */
     // Test Key
-    // 'key'       => 'AIzaSyB6DGiJ9ZOK-m9-5ES0YLvcHk6AMWP5tg4',
-    // MountGeo Key
-    'key'       => 'AIzaSyCnCMsb5RhAGbI1QIHaxAQA8McFQfJGls8',
-        
+    'key'       => 'AIzaSyB6DGiJ9ZOK-m9-5ES0YLvcHk6AMWP5tg4',
+
     /*
     |--------------------------------------------------------------------------
     | Verify SSL Peer

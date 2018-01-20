@@ -32,7 +32,11 @@
              * User Name
              */
             userName() {
-                return this.$store.state.auth.username
+                if (this.$store.state.auth.username == "") {
+                    return this.$cookie.get('username');
+                } else {
+                    return this.$store.state.auth.username
+                }
             }
         },
         methods: {
@@ -42,6 +46,7 @@
             logOut() {
                 this.$store.dispatch('LOGOUT')
                     .then(() => {
+                        this.$cookie.delete('username');
                         this.$router.push('/');
                     });
             }

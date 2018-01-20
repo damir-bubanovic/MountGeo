@@ -90,9 +90,6 @@
                                     mountain_id: this.$store.state.mountain.mountain.mountain_id
                                 };
                                 this.$store.dispatch('GET_ROUTES', data);
-                            })
-                            .then(() => {
-                                this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
                             });
                     } else if(fileNameExtension == 'gpx') {
                         this.$store.dispatch('ROUTE_GPX', data)
@@ -101,9 +98,6 @@
                                     mountain_id: this.$store.state.mountain.mountain.mountain_id
                                 };
                                 this.$store.dispatch('GET_ROUTES', data);
-                            })
-                            .then(() => {
-                                this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
                             });
                     } else {
                         this.$notify({
@@ -119,9 +113,6 @@
                                 mountain_id: this.$store.state.mountain.mountain.mountain_id
                             };
                             this.$store.dispatch('GET_ROUTES', data);
-                        })
-                        .then(() => {
-                            this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
                         });
                 }
             }

@@ -107,15 +107,6 @@
                                         console.log(JSON.stringify(this.form));
                                         this.$emit('step', this.form);
                                     }
-                                    // if (result.value) {
-                                    //     console.log(result.value);
-                                    //     console.log('Success');
-                                    //     // console.log(JSON.stringify(this.form));
-                                    //     // this.$emit('step', this.form);
-                                    // } else {
-                                    //     console.log(result.value);
-                                    //     console.log('Failure');
-                                    // }
                                 })
                             }
                         }
