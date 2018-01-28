@@ -57,6 +57,11 @@
                             mountain_id: this.$store.state.mountain.mountain.mountain_id
                         };
                         this.$store.dispatch('GET_MOUNTAINS', data);
+                    })
+                    .catch((error) => {
+                        if (error.response.status == 401) {
+                            this.$router.push('/login');
+                        }
                     });
             }
         }

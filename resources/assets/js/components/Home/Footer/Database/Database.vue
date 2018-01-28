@@ -87,7 +87,12 @@
                 var data = {
                     mountain_id: this.mountain_id
                 };
-                this.$store.dispatch('GET_ROUTES', data);
+                this.$store.dispatch('GET_ROUTES', data)
+                    .catch((error) => {
+                        if (error.response.status == 401) {
+                            this.$router.push('/login');
+                        }
+                    });
             },
             /**
              * Select route_id for full route
@@ -98,8 +103,13 @@
                 };
                 this.$store.dispatch('GET_FULL_ROUTE', data)
                     .then(() => {
-                            this.$store.dispatch('GET_FULL_ROUTE_GPS', data);
-                        });
+                        this.$store.dispatch('GET_FULL_ROUTE_GPS', data);
+                    })
+                    .catch((error) => {
+                        if (error.response.status == 401) {
+                            this.$router.push('/login');
+                        }
+                    });
             }
         }
     }

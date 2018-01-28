@@ -3,21 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Repositories\JWTRefreshRepository;
 
 
 class RefugeController extends Controller
 {
+    /**
+     * Refresh Token Constructor
+     */
+    private $refreshtoken;
+
+    public function __construct(JWTRefreshRepository $refreshtoken) {
+        $this->refreshtoken = $refreshtoken;
+    }
+
+
     /**
      * Get Refuges
      * 1) Verify request data
      * 2) Get refuges from database from specific mountain id
      */
     public function getRefuges(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'mountain_id'            =>  'required|numeric',
         ));
@@ -43,8 +51,6 @@ class RefugeController extends Controller
      * 2) Get refuge from database from specific refuge id
      */
     public function getRefuge(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'refuge'            =>  'required|numeric',
         ));
@@ -91,8 +97,6 @@ class RefugeController extends Controller
      *         - target array, count & loop through data
      */
     public function postRefuge(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'refuge.mountain'           =>  'required|numeric',
             'refuge.name'               =>  'required|string|min:2|max:60',
@@ -171,8 +175,11 @@ class RefugeController extends Controller
             DB::table('refuge_contacts')->insert($insert_data);
         }
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Refuge Data Saved'
+            'Refuge Data Saved',
+            'token'     =>  $token
         ], 200);
 
     }
@@ -182,8 +189,6 @@ class RefugeController extends Controller
      * Update Refuge & Refuge_Contacts & Refuge_Road & Refuge_Information
      */
     public function updateRefuge(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'refuge_id'                 =>  'required|numeric',
             'refuge.name'               =>  'required|string|min:2|max:60',
@@ -260,8 +265,11 @@ class RefugeController extends Controller
             DB::table('refuge_contacts')->insert($insert_data);
         }
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Refuge Updated'
+            'Refuge Updated',
+            'token'     =>  $token
         ], 200);
     }
 
@@ -278,8 +286,11 @@ class RefugeController extends Controller
                         ->where('id', $request->data['refuge'])
                         ->delete();
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Refuge Deleted'
+            'Refuge Deleted',
+            'token'     =>  $token
         ], 200);
     }
 

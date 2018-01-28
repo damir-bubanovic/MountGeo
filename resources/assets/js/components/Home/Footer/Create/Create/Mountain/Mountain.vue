@@ -36,6 +36,11 @@
                 this.$store.dispatch('CREATE_MOUNTAIN', { data: this.mountain })
                     .then(() => {
                         this.$store.dispatch('GET_MOUNTAINS')
+                    })
+                    .catch((error) => {
+                        if (error.response.status == 401) {
+                            this.$router.push('/login');
+                        }
                     });
             }
         }

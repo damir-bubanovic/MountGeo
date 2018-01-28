@@ -3,19 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\Repositories\JWTRefreshRepository;
 
 class RouteController extends Controller
 {
     /**
+     * Refresh Token Constructor
+     */
+    private $refreshtoken;
+
+    public function __construct(JWTRefreshRepository $refreshtoken) {
+        $this->refreshtoken = $refreshtoken;
+    }
+
+
+    /**
      * Get Routes
      */
     public function getRoutes(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'mountain_id'            =>  'required|numeric',
         ));
@@ -28,8 +36,11 @@ class RouteController extends Controller
                         ->orderBy('id', 'desc')
                         ->get();
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'routes'  =>  $routes
+            'routes'    =>  $routes,
+            'token'     =>  $token
         ], 200);
 
     }
@@ -38,8 +49,6 @@ class RouteController extends Controller
      * Get Route
      */
     public function getRoute(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'route'            =>  'required|numeric',
         ));
@@ -78,8 +87,6 @@ class RouteController extends Controller
      * Update Route
      */
     public function updateRoute(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'route_id'                              =>  'required|numeric',
             'route.name'                            =>  'required|string|max:60',
@@ -161,9 +168,11 @@ class RouteController extends Controller
             }
         }
 
+        $token = $this->refreshtoken->refreshToken();
 
         return response()->json([
-            'Route Updated'
+            'Route Updated',
+            'token'     =>  $token
         ], 200);
     }
 
@@ -177,8 +186,6 @@ class RouteController extends Controller
      * > get contact for refuge
      */
     public function getFullRoute(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $route_id = $request->{'route_id'};
 
         $route = DB::table('routes')
@@ -236,11 +243,13 @@ class RouteController extends Controller
             }
         }
 
+        $token = $this->refreshtoken->refreshToken();
 
         return response()->json([
             'route'         =>  $route,
             'story'         =>  $story,
-            'refuge'        =>  $refuge
+            'refuge'        =>  $refuge,
+            'token'         =>  $token
         ], 200);
 
 
@@ -252,8 +261,6 @@ class RouteController extends Controller
      * > get route gps data
      */
     public function getFullRouteGPS(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $route_id = $request->{'route_id'};
 
         $route = DB::table('routes')
@@ -286,8 +293,6 @@ class RouteController extends Controller
      * Post Route GPS Data File KML
      */
     public function postFileKML(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         if($request->hasFile('file')) {
             /**
              * Store Uploaded File
@@ -317,8 +322,6 @@ class RouteController extends Controller
      * Post Route GPS Data File GPX
      */
     public function postFileGPX(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         if($request->hasFile('file')) {
             /**
              * Store Uploaded File
@@ -351,8 +354,6 @@ class RouteController extends Controller
      * > Post data
      */
     public function postRouteKML(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         // Get default limit
         $normalTimeLimit = ini_get('max_execution_time');
 
@@ -496,8 +497,11 @@ class RouteController extends Controller
         // Restore default limit
         ini_set('max_execution_time', $normalTimeLimit);
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Route Data Saved'
+            'Route Data Saved',
+            'token'     =>  $token
         ], 200);
 
     }
@@ -510,8 +514,6 @@ class RouteController extends Controller
      * > Post Data
      */
     public function postRouteGPX(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         // Get default limit
         $normalTimeLimit = ini_get('max_execution_time');
 
@@ -638,8 +640,11 @@ class RouteController extends Controller
         // Restore default limit
         ini_set('max_execution_time', $normalTimeLimit);
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Route Data Saved'
+            'Route Data Saved',
+            'token'     =>  $token
         ], 200);
 
     }
@@ -652,8 +657,6 @@ class RouteController extends Controller
      * > Post Data
      */
     public function postRouteCustom(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         // Get default limit
         $normalTimeLimit = ini_get('max_execution_time');
 
@@ -772,8 +775,11 @@ class RouteController extends Controller
         // Restore default limit
         ini_set('max_execution_time', $normalTimeLimit);
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Route Data Saved'
+            'Route Data Saved',
+            'token'     =>  $token
         ], 200);
     }
 
@@ -790,8 +796,11 @@ class RouteController extends Controller
                         ->where('id', $request->data['route'])
                         ->delete();
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Route Deleted'
+            'Route Deleted',
+            'token'     =>  $token
         ], 200);
     }
 

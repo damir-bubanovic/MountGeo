@@ -90,6 +90,11 @@
                                     mountain_id: this.$store.state.mountain.mountain.mountain_id
                                 };
                                 this.$store.dispatch('GET_ROUTES', data);
+                            })
+                            .catch((error) => {
+                                if (error.response.status == 401) {
+                                    this.$router.push('/login');
+                                }
                             });
                     } else if(fileNameExtension == 'gpx') {
                         this.$store.dispatch('ROUTE_GPX', data)
@@ -98,6 +103,11 @@
                                     mountain_id: this.$store.state.mountain.mountain.mountain_id
                                 };
                                 this.$store.dispatch('GET_ROUTES', data);
+                            })
+                            .catch((error) => {
+                                if (error.response.status == 401) {
+                                    this.$router.push('/login');
+                                }
                             });
                     } else {
                         this.$notify({
@@ -113,6 +123,11 @@
                                 mountain_id: this.$store.state.mountain.mountain.mountain_id
                             };
                             this.$store.dispatch('GET_ROUTES', data);
+                        })
+                        .catch((error) => {
+                            if (error.response.status == 401) {
+                                this.$router.push('/login');
+                            }
                         });
                 }
             }

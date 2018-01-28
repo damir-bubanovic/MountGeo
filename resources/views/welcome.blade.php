@@ -10,7 +10,6 @@
 
         <!-- Google Maps Verification -->
 
-
         <title>MountGeo</title>
 
         <!-- Favicon Icon -->
@@ -25,7 +24,6 @@
         </script>
 
         <!-- TinyMCE -->
-
 
         <!-- Marker With Label -->
         {{ Html::script('js/markerwithlabel.js') }}

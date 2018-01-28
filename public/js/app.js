@@ -40725,6 +40725,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$store.dispatch('CREATE_MOUNTAIN', { data: this.mountain }).then(function () {
                 _this.$store.dispatch('GET_MOUNTAINS');
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -41126,6 +41130,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             mountain_id: _this.$store.state.mountain.mountain.mountain_id
                         };
                         _this.$store.dispatch('GET_ROUTES', data);
+                    }).catch(function (error) {
+                        if (error.response.status == 401) {
+                            _this.$router.push('/login');
+                        }
                     });
                 } else if (fileNameExtension == 'gpx') {
                     this.$store.dispatch('ROUTE_GPX', data).then(function () {
@@ -41133,6 +41141,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             mountain_id: _this.$store.state.mountain.mountain.mountain_id
                         };
                         _this.$store.dispatch('GET_ROUTES', data);
+                    }).catch(function (error) {
+                        if (error.response.status == 401) {
+                            _this.$router.push('/login');
+                        }
                     });
                 } else {
                     this.$notify({
@@ -41147,6 +41159,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         mountain_id: _this.$store.state.mountain.mountain.mountain_id
                     };
                     _this.$store.dispatch('GET_ROUTES', data);
+                }).catch(function (error) {
+                    if (error.response.status == 401) {
+                        _this.$router.push('/login');
+                    }
                 });
             }
         }
@@ -42760,6 +42776,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     mountain_id: _this.$store.state.mountain.mountain.mountain_id
                 };
                 _this.$store.dispatch('GET_REFUGES', data);
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -43935,6 +43955,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.$store.dispatch('GET_MOUNTAINS');
             }).then(function () {
                 _this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -44421,6 +44445,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     mountain_id: _this.$store.state.mountain.mountain.mountain_id
                 };
                 _this.$store.dispatch('GET_REFUGES', data);
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -45205,7 +45233,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var data = {
                     mountain_id: _this.$store.state.mountain.mountain.mountain_id
                 };
-                _this.$store.dispatch('GET_ROUTES', data);
+                _this.$store.dispatch('GET_ROUTES', data).catch(function (error) {
+                    if (error.response.status == 401) {
+                        _this.$router.push('/login');
+                    }
+                });
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -45763,6 +45799,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     mountain_id: _this.$store.state.mountain.mountain.mountain_id
                 };
                 _this.$store.dispatch('GET_STORIES', data);
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -46249,6 +46289,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     mountain_id: _this.$store.state.mountain.mountain.mountain_id
                 };
                 _this.$store.dispatch('GET_MOUNTAINS', data);
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -46756,6 +46800,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.$store.dispatch('GET_REFUGES', data);
             }).then(function () {
                 _this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -48264,9 +48312,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var data = {
                     mountain_id: _this.$store.state.mountain.mountain.mountain_id
                 };
-                _this.$store.dispatch('GET_ROUTES', data);
+                _this.$store.dispatch('GET_ROUTES', data).catch(function (error) {
+                    if (error.response.status == 401) {
+                        _this.$router.push('/login');
+                    }
+                });
             }).then(function () {
                 _this.$store.dispatch('CLEAR_SELECT_VALUES_INFORMATION');
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -49890,6 +49946,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     mountain_id: _this.$store.state.mountain.mountain.mountain_id
                 };
                 _this.$store.dispatch('GET_STORIES', data);
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -50452,6 +50512,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     mountain_id: _this.$store.state.mountain.mountain.mountain_id
                 };
                 _this.$store.dispatch('GET_STORIES', data);
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
             });
         }
     }
@@ -50891,23 +50955,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
          * Select mountain_id for route list
          */
         getRoutes: function getRoutes() {
+            var _this = this;
+
             var data = {
                 mountain_id: this.mountain_id
             };
-            this.$store.dispatch('GET_ROUTES', data);
+            this.$store.dispatch('GET_ROUTES', data).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this.$router.push('/login');
+                }
+            });
         },
 
         /**
          * Select route_id for full route
          */
         getFullRoute: function getFullRoute() {
-            var _this = this;
+            var _this2 = this;
 
             var data = {
                 route_id: this.route_id
             };
             this.$store.dispatch('GET_FULL_ROUTE', data).then(function () {
-                _this.$store.dispatch('GET_FULL_ROUTE_GPS', data);
+                _this2.$store.dispatch('GET_FULL_ROUTE_GPS', data);
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    _this2.$router.push('/login');
+                }
             });
         }
     }
@@ -96528,6 +96602,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/create-mountain' + '?token=' + token, data).then(function (response) {
             if (response.status == 201) {
+                var _token = response.data.token;
+                localStorage.setItem('token', _token);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -96539,11 +96615,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Mountain Not Added! Try Again!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Mountain Not Added! Try Again!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["W" /* UPDATE_MOUNTAIN */], function (_ref4, data) {
@@ -96554,6 +96638,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/update-mountain' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token2 = response.data.token;
+                localStorage.setItem('token', _token2);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -96565,11 +96651,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Can Not Update Mountain!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Update Mountain!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["S" /* SELECTED_MOUNTAIN */], function (_ref5, data) {
@@ -96584,6 +96678,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/delete-mountain' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token3 = response.data.token;
+                localStorage.setItem('token', _token3);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -96595,11 +96691,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Mountain Not Deleted! Try Again!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Mountain Not Deleted! Try Again!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["c" /* CLEAR_MOUNTAIN */], function (_ref7) {
@@ -96705,6 +96809,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/create-route-kml' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token = response.data.token;
+                localStorage.setItem('token', _token);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -96717,12 +96823,20 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Route Not Uploaded! Try Again!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Route Not Uploaded! Try Again!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
             commit('LOADING');
-            reject();
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["s" /* FILE_GPX */], function (_ref7, data) {
@@ -96760,6 +96874,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/create-route-gpx' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token2 = response.data.token;
+                localStorage.setItem('token', _token2);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -96772,12 +96888,20 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Route Not Uploaded! Try Again!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Route Not Uploaded! Try Again!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
             commit('LOADING');
-            reject();
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["P" /* ROUTE_CUSTOM */], function (_ref9, data) {
@@ -96788,6 +96912,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/create-route-custom' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token3 = response.data.token;
+                localStorage.setItem('token', _token3);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -96800,12 +96926,20 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Route Not Uploaded! Try Again!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Route Not Uploaded! Try Again!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["i" /* CLEAR_USER_PATH_MARKERS */]);
-            reject();
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["Y" /* UPDATE_ROUTE */], function (_ref10, data) {
@@ -96816,6 +96950,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/update-route' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token4 = response.data.token;
+                localStorage.setItem('token', _token4);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
                     title: 'Route Edited!',
@@ -96827,11 +96963,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Can Not Edit Route!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Edit Route!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["B" /* GET_ROUTES */], function (_ref11, data) {
@@ -96841,15 +96985,25 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/get-routes' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token5 = response.data.token;
+                localStorage.setItem('token', _token5);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["B" /* GET_ROUTES */], { response: response });
                 resolve();
             }
         }).catch(function (error) {
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Routes Not Loaded! Try Again!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Load Routes!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["A" /* GET_ROUTE */], function (_ref12, data) {
@@ -96877,15 +97031,25 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/get-full-route' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token6 = response.data.token;
+                localStorage.setItem('token', _token6);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["v" /* GET_FULL_ROUTE */], { response: response });
                 resolve();
             }
         }).catch(function (error) {
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Route Not Loaded! Try Again!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Route Not Loaded! Try Again!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["p" /* DELETE_ROUTE */], function (_ref14, data) {
@@ -96896,6 +97060,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/delete-route' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token7 = response.data.token;
+                localStorage.setItem('token', _token7);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -96908,11 +97074,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Can Not Delete Route!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Delete Route!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["e" /* CLEAR_ROUTE */], function (_ref15) {
@@ -97012,6 +97186,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/create-story' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token = response.data.token;
+                localStorage.setItem('token', _token);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
                     title: 'Story Created!',
@@ -97023,11 +97199,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Can Not Create Story!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Create Story!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["Z" /* UPDATE_STORY */], function (_ref6, data) {
@@ -97038,6 +97222,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/update-story' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token2 = response.data.token;
+                localStorage.setItem('token', _token2);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
                     title: 'Story Edited!',
@@ -97049,11 +97235,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Can Not Edit Story!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Edit Story!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["q" /* DELETE_STORY */], function (_ref7, data) {
@@ -97064,6 +97258,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/delete-story' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token3 = response.data.token;
+                localStorage.setItem('token', _token3);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -97076,11 +97272,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Can Not Delete Story!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Delete Story!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["h" /* CLEAR_STORY */], function (_ref8) {
@@ -97176,6 +97380,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/create-refuge' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token = response.data.token;
+                localStorage.setItem('token', _token);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -97187,11 +97393,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Can Not Create Refuge!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Create Refuge!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["X" /* UPDATE_REFUGE */], function (_ref6, data) {
@@ -97202,6 +97416,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/update-refuge' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token2 = response.data.token;
+                localStorage.setItem('token', _token2);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -97213,11 +97429,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Can Not Update Refuge!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Update Refuge!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _defineProperty(_actions, __WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["o" /* DELETE_REFUGE */], function (_ref7, data) {
@@ -97228,6 +97452,8 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
     return new Promise(function (resolve, reject) {
         axios.post('api/delete-refuge' + '?token=' + token, data).then(function (response) {
             if (response.status == 200) {
+                var _token3 = response.data.token;
+                localStorage.setItem('token', _token3);
                 commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     type: 'success',
@@ -97240,11 +97466,19 @@ var actions = (_actions = {}, _defineProperty(_actions, __WEBPACK_IMPORTED_MODUL
             }
         }).catch(function (error) {
             commit(__WEBPACK_IMPORTED_MODULE_0__MutationTypes_js__["I" /* LOADING_OFF */]);
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                type: 'error',
-                title: 'Can Not Delete Refuge!'
-            }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
-            reject();
+            if (error.response.status == 401) {
+                localStorage.removeItem('token');
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Please Login Again'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    type: 'error',
+                    title: 'Can Not Delete Refuge!'
+                }).catch(__WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.noop);
+            }
+            reject(error);
         });
     });
 }), _actions);

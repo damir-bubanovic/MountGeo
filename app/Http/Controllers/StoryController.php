@@ -3,20 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Repositories\JWTRefreshRepository;
 
 class StoryController extends Controller
 {
+    /**
+     * Refresh Token Constructor
+     */
+    private $refreshtoken;
+
+    public function __construct(JWTRefreshRepository $refreshtoken) {
+        $this->refreshtoken = $refreshtoken;
+    }
+
     /**
      * Get Stories
      * 1) Verify request data
      * 2) Get stories from database from specific mountain id
      */
     public function getStories(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'mountain_id'            =>  'required|numeric',
         ));
@@ -41,8 +48,6 @@ class StoryController extends Controller
      * 2) Get story from database from specific story id
      */
     public function getStory(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'story'            =>  'required|numeric',
         ));
@@ -65,8 +70,6 @@ class StoryController extends Controller
      * Post Story
      */
     public function postStory(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'data.mountain'            =>  'required|numeric',
             'data.title'               =>  'required|string|max:60',
@@ -86,8 +89,11 @@ class StoryController extends Controller
                             'created_at'    =>  $now
                         ]);
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Story Saved'
+            'Story Saved',
+            'token'     =>  $token
         ], 200);
     }
 
@@ -96,8 +102,6 @@ class StoryController extends Controller
      * Update Story
      */
     public function updateStory(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'data.story'               =>  'required|numeric',
             'data.title'               =>  'required|string|max:60',
@@ -117,8 +121,11 @@ class StoryController extends Controller
                             'updated_at'    =>  $now
                         ]);
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Story Updated'
+            'Story Updated',
+            'token'     =>  $token
         ], 200);
     }
 
@@ -127,8 +134,6 @@ class StoryController extends Controller
      * Delete Story
      */
     public function deleteStory(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'data.story'                    =>  'required|numeric',
         ));
@@ -137,8 +142,11 @@ class StoryController extends Controller
                         ->where('id',$request->data['story'])
                         ->delete();
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Story Deleted'
+            'Story Deleted',
+            'token'     =>  $token
         ], 200);
     }
 

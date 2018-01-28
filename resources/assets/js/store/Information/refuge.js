@@ -84,6 +84,8 @@ const actions = {
             axios.post('api/create-refuge' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -96,11 +98,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Can Not Create Refuge!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Create Refuge!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },
@@ -115,6 +125,8 @@ const actions = {
             axios.post('api/update-refuge' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -127,11 +139,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Can Not Update Refuge!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Update Refuge!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },
@@ -146,6 +166,8 @@ const actions = {
             axios.post('api/delete-refuge' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -159,11 +181,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Can Not Delete Refuge!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Delete Refuge!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     }

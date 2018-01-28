@@ -64,6 +64,8 @@ const actions = {
             axios.post('api/create-mountain' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 201) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -76,11 +78,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Mountain Not Added! Try Again!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Mountain Not Added! Try Again!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },
@@ -95,6 +105,8 @@ const actions = {
             axios.post('api/update-mountain' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -107,11 +119,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Can Not Update Mountain!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Update Mountain!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },
@@ -133,6 +153,8 @@ const actions = {
             axios.post('api/delete-mountain' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -145,11 +167,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Mountain Not Deleted! Try Again!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Mountain Not Deleted! Try Again!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },

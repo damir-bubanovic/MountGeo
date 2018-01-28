@@ -106,6 +106,8 @@ const actions = {
             axios.post('api/create-route-kml' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -119,12 +121,20 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Route Not Uploaded! Try Again!'
-                        }).catch(swal.noop)
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Route Not Uploaded! Try Again!'
+                            }).catch(swal.noop)
+                        }
                         commit('LOADING');
-                        reject();
+                        reject(error);
                     })
         })
     },
@@ -171,6 +181,8 @@ const actions = {
             axios.post('api/create-route-gpx' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -184,12 +196,20 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Route Not Uploaded! Try Again!'
-                        }).catch(swal.noop)
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Route Not Uploaded! Try Again!'
+                            }).catch(swal.noop)
+                        }
                         commit('LOADING');
-                        reject();
+                        reject(error);
                     })
         })
     },
@@ -204,6 +224,8 @@ const actions = {
             axios.post('api/create-route-custom' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -217,12 +239,20 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Route Not Uploaded! Try Again!'
-                        }).catch(swal.noop)
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Route Not Uploaded! Try Again!'
+                            }).catch(swal.noop)
+                        }
                         commit(MutationTypes.CLEAR_USER_PATH_MARKERS);
-                        reject();
+                        reject(error);
                     })
         })
     },
@@ -237,6 +267,8 @@ const actions = {
             axios.post('api/update-route' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             swal({
                                 type: 'success',
                                 title: 'Route Edited!',
@@ -249,11 +281,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Can Not Edit Route!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Edit Route!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },
@@ -267,16 +307,26 @@ const actions = {
             axios.post('api/get-routes' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.GET_ROUTES, { response });
                             resolve();
                         }
                     })
                     .catch((error) => {
-                        swal({
-                            type: 'error',
-                            title: 'Routes Not Loaded! Try Again!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Load Routes!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },
@@ -313,16 +363,26 @@ const actions = {
             axios.post('api/get-full-route' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.GET_FULL_ROUTE, { response });
                             resolve();
                         }
                     })
                     .catch((error) => {
-                        swal({
-                            type: 'error',
-                            title: 'Route Not Loaded! Try Again!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Route Not Loaded! Try Again!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },
@@ -337,6 +397,8 @@ const actions = {
             axios.post('api/delete-route' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -350,11 +412,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Can Not Delete Route!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Delete Route!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },

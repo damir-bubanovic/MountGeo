@@ -86,6 +86,8 @@ const actions = {
             axios.post('api/create-story' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             swal({
                                 type: 'success',
                                 title: 'Story Created!',
@@ -98,11 +100,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Can Not Create Story!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Create Story!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },
@@ -117,6 +127,8 @@ const actions = {
             axios.post('api/update-story' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             swal({
                                 type: 'success',
                                 title: 'Story Edited!',
@@ -129,11 +141,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Can Not Edit Story!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Edit Story!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },
@@ -148,6 +168,8 @@ const actions = {
             axios.post('api/delete-story' + '?token=' + token, data)
                     .then((response) => {
                         if(response.status == 200) {
+                            const token = response.data.token;
+                            localStorage.setItem('token', token);
                             commit(MutationTypes.LOADING_OFF);
                             swal({
                                 type: 'success',
@@ -161,11 +183,19 @@ const actions = {
                     })
                     .catch((error) => {
                         commit(MutationTypes.LOADING_OFF);
-                        swal({
-                            type: 'error',
-                            title: 'Can Not Delete Story!'
-                        }).catch(swal.noop)
-                        reject();
+                        if (error.response.status == 401) {
+                            localStorage.removeItem('token');
+                            swal({
+                                type: 'error',
+                                title: 'Please Login Again'
+                            }).catch(swal.noop)
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Can Not Delete Story!'
+                            }).catch(swal.noop)
+                        }
+                        reject(error);
                     })
         })
     },

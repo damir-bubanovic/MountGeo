@@ -3,20 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Repositories\JWTRefreshRepository;
 
 class MountainController extends Controller
 {
+    /**
+     * Refresh Token Constructor
+     */
+    private $refreshtoken;
+
+    public function __construct(JWTRefreshRepository $refreshtoken) {
+        $this->refreshtoken = $refreshtoken;
+    }
+
+
     /**
      * Show mountains
      *
      * @return mountains
      */
     public function getMountains() {
-        $user = JWTAuth::parseToken()->toUser();
-
         $mountains = DB::table('mountains')
                         ->select('id', 'name')
                         ->orderBy('name', 'desc')
@@ -34,8 +42,6 @@ class MountainController extends Controller
      * @return mountain
      */
     public function postMountain(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'data.name'  =>  'required|string|min:2|max:60'
         ));
@@ -48,8 +54,11 @@ class MountainController extends Controller
                             'created_at'    =>  $now
                         ]);
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'mountain'  =>  $mountain
+            'mountain'  =>  $mountain,
+            'token'     =>  $token
         ], 201);
     }
 
@@ -58,8 +67,6 @@ class MountainController extends Controller
      * Update Mountain
      */
     public function updateMountain(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
-
         $this->validate($request, array(
             'mountain_id'        =>  'required|numeric',
             'name'               =>  'required|string|min:2|max:60',
@@ -77,8 +84,11 @@ class MountainController extends Controller
                             'updated_at'   =>  $now
                         ]);
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Mountain Updated'
+            'Mountain Updated',
+            'token'     =>  $token
         ], 200);
     }
 
@@ -110,8 +120,11 @@ class MountainController extends Controller
         //                 ->where('mountain_id',$request->data['mountain'])
         //                 ->delete();
 
+        $token = $this->refreshtoken->refreshToken();
+
         return response()->json([
-            'Mountain Deleted'
+            'Mountain Deleted',
+            'token'     =>  $token
         ], 200);
 
     }
